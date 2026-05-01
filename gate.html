@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>関係者向け｜出前中華りんらん デモ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c-ink: #1a1614;
+    --c-ivory: #f7f3ec;
+    --c-red: #8b1a1a;
+    --c-gold: #c9a55b;
+    --c-line: #d6cfc1;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: "Noto Sans JP", sans-serif;
+    background: var(--c-ink);
+    color: var(--c-ivory);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    line-height: 1.7;
+  }
+  .gate {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+  }
+  .gate__logo {
+    font-family: "Noto Serif JP", serif;
+    font-size: 38px;
+    letter-spacing: 0.2em;
+    color: var(--c-gold);
+    margin: 0 0 8px;
+  }
+  .gate__sub {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--c-ivory);
+    opacity: 0.7;
+    margin: 0 0 36px;
+    text-transform: uppercase;
+  }
+  .gate__lead {
+    font-size: 14px;
+    line-height: 1.95;
+    color: var(--c-ivory);
+    opacity: 0.85;
+    margin: 0 0 28px;
+  }
+  .gate__form {
+    background: rgba(247,243,236,0.06);
+    border: 1px solid rgba(247,243,236,0.18);
+    padding: 28px 24px;
+  }
+  .gate__form label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--c-gold);
+    margin-bottom: 12px;
+  }
+  .gate__form input {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--c-ivory);
+    color: var(--c-ink);
+    border: 1px solid var(--c-line);
+    font-family: inherit;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    border-radius: 2px;
+  }
+  .gate__form input:focus { outline: 2px solid var(--c-gold); outline-offset: 1px; }
+  .gate__btn {
+    width: 100%;
+    padding: 13px 24px;
+    background: var(--c-red);
+    color: #fff;
+    border: 0;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .gate__btn:hover { background: #6e1414; transform: translateY(-2px); }
+  .gate__error {
+    color: #ff9999;
+    font-size: 13px;
+    margin-top: 12px;
+    min-height: 18px;
+  }
+  .gate__note {
+    font-size: 11px;
+    color: var(--c-ivory);
+    opacity: 0.5;
+    margin-top: 32px;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+<main class="gate">
+  <p class="gate__logo">琳蘭</p>
+  <p class="gate__sub">RINRAN demo · for stakeholders</p>
+  <p class="gate__lead">出前中華りんらん リニューアル提案デモ。<br>関係者の方へお渡ししたパスワードを入力してください。</p>
+  <form class="gate__form" id="gate-form">
+    <label for="pw">PASSWORD</label>
+    <input type="password" id="pw" name="pw" autocomplete="off" required autofocus>
+    <button class="gate__btn" type="submit">入る</button>
+    <p class="gate__error" id="error"></p>
+  </form>
+  <p class="gate__note">※ デザイン提案中の試作版です。本サイトとは別物です。</p>
+</main>
+<script>
+const EXPECTED = '838a91acf0d88dcdb7648a295d5ddb7ae7dd59a31d6d7c445c6bb68cbde962ba';
+async function sha256(text) {
+  const buf = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+const form = document.getElementById('gate-form');
+const errEl = document.getElementById('error');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errEl.textContent = '';
+  const pw = document.getElementById('pw').value;
+  const h = await sha256(pw);
+  if (h === EXPECTED) {
+    sessionStorage.setItem('rinran_demo_auth', h);
+    location.replace('index.html');
+  } else {
+    errEl.textContent = 'パスワードが違います。';
+    document.getElementById('pw').value = '';
+  }
+});
+// 既に認証済みなら自動でデモへ
+if (sessionStorage.getItem('rinran_demo_auth') === EXPECTED) {
+  location.replace('index.html');
+}
+</script>
+</body>
+</html>

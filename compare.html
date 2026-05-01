@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>りんらん デモ - A案/B案 比較</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Noto Sans JP", sans-serif; background: #f7f3ec; color: #1a1614; line-height: 1.7; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 64px 24px; }
+  h1 { font-family: "Noto Serif JP", serif; font-size: 32px; font-weight: 500; margin-bottom: 8px; }
+  .lead { color: #4a4340; margin-bottom: 48px; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+  @media (min-width: 800px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .card { background: #fff; padding: 36px; border: 1px solid #d6cfc1; }
+  .card h2 { font-family: "Noto Serif JP", serif; font-size: 24px; margin-bottom: 6px; font-weight: 500; }
+  .card h2 small { font-size: 13px; color: #8b1a1a; letter-spacing: 0.2em; display: block; margin-bottom: 8px; }
+  .card .sum { color: #4a4340; margin-bottom: 24px; font-size: 14px; }
+  .card h3 { font-size: 11px; letter-spacing: 0.25em; color: #8b1a1a; margin: 24px 0 12px; }
+  .card ul { list-style: none; margin-bottom: 16px; padding-left: 0; }
+  .card ul li { padding: 4px 0; border-bottom: 1px dashed #e8dcc4; font-size: 14px; }
+  .card ul li::before { content: "・"; color: #8b1a1a; padding-right: 4px; }
+  .card .pages { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding-left: 0; list-style: none; }
+  .card .pages li { padding: 0; border: none; }
+  .card .pages li::before { content: ""; padding: 0; }
+  .card .pages a {
+    display: block;
+    padding: 10px 12px;
+    background: #f7f3ec;
+    color: #1a1614;
+    text-decoration: none;
+    font-size: 13px;
+    transition: background 0.2s;
+    border-left: 2px solid #8b1a1a;
+  }
+  .card .pages a:hover { background: #ede5d6; }
+  .card--osaka { background: #fdf6e7; border-color: #e8dcc4; }
+  .card--osaka h2 small { color: #d63635; }
+  .card--osaka h3 { color: #d63635; }
+  .card--osaka ul li::before { color: #d63635; }
+  .card--osaka .pages a { background: #fff; border-left-color: #d63635; }
+  .card--osaka .pages a:hover { background: #f5e9c9; }
+  .docs {
+    background: #1a1614;
+    color: #f7f3ec;
+    padding: 32px;
+    margin-top: 48px;
+    border-radius: 2px;
+  }
+  .docs h3 { color: #c9a55b; font-size: 12px; letter-spacing: 0.3em; margin-bottom: 14px; font-weight: 500; }
+  .docs p { font-size: 14px; line-height: 1.85; opacity: 0.92; margin-bottom: 16px; }
+  .docs a { color: #c9a55b; border-bottom: 1px solid #c9a55b; }
+  .footer { margin-top: 48px; font-size: 12px; color: #4a4340; text-align: center; }
+</style>
+<script src="assets/js/gate.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <h1>りんらん デモ - 2案比較</h1>
+  <p class="lead">同じ素材・同じ情報設計（4ページ構成、B2B直販主役、LINE導線、メディア掲載）で、トーンの方向性のみ変えた2案。各案5ページ完成。</p>
+
+  <div class="grid">
+    <!-- ===== A案 ===== -->
+    <div class="card">
+      <h2><small>A案</small>高級洗練（統一トーン）</h2>
+      <p class="sum">全体を通して落ち着いたダーク基調＋明朝体＋金アクセント。「品格のある仕出し中華」を一貫して訴求。</p>
+
+      <h3>DESIGN POLICY</h3>
+      <ul>
+        <li>カラー: 墨黒 × アイボリー × 金 × 朱赤少量</li>
+        <li>フォント: Noto Serif JP（明朝）主体</li>
+        <li>ヒーロー: 弁当大判画像 + 静かな縦の流れ</li>
+        <li>柔軟性訴求: 余白多めの語り型「Our promise」</li>
+        <li>向く客層: 製薬・金融・式典向けの法人窓口</li>
+      </ul>
+
+      <h3>PAGES</h3>
+      <ul class="pages">
+        <li><a href="index.html">P1 トップ</a></li>
+        <li><a href="corporate.html">P2 法人仕出し</a></li>
+        <li><a href="quote.html">P3 お見積もり</a></li>
+        <li><a href="delivery.html">P4 個別配達</a></li>
+      </ul>
+    </div>
+
+    <!-- ===== B案 ===== -->
+    <div class="card card--osaka">
+      <h2><small>B案</small>大阪元気 × 仕出し洗練</h2>
+      <p class="sum">入口は親しみやすく、仕出し高級弁当だけ急に格を上げる。コントラスト型。「気さくに頼める、でも大事な席もまかせられる店」。</p>
+
+      <h3>DESIGN POLICY</h3>
+      <ul>
+        <li>カラー: 朱赤 × 黄 × 黒 × クリーム</li>
+        <li>フォント: Zen Maru Gothic（太字）主体、仕出しのみ明朝</li>
+        <li>ヒーロー: 「今日、何人前にしましょか。」やわらかい話し言葉</li>
+        <li>ラインナップ訴求: 「中華屋さん、いうても、いろいろ作ってます。」</li>
+        <li>柔軟性訴求: 「こんなご相談、ぜんぶOKです」会話型</li>
+        <li>向く客層: 撮影関係者・町内会・幅広い法人 + 既存個人客</li>
+      </ul>
+
+      <h3>PAGES</h3>
+      <ul class="pages">
+        <li><a href="index-osaka.html">P1 トップ</a></li>
+        <li><a href="corporate-osaka.html">P2 法人仕出し</a></li>
+        <li><a href="quote-osaka.html">P3 お見積もり</a></li>
+        <li><a href="delivery-osaka.html">P4 個別配達</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="docs">
+    <h3>RELATED DOCUMENTS</h3>
+    <p>あわせてご確認ください。元サイトの眠っている資産を一覧化し、活用方針・撮り直し要否・店主確認項目を整理した棚卸しドキュメントです。</p>
+    <p><a href="docs/asset-inventory.html">既存資産棚卸しドキュメント（HTML版・ブラウザ表示用）</a></p>
+  </div>
+
+  <p class="footer">※ 両案とも、ヘッダー・フッター・メディア掲載・お客様の声・店舗情報は共通。違いはトーン、見出しの言葉づかい、配色、フォント方針のみ。<br>※ 各ページにある「比較バナー」から両案を行き来できます。</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="出前中華りんらん｜法人仕出しのお見積もり依頼フォーム。日時・人数・予算をご記入ください。">
+<title>お見積もり依頼｜出前中華りんらん</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/site-osaka.css">
+<script src="assets/js/gate.js"></script>
+</head>
+<body>
+
+<div class="compare-banner">
+  現在: B案（大阪元気 × 仕出し洗練） ／ <a href="quote-osaka.html">A案（高級洗練）を見る</a> ／ <a href="compare.html">比較ページ</a>
+</div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index-osaka.html" class="site-logo">琳蘭<small>RINRAN since 2001</small></a>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="corporate-osaka.html">法人仕出し</a></li>
+        <li><a href="quote-osaka.html" style="color:var(--c-red);">お見積もり</a></li>
+        <li><a href="delivery-osaka.html">個別配達</a></li>
+        <li><a href="index.html#access">店舗情報</a></li>
+      </ul>
+    </nav>
+    <a href="https://lin.ee/Fi2l5eG" class="line-cta" target="_blank" rel="noopener">LINEで相談</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">Quotation Request</p>
+    <h1 class="page-hero__title">お見積もり依頼</h1>
+    <p class="page-hero__lead">日時・人数・予算・用途をご記入ください。<br>営業時間内であれば、原則24時間以内にご返信いたします。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <form action="quote-thanks.html" method="get" class="quote-form fade-up">
+      <div class="form-note">
+        <strong>お急ぎの場合は電話・LINEが早いです。</strong><br>
+        TEL: <a href="tel:06-6371-0077" class="text-link">06-6371-0077</a> ／ LINE: <a href="https://lin.ee/Fi2l5eG" class="text-link" target="_blank" rel="noopener">lin.ee/Fi2l5eG</a>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="company">会社名・団体名</label>
+          <input type="text" id="company" name="company" placeholder="例: 株式会社○○">
+        </div>
+        <div class="form-group">
+          <label for="department">部署・ご担当部署</label>
+          <input type="text" id="department" name="department" placeholder="例: 総務部">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">ご担当者様名 <span class="required">必須</span></label>
+          <input type="text" id="name" name="name" required placeholder="例: 山田 太郎">
+        </div>
+        <div class="form-group">
+          <label for="phone">お電話番号 <span class="required">必須</span></label>
+          <input type="tel" id="phone" name="phone" required placeholder="例: 06-1234-5678">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">メールアドレス <span class="required">必須</span></label>
+        <input type="email" id="email" name="email" required placeholder="例: example@company.co.jp">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="datetime">配達希望日時 <span class="required">必須</span></label>
+          <input type="datetime-local" id="datetime" name="datetime" required>
+        </div>
+        <div class="form-group">
+          <label for="people">人数 <span class="required">必須</span></label>
+          <input type="number" id="people" name="people" min="1" required placeholder="例: 20">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="budget">ご予算（1食あたり） <span class="required">必須</span></label>
+          <select id="budget" name="budget" required>
+            <option value="">選択してください</option>
+            <option>¥1,000 〜 ¥1,500</option>
+            <option>¥1,500 〜 ¥2,000</option>
+            <option>¥2,000 〜 ¥3,000</option>
+            <option>¥3,000 〜 ¥5,000</option>
+            <option>¥5,000 〜</option>
+            <option>ご相談</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="purpose">ご用途 <span class="required">必須</span></label>
+          <select id="purpose" name="purpose" required>
+            <option value="">選択してください</option>
+            <option>会議・打ち合わせ</option>
+            <option>研修・セミナー</option>
+            <option>撮影現場・ロケ弁</option>
+            <option>記念会・式典</option>
+            <option>パーティー</option>
+            <option>法事</option>
+            <option>その他</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">配達先住所 <span class="required">必須</span></label>
+        <input type="text" id="address" name="address" required placeholder="例: 大阪市北区梅田1-1-1 ○○ビル5階">
+      </div>
+
+      <div class="form-group">
+        <label for="payment">お支払い方法のご希望</label>
+        <select id="payment" name="payment">
+          <option value="">選択してください</option>
+          <option>当日現金</option>
+          <option>銀行振込</option>
+          <option>請求書払い（月締め）</option>
+          <option>未定・ご相談</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">ご要望・自由記入</label>
+        <textarea id="message" name="message" placeholder="アレルギー対応のご要望、お届け時刻のご指定、容器のご希望など、お気軽にご記入ください。"></textarea>
+      </div>
+
+      <p class="note">※ 送信いただいた内容は、お見積もりのご返信にのみ使用いたします。<br>※ デモ用フォームのため、実際には送信されません。本番では kintone 連携で店舗側に通知される予定です。</p>
+
+      <div class="form-submit">
+        <button type="submit" class="btn btn--primary">この内容で送信する</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <p class="site-footer__logo">琳蘭</p>
+        <p class="site-footer__addr">出前中華りんらん<br>〒531-0074 大阪市北区本庄東2-13-11<br>TEL 06-6371-0077 ／ FAX 06-6371-0078<br>営業時間 11:00〜21:00（年中無休）</p>
+      </div>
+      <div>
+        <h4>MENU</h4>
+        <ul>
+          <li><a href="corporate-osaka.html">法人仕出し</a></li>
+          <li><a href="quote-osaka.html">お見積もり</a></li>
+          <li><a href="delivery-osaka.html">個別配達</a></li>
+          <li><a href="index.html#access">店舗情報</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>CONTACT</h4>
+        <ul>
+          <li><a href="tel:06-6371-0077">TEL 06-6371-0077</a></li>
+          <li><a href="mailto:info@rinran.net">info@rinran.net</a></li>
+          <li><a href="https://lin.ee/Fi2l5eG" target="_blank" rel="noopener">LINE公式</a></li>
+          <li><a href="https://www.instagram.com/chinese_restaurant_rinran/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/demaerinran/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://twitter.com/mune_nori" target="_blank" rel="noopener">X (Twitter)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <p>© 2001–2026 出前中華りんらん</p>
+      <p><a href="delivery.html#portals" class="subtle-link">各種デリバリーサービスからのご注文はこちら</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

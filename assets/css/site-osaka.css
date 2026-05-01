@@ -1,0 +1,409 @@
+/* =========================================================
+   りんらん デモサイト B案 (大阪元気 × 仕出し洗練)
+   site.css をベースに、変数と一部セクションを上書き
+   ========================================================= */
+
+:root {
+  --c-ink:        #1a1614;
+  --c-ink-soft:   #4a4340;
+  --c-ivory:      #fdf6e7;       /* より暖かいクリーム */
+  --c-ivory-deep: #f5e9c9;
+  --c-red:        #d63635;       /* 朱赤（大阪元気） */
+  --c-red-deep:   #a82626;
+  --c-yellow:     #f4c430;       /* 黄（暖色アクセント） */
+  --c-gold:       #c9a55b;
+  --c-gold-deep:  #a88440;
+  --c-line:       #e8dcc4;
+  --c-bg:         #fdf6e7;       /* ベース全体を暖色に */
+  --c-line-green: #06c755;
+
+  --f-display: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+  --f-mincho:  "Noto Serif JP", "Yu Mincho", "游明朝", serif;
+  --f-body:    "Noto Sans JP", "Hiragino Sans", "Meiryo", sans-serif;
+}
+
+body {
+  background: var(--c-bg);
+}
+
+/* =========================================================
+   HEADER (元気版: 朱赤ロゴ強め)
+   ========================================================= */
+.site-header {
+  background: rgba(253, 246, 231, 0.95);
+}
+.site-logo {
+  font-family: var(--f-display);
+  font-size: 26px; font-weight: 700;
+  color: var(--c-red);
+  letter-spacing: 0.06em;
+}
+.site-logo small { letter-spacing: 0.25em; }
+
+/* =========================================================
+   HERO (大阪元気)
+   ========================================================= */
+.hero {
+  background: var(--c-red);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(244,196,48,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(244,196,48,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  min-height: clamp(560px, 88vh, 800px);
+  position: relative;
+  z-index: 1;
+}
+.hero__copy {
+  padding: 64px var(--pad-x) 56px;
+  position: relative;
+  z-index: 2;
+}
+.hero__hand-stamp {
+  display: inline-block;
+  border: 2px solid var(--c-yellow);
+  color: var(--c-yellow);
+  padding: 6px 18px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  margin-bottom: 28px;
+  transform: rotate(-2deg);
+}
+.hero__lead {
+  font-family: var(--f-display);
+  font-size: clamp(36px, 7.5vw, 76px);
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+.hero__lead em {
+  font-style: normal;
+  color: var(--c-yellow);
+  display: inline-block;
+  position: relative;
+}
+.hero__lead em::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 6px;
+  background: var(--c-yellow);
+  opacity: 0.3;
+}
+.hero__sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  line-height: 1.85;
+  color: #fff;
+  margin: 0 0 16px;
+  font-weight: 500;
+}
+.hero__bullets {
+  display: flex; flex-wrap: wrap; gap: 6px 12px;
+  margin: 24px 0 32px;
+  padding: 0;
+  list-style: none;
+}
+.hero__bullets li {
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(255,255,255,0.14);
+  padding: 6px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+.hero__band {
+  display: inline-block;
+  padding: 10px 22px;
+  background: var(--c-yellow);
+  color: var(--c-ink);
+  margin-bottom: 32px;
+  font-size: clamp(13px, 1.5vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+}
+.hero__cta {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.hero__visual {
+  position: relative;
+  min-height: 320px;
+}
+.hero__visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 900px) {
+  .hero__inner { grid-template-columns: 6fr 5fr; }
+  .hero__copy { padding: 96px var(--pad-x) 96px; }
+}
+
+/* ボタンを元気版に上書き */
+.btn--primary { background: var(--c-yellow); color: var(--c-ink); font-weight: 700; }
+.btn--primary:hover { background: #e8b51c; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(244,196,48,0.4); }
+.btn--ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.6); }
+.btn--ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+/* =========================================================
+   SIGNATURE BENTO (B案: トンマナ統一 — Zen Maru Gothic を中ウェイトで揃え、
+   gold装飾と広めの字間で "格" を保つ)
+   ========================================================= */
+.signature::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--c-red) 0%, var(--c-yellow) 100%);
+}
+.signature__intro h2 {
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.signature__intro h2 em {
+  position: relative;
+  padding: 0 4px;
+}
+.signature__intro h2 em::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: var(--c-gold);
+}
+.bento-card__name { letter-spacing: 0.04em; }
+.signature__plan-head h3 {
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+/* =========================================================
+   FLEX-PROMISE (B案差分 — 黄色＋太字で元気感)
+   ========================================================= */
+.flex-promise__head .eyebrow { color: var(--c-red); }
+.flex-promise__head h2 {
+  font-weight: 700;
+}
+.flex-promise__head h2 em {
+  border-bottom: 4px solid var(--c-yellow);
+}
+.flex-bubble__ask {
+  background: var(--c-yellow);
+  font-weight: 700;
+}
+.flex-bubble__ask::before {
+  border-right-color: var(--c-yellow);
+}
+
+/* =========================================================
+   SIGNATURE > PRICE RANGE (B案: 黄色アクセント)
+   ========================================================= */
+.signature__plan-tiers .plan-tier__name { color: var(--c-yellow); }
+.signature__plan-tiers .plan-tier__price { color: var(--c-yellow); }
+
+/* =========================================================
+   DELIVERY MENU PREVIEW (B案差分: トーン強め)
+   ========================================================= */
+.menu-preview__head h2 {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.menu-preview__head h2 em {
+  font-style: normal;
+  color: var(--c-red);
+  border-bottom: 4px solid var(--c-yellow);
+  padding: 0 2px 2px;
+}
+.menu-preview__category-head h3 {
+  font-weight: 700;
+}
+.menu-preview__category-head h3::before {
+  background: var(--c-red);
+  width: 4px;
+}
+.menu-preview__notes { border-left-color: var(--c-red); }
+
+/* =========================================================
+   MEDIA SECTION (元気版: 黄帯)
+   ========================================================= */
+.section--media {
+  background: var(--c-ivory-deep);
+  padding: 96px 0;
+}
+.section--media .section__title { font-family: var(--f-display); font-weight: 700; }
+.media-card__title { font-family: var(--f-display); font-weight: 700; }
+
+/* =========================================================
+   VOICE
+   ========================================================= */
+.voice-card { border-left-color: var(--c-yellow); }
+.voice-card__stars { color: var(--c-yellow); }
+
+/* =========================================================
+   STORE INFO
+   ========================================================= */
+.section--access { background: var(--c-bg); }
+.section--access .section__title { font-family: var(--f-display); font-weight: 700; }
+.store-info dt { color: var(--c-red); }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer {
+  background: var(--c-ink);
+}
+.site-footer__logo { color: var(--c-yellow); font-family: var(--f-display); font-weight: 700; }
+.site-footer h4 { color: var(--c-yellow); }
+
+/* =========================================================
+   PAGE HERO (B案: 朱赤背景)
+   ========================================================= */
+.page-hero {
+  background: var(--c-red);
+  color: #fff;
+}
+.page-hero .eyebrow { color: var(--c-yellow); }
+.page-hero__title { font-family: var(--f-display); font-weight: 700; }
+.page-hero__lead { color: rgba(255,255,255,0.92); }
+
+/* =========================================================
+   PLAN DETAIL (B案)
+   ========================================================= */
+.plan-detail__name { font-family: var(--f-display); font-weight: 700; }
+.plan-detail__price { color: var(--c-red); font-weight: 700; font-family: var(--f-display); }
+.plan-detail__lead { font-family: var(--f-display); font-weight: 500; }
+.plan-detail__spec dt { color: var(--c-red); }
+
+/* =========================================================
+   CASE GRID (B案: 黄色ボーダー)
+   ========================================================= */
+.case-card { border-left-color: var(--c-yellow); }
+.case-card__num { color: var(--c-red); }
+.case-card__title { font-family: var(--f-display); font-weight: 700; }
+
+/* =========================================================
+   AREA / TERMS (B案)
+   ========================================================= */
+.area-grid__title { font-family: var(--f-display); font-weight: 700; }
+.area-grid p strong { color: var(--c-red); }
+.terms dt { font-family: var(--f-display); font-weight: 700; }
+
+/* =========================================================
+   FORM (B案)
+   ========================================================= */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--c-red); }
+.form-note { background: var(--c-ivory); border-left-color: var(--c-yellow); }
+
+/* =========================================================
+   THANKS (B案)
+   ========================================================= */
+.thanks__title { font-family: var(--f-display); font-weight: 700; }
+
+/* =========================================================
+   DELIVERY ページ (B案差分)
+   ========================================================= */
+.delivery-hero__title em {
+  font-style: normal;
+  color: var(--c-yellow);
+  border-bottom: 4px solid var(--c-yellow);
+  padding: 0 4px 2px;
+}
+.delivery-hero__chips a { font-family: var(--f-display); font-weight: 500; }
+.delivery-hero__chips a:hover {
+  background: var(--c-yellow);
+  border-color: var(--c-yellow);
+}
+.full-menu__cat-num { color: var(--c-red); font-weight: 700; }
+.full-menu__cat-head h2 { font-family: var(--f-display); font-weight: 700; }
+.full-menu__list { border-top-color: var(--c-red); border-top-width: 4px; }
+.full-menu__list li em { color: var(--c-red); font-weight: 700; }
+.full-menu__pdf-note { border-left-color: var(--c-red); }
+.order-info__list dt {
+  font-family: var(--f-display);
+  font-weight: 700;
+  color: var(--c-red);
+}
+.portals { background: var(--c-ivory); }
+.portals__group h3 { font-family: var(--f-display); font-weight: 700; }
+
+/* =========================================================
+   MENU RANGE オーバーライド (B案・大阪元気トーン)
+   ========================================================= */
+.menu-range--osaka {
+  background: var(--c-ivory);
+}
+.menu-range--osaka .menu-range__intro h2 {
+  font-family: var(--f-display);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.menu-range--osaka .menu-range__intro h2 em {
+  font-style: normal;
+  color: var(--c-red);
+  border-bottom: 4px solid var(--c-yellow);
+  padding: 0 2px 2px;
+}
+.menu-range--osaka .range-card {
+  border: 2px solid var(--c-ink);
+  border-top-width: 6px;
+  border-top-color: var(--c-red);
+  border-radius: 4px;
+  background: #fff;
+}
+.menu-range--osaka .range-card__num {
+  font-family: var(--f-display);
+  font-weight: 900;
+  color: var(--c-red);
+}
+.menu-range--osaka .range-card__num em {
+  color: var(--c-ink);
+  font-weight: 700;
+}
+.menu-range--osaka .range-card__title {
+  font-family: var(--f-display);
+  font-weight: 700;
+  border-bottom: 2px dotted var(--c-line);
+  letter-spacing: 0.02em;
+}
+.menu-range--osaka .range-card__list {
+  color: var(--c-ink-soft);
+}
+
+/* =========================================================
+   COMPARE BANNER (上部に小さく入れて版切替)
+   ========================================================= */
+.compare-banner {
+  background: var(--c-ink);
+  color: var(--c-ivory);
+  padding: 8px var(--pad-x);
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+.compare-banner a {
+  color: var(--c-yellow);
+  border-bottom: 1px solid var(--c-yellow);
+  padding-bottom: 1px;
+  margin-left: 12px;
+}

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>出前中華りんらん 既存資産棚卸し</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c-ink: #1a1614;
+    --c-ink-soft: #4a4340;
+    --c-ivory: #f7f3ec;
+    --c-ivory-deep: #ede5d6;
+    --c-red: #8b1a1a;
+    --c-red-soft: #b54a4a;
+    --c-gold: #c9a55b;
+    --c-line: #d6cfc1;
+    --c-bg: #fffdf8;
+    --f-display: "Noto Serif JP", "Yu Mincho", serif;
+    --f-body: "Noto Sans JP", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--f-body);
+    line-height: 1.85;
+    color: var(--c-ink);
+    background: var(--c-bg);
+    font-feature-settings: "palt";
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 64px 24px 96px; }
+  .topbar {
+    background: var(--c-ink);
+    color: var(--c-ivory);
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .topbar a { color: var(--c-gold); border-bottom: 1px solid var(--c-gold); padding-bottom: 1px; text-decoration: none; }
+  h1 {
+    font-family: var(--f-display);
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .meta {
+    color: var(--c-ink-soft);
+    font-size: 13px;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--c-line);
+  }
+  h2 {
+    font-family: var(--f-display);
+    font-size: 26px;
+    font-weight: 500;
+    margin: 64px 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--c-line);
+    letter-spacing: 0.02em;
+  }
+  h3 {
+    font-family: var(--f-display);
+    font-size: 19px;
+    font-weight: 500;
+    margin: 36px 0 12px;
+    color: var(--c-red);
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 24px 0 8px;
+    color: var(--c-ink);
+  }
+  p { margin: 0 0 16px; font-size: 15px; }
+  ul, ol { margin: 0 0 20px 24px; }
+  li { margin: 6px 0; font-size: 14px; }
+  code {
+    font-family: "SFMono-Regular", "Consolas", monospace;
+    background: var(--c-ivory);
+    padding: 2px 6px;
+    font-size: 13px;
+    color: var(--c-red);
+  }
+  pre {
+    background: var(--c-ink);
+    color: var(--c-ivory);
+    padding: 20px;
+    margin: 16px 0;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--c-line);
+    vertical-align: top;
+  }
+  th {
+    background: var(--c-ivory);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+  tr:hover td { background: rgba(247,243,236,0.4); }
+  blockquote {
+    border-left: 3px solid var(--c-gold);
+    padding: 12px 20px;
+    margin: 20px 0;
+    background: var(--c-ivory);
+    font-size: 14px;
+    color: var(--c-ink-soft);
+  }
+  hr { border: none; border-top: 1px solid var(--c-line); margin: 48px 0; }
+  strong { color: var(--c-red); font-weight: 700; }
+  .note { color: var(--c-ink-soft); font-size: 13px; font-style: italic; }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    background: var(--c-ivory);
+    padding: 24px;
+    margin: 24px 0;
+    border-left: 3px solid var(--c-red);
+  }
+  .summary-grid div { font-size: 14px; }
+  .summary-grid .num { font-family: var(--f-display); font-size: 28px; color: var(--c-red); }
+  @media (min-width: 700px) { .summary-grid { grid-template-columns: repeat(4, 1fr); } }
+</style>
+<script src="../assets/js/gate.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="../compare.html">← 比較ページに戻る</a>
+</div>
+
+<div class="wrap">
+
+<h1>出前中華りんらん 既存資産棚卸し</h1>
+<p class="meta">調査日: 2026-04-30 ／ 対象: https://www.rinran.net/ 全ページ + 生HTML ／ 調査者: hp-factory</p>
+
+<hr>
+
+<h2>0. 結論サマリ</h2>
+<p><strong>「素材は宝の山、ただし全部眠っている」状態</strong>。リニューアル前提の活用方針を以下に整理。</p>
+
+<div class="summary-grid">
+  <div><div class="num">38</div>即活用できる資産</div>
+  <div><div class="num">6</div>撮り直し推奨</div>
+  <div><div class="num">11</div>店主確認必須</div>
+  <div><div class="num">7</div>削除推奨</div>
+</div>
+
+<h3>元サイトの状態認識</h3>
+<ul>
+  <li>CMS テーマ: <code>omotenashi</code>（国産小規模CMS）</li>
+  <li>使用 jQuery: 1.11.1（2014年バージョン）</li>
+  <li>レスポンシブ: 一部対応のみ</li>
+  <li>主要更新は2014年前後で停止と推測（「お知らせ」最終更新は2023.02.08、内容も食材取扱告知の小ネタ）</li>
+  <li>OGP の <code>twitter:domain</code> が <code>munerin.com</code> で、制作者由来のドメインらしき痕跡</li>
+  <li><strong>プロが入って作ったとしても2014年前後、それ以降は店主の手作業による断片的な追記のみと推察</strong></li>
+</ul>
+
+<hr>
+
+<h2>1. テキスト資産（最も眠っている宝）</h2>
+
+<h3>1-1. ヒーロー級コピー（活用すべき金鉱）</h3>
+<table>
+  <tr><th>コピー</th><th>元の所在</th><th>活用方針</th></tr>
+  <tr><td><strong>「冷めても柔らかい厳選したサーロインステーキ」</strong></td><td>サーロインステーキ御膳の解説</td><td>サーロイン御膳の見出しorサブコピー級。撮影現場・長時間会議の訴求にド直球</td></tr>
+  <tr><td><strong>「キング×キング、能書きは要りません」</strong></td><td>油淋鶏×エビチリ弁当の解説</td><td>店主の人柄を表す引用として、ストーリー帯やSNSに転用</td></tr>
+  <tr><td><strong>「脅威のオーダースピード」</strong></td><td>テレビ番組タイトル(セクション見出し)</td><td>番組タイトル引用なので最上級表現でも事実引用としてセーフ</td></tr>
+  <tr><td><strong>「イラチ関西人を黙らせる」</strong></td><td>旧キャッチ（番組紹介内）</td><td>大阪らしさ訴求のサブで使える。法人サイトでは控えめが無難</td></tr>
+</table>
+
+<h3>1-2. 商品解説テキスト（既存品の魅力を語る）</h3>
+<table>
+  <tr><th>商品</th><th>既存解説</th><th>活用</th></tr>
+  <tr><td>中華幕の内</td><td>「中国料理りんらん特製の中華版【幕の内】はどんなシチュエーションにも使い勝手が◎！一口食べると中華の世界へ引き込まれます。」</td><td>個別配達ページの代表商品コピー</td></tr>
+  <tr><td>4種盛シリーズ全般</td><td>「メインを4種盛り合わせた贅沢シリーズ」</td><td>カテゴリ説明として使用</td></tr>
+  <tr><td>油淋鶏×エビチリ</td><td>「王道×王道。キング×キング。まるでメッシ×クリスティアーノ・ロナウドのような、最強×最強。」</td><td>サブブランド感の演出に活用可</td></tr>
+  <tr><td>八宝菜×油淋鶏</td><td>「贅沢4種のメインを盛っちゃいましたシリーズの定番、間違いないコンビネーション」</td><td>定番訴求</td></tr>
+  <tr><td>サーロイン御膳</td><td>「冷めても柔らかい厳選したサーロインステーキがたっぷり入ったお弁当」</td><td>仕出し高級弁当ページのキャッチ級に昇格推奨</td></tr>
+  <tr><td>焼肉御膳</td><td>「この価格で牛焼肉がたっぷり入ったお値打ちのお弁当」</td><td>コスパ訴求</td></tr>
+</table>
+
+<h3>1-3. 配達エリア詳細（業務情報の眠れる宝）</h3>
+<p>現状: 店舗案内ページに埋もれている。</p>
+<pre>大阪市北区: 池田町、梅田、天神橋、中津 ほか多数の町丁目
+大阪市福島区: 福島1,2,6,7丁目</pre>
+<p>→ リニューアルでは法人ページで地図化、個別配達ページでも明示。</p>
+
+<h3>1-4. 求人ページ独自の宝</h3>
+<pre>独立支援・のれん分け制度
+役職・家族・住宅手当・退職金制度
+アットホームなので楽しく働けます！！</pre>
+<p>→ 直接トップに使う必要はないが、「<strong>25年運営して、人を育てて独立まで支援する店</strong>」という背骨の強さを示す素材として、コーポレートストーリーや採用ページで活用可。</p>
+
+<hr>
+
+<h2>2. 画像資産</h2>
+
+<h3>2-1. 弁当料理写真（中等品質、80点）</h3>
+<table>
+  <tr><th>ファイル</th><th>商品</th><th>評価</th><th>活用</th></tr>
+  <tr><td>幕ノ内.jpg</td><td>中華幕の内弁当</td><td>80点・全体感あり</td><td>個別配達ページ主役</td></tr>
+  <tr><td>油淋鶏.jpg</td><td>油淋鶏×エビチリ</td><td>80点</td><td>同上</td></tr>
+  <tr><td>八宝菜.jpg</td><td>八宝菜×油淋鶏</td><td>80点</td><td>同上</td></tr>
+  <tr><td>おおえび.jpg</td><td>大海老チリ×酢豚</td><td>80点</td><td>同上</td></tr>
+  <tr><td>ステーキ.png</td><td>サーロイン御膳</td><td>75点・PNG透過なしならJPG変換推奨</td><td>仕出し高級弁当ページ</td></tr>
+  <tr><td>焼肉.png</td><td>焼肉御膳</td><td>75点・同上</td><td>同上</td></tr>
+</table>
+<p><strong>撮り直し推奨</strong>: ヒーロー1枚 + 仕出し高級弁当4品 = <strong>計5枚プロ撮影（1日3-5万円想定）</strong>。残りはスマホ自前で十分（撮影ガイド別紙）。</p>
+
+<h3>2-2. 高級弁当系写真（要店主確認）</h3>
+<table>
+  <tr><th>ファイル</th><th>用途</th><th>注意点</th></tr>
+  <tr><td>プレミアム.jpg → premium-bento.jpg</td><td>プレミアム弁当</td><td>店舗オリジナル商品として活用可</td></tr>
+</table>
+
+<h3>2-3. メディア掲載（5本、現状ページ最下部に埋もれて視認性ゼロ）</h3>
+<table>
+  <tr><th>番組・コーナー</th><th>画像</th><th>概要</th></tr>
+  <tr><td><strong>毎日放送『ちちんぷいぷい』</strong></td><td>media-04-chichinpuipui.jpg</td><td>吉本芸人楽屋グルメ・たむらけんじオススメ・琳蘭特製ポパイ丼</td></tr>
+  <tr><td>『メシカルチョ』</td><td>media-05-mesicalcho.jpg</td><td>出前グルメ特集</td></tr>
+  <tr><td>大木こだまさん 出前に挑戦</td><td>media-03-kodama.jpg</td><td>お笑い芸人の出前体験企画</td></tr>
+  <tr><td>関東・関西スピードランチ対決</td><td>media-02-speed-lunch.jpg</td><td>ニラ肉ランチで参戦</td></tr>
+  <tr><td>脅威のオーダースピード</td><td>media-01-speed.jpg</td><td>番組タイトル不明（要店主確認）</td></tr>
+</table>
+<p><strong>現状の問題</strong>: トップページの<code>&lt;h2&gt;メディア紹介&lt;/h2&gt;</code>セクションは下部に配置され、PCでもスクロール3画面分くらい下、スマホだと存在に気づかない（制作側調査時の所見。店主ヒアリング未実施）。</p>
+<p><strong>活用方針</strong>: トップページのファーストビュー直下〜中盤に持ち上げ、雑誌風レイアウトで番組名+具体エピソードを併記。番組放送日が分かれば「YYYY年放送」と明記してリアリティを補強。</p>
+<blockquote><strong>店主確認必須</strong>: 各番組の放送日（記録残ってれば。なければ「過去出演」のみで構わない）</blockquote>
+
+<h3>2-4. その他バナー・素材</h3>
+<table>
+  <tr><th>ファイル</th><th>中身</th><th>扱い</th></tr>
+  <tr><td>会議.jpg → kaigi-banner.jpg</td><td>4種弁当並列+「会議・研修・運動会・行楽・ロケ弁・お花見」用途キーワード+「一食から大量注文まで」</td><td>テキスト直焼きだが、写真素材として再利用可+用途キーワードがコピー資産</td></tr>
+  <tr><td>弁当バナー.jpg → chirashi-banner.jpg</td><td>チラシ画像</td><td>PDFと併用可</td></tr>
+  <tr><td>rinranLINE.jpg → line-banner.jpg</td><td>LINE友だち追加QR</td><td>LINE導線で活用</td></tr>
+  <tr><td>Instagram.jpg</td><td>Instagram連携バナー</td><td>フッターSNSで活用</td></tr>
+  <tr><td>韓国食材取り扱い.jpg / 中国食材取り扱い.jpg / 白いきくらげ.jpg</td><td>食材小売告知</td><td><strong>制作側判断で削除候補（店主未確認）</strong></td></tr>
+  <tr><td>yobou.jpg</td><td>コロナ感染予防対策バナー</td><td><strong>削除済</strong>（時代遅れ）</td></tr>
+</table>
+
+<hr>
+
+<h2>3. 連絡手段資産（全て現役・要活用）</h2>
+<table>
+  <tr><th>手段</th><th>状態</th><th>リニューアル後の役割</th></tr>
+  <tr><td>電話 06-6371-0077</td><td>現役</td><td>緊急・主要</td></tr>
+  <tr><td>FAX 06-6371-0078</td><td>現役</td><td>法人客の予備</td></tr>
+  <tr><td>メール info@rinran.net</td><td>現役</td><td>法人問い合わせ予備</td></tr>
+  <tr><td>LINE公式 (lin.ee/Fi2l5eG)</td><td>現役・運用中</td><td><strong>主役級 CTA</strong>（既に「LINEでご注文」運用が回っている）</td></tr>
+  <tr><td>Instagram (@chinese_restaurant_rinran)</td><td>現役</td><td>フッター + シーン写真の更新先</td></tr>
+  <tr><td>Facebook (/demaerinran)</td><td>現役</td><td>フッター</td></tr>
+  <tr><td>Twitter (@mune_nori)</td><td>店舗運用</td><td>フッター</td></tr>
+</table>
+<p><strong>LINEは特に重要資産</strong>。既存QRバナー + 「LINEでご注文」の運用ノウハウがあるので、新サイトでもこのチャネルを主役級にする。</p>
+
+<hr>
+
+<h2>4. 業務情報資産</h2>
+<table>
+  <tr><th>項目</th><th>値</th><th>活用</th></tr>
+  <tr><td>創業</td><td>2001年（25年運営）</td><td>ヒーロー直球で訴求済</td></tr>
+  <tr><td>営業時間</td><td>11:00〜22:00</td><td>全ページ表示</td></tr>
+  <tr><td>定休日</td><td>年中無休</td><td>訴求ポイント</td></tr>
+  <tr><td>配達エリア</td><td>北区+福島区一部</td><td>法人ページで地図化</td></tr>
+  <tr><td>店舗住所</td><td>大阪市北区本庄東2-13-11</td><td>全ページ</td></tr>
+</table>
+
+<hr>
+
+<h2>5. 信頼資産（25年運営の証拠）</h2>
+<ol>
+  <li><strong>メディア掲載5本</strong>（前述・要上層化）</li>
+  <li><strong>2008-2026 著作権表記</strong> = 18年以上のWebプレゼンス</li>
+  <li><strong>のれん分け制度の存在</strong> = 店として体系化された証</li>
+  <li><strong>アットホーム強調</strong> = 求人で長年訴求してきた人柄</li>
+  <li><strong>大阪市北区での年中無休25年営業</strong> = 地域密着の実績</li>
+</ol>
+
+<hr>
+
+<h2>6. ポータル接続資産（直販巻き取り対象を分類済み）</h2>
+
+<h3>仕出し系ポータル（高手数料・直販に巻き取りたい主戦場）</h3>
+<ul>
+  <li>yuizen（結膳）</li>
+  <li>プレミアムスタイル</li>
+</ul>
+
+<h3>一般出前系ポータル（手数料低・利便性として残す）</h3>
+<ul>
+  <li>出前館</li>
+  <li>dデリバリー</li>
+  <li>楽天デリバリー</li>
+  <li>Uber Eats</li>
+  <li>LINEデリマ</li>
+</ul>
+
+<p>→ リニューアル後の方針: <strong>仕出し系2社は控えめに、一般出前系5社は堂々と並列展開</strong>。</p>
+<blockquote><strong>店主確認必須</strong>: 各社の手数料率（yuizen 20%は把握、他6社は未確認）</blockquote>
+
+<hr>
+
+<h2>7. PDFメニュー資産</h2>
+<table>
+  <tr><th>ファイル</th><th>内容</th><th>活用</th></tr>
+  <tr><td>menu.pdf</td><td>出前メニュー全12カテゴリ・最新2026/3/9更新</td><td>個別配達ページに掲載・PDFビューワ埋込orDL</td></tr>
+  <tr><td>chirashi.pdf</td><td>チラシ画像PDF</td><td>同上or印刷用配布</td></tr>
+</table>
+
+<hr>
+
+<h2>8. 削除推奨（リニューアルで切るもの）</h2>
+<table>
+  <tr><th>項目</th><th>理由</th></tr>
+  <tr><td>yobou.jpg コロナ予防バナー</td><td>既に削除済</td></tr>
+  <tr><td>お知らせの古いエントリ全件</td><td>最終更新2023.02、コロナ告知が大半で時代遅れ</td></tr>
+  <tr><td>韓国/中国食材取扱の訴求</td><td>制作側判断で削除候補（魅力訴求として弱いと判断、店主未確認）</td></tr>
+  <tr><td>「国産CMS」機能紹介バナー</td><td>テンプレ機能の説明、店舗と無関係。プロ感を著しく毀損</td></tr>
+  <tr><td>main_image_1.jpg〜main_image_4.jpg</td><td>CMSテーマ提供のテンプレ画像、使い物にならない</td></tr>
+  <tr><td>「結膳」「YUIZEN」を商品名として表示する箇所</td><td>ポータル名であって商品名ではない</td></tr>
+  <tr><td>旧トップの「予防対策」セクション</td><td>時代遅れ</td></tr>
+</table>
+
+<hr>
+
+<h2>9. 店主確認必須リスト</h2>
+<p>リニューアル前or並行で、店主と詰めるべき11項目:</p>
+<ol>
+  <li><strong>メディア掲載5本の番組放送日</strong>（具体的な「YYYY年放送」を出せるか）</li>
+  <li><code>media-01-speed.jpg</code> (img_top_media_01) の番組名・内容</li>
+  <li><strong>プレミアム弁当の正式商品名</strong>（「プレミアム」が公式名称か、他に名称があるか）</li>
+  <li><strong>法人仕出し各プランの正式価格</strong>（仮値¥1,000/¥2,000/¥3,500/ご相談で良いか）</li>
+  <li><strong>配達エリアの最新版</strong>（追加・縮小はないか）</li>
+  <li><strong>各ポータルの手数料率</strong>（yuizen 20%以外、6社分）</li>
+  <li><strong>Twitter @mune_nori の運用状況</strong>（投稿頻度・店主が直接運用か）</li>
+  <li><strong>コロナ期感染予防対策の継続状況</strong>（店内営業時の表示要否）</li>
+  <li><strong>写真撮り直しの予算と時期</strong>（プロ撮影 5枚で3-5万円、本契約後別見積り）</li>
+  <li><strong>見積もりフォームの送信先メールアドレス</strong>（infoでいいか別アドレスか）</li>
+  <li><strong>CMSテーマ・WordPressプラグインなど、現サイトの保守元</strong>（移行時のドメイン管理者確認）</li>
+</ol>
+
+<hr>
+
+<h2>10. 将来計画（制作側ドラフト・店主未確認）</h2>
+
+<h3>Phase 1: HP リニューアル本実装（hp-factory担当）</h3>
+<ul>
+  <li>4ページ構成（トップ・法人仕出し・見積もりフォーム・個別配達）</li>
+  <li>A案/B案デモ → 店主合意 → 実装</li>
+  <li>写真撮り直し（プロ5枚 + 店主自前）</li>
+  <li>ドメイン rinran.net 維持、サーバ移行</li>
+</ul>
+
+<h3>Phase 2: 見積もりフォーム × kintone CRM連携</h3>
+<ul>
+  <li>見積もりフォーム送信 → kintone自動登録</li>
+  <li>顧客マスタ・案件管理・配達履歴の一元管理</li>
+  <li>LINE/メール/電話の問い合わせも統合</li>
+</ul>
+
+<h3>Phase 3: 既存個別会社の請求書情報分析システム</h3>
+<ul>
+  <li>過去の請求書データ（既存資産）を分析対象に</li>
+  <li>顧客別の発注頻度・客単価・季節傾向の可視化</li>
+  <li>上位顧客への優先対応 / 離脱顧客への再アプローチ材料化</li>
+  <li>kintoneと連携、別プロジェクトとして構築予定</li>
+</ul>
+
+<h3>Phase 4 以降（仮）</h3>
+<ul>
+  <li>肉処天風ブランドの位置づけ整理</li>
+  <li>法人会員制度・定例配達契約</li>
+  <li>撮影現場向け定額プラン</li>
+</ul>
+
+<hr>
+
+<h2>11. クレジットカード直接決済 導入提案（制作側ドラフト・店主未確認）</h2>
+
+<h3>なぜ今検討するか</h3>
+<p>現状の注文経路は (a) ポータル7社経由、(b) 電話/FAX/メール直接 の2系統。</p>
+<ul>
+  <li>(a) は決済済みで振込まれるが手数料 約20%（yuizen 把握分）</li>
+  <li>(b) は注文成立後の集金が店舗負担。多くは「配達先で現金」または「請求書で月締」のいずれか</li>
+</ul>
+<p>特に法人ロケ弁・撮影現場・大規模会議では、現金集金は事務側に嫌われ、月締は信用前提で初回ハードルが高い。<strong>「直販ルートに決済手段がない」ことが、ポータル20%を払い続ける構造的な理由</strong>になっている。直接決済を整えれば、(b) 経由を増やしても集金摩擦が出ない → ポータル依存度を段階的に下げる土台になる。</p>
+
+<h3>用途別に必要な決済形態は3つ</h3>
+<table>
+  <tr><th>場面</th><th>必要な決済形態</th></tr>
+  <tr><td>配達先・店内での対面決済</td><td>IC / タッチ / QR 対応の決済端末</td></tr>
+  <tr><td>見積もり後オンラインで支払</td><td>決済リンク付メール（請求書送信型）</td></tr>
+  <tr><td>法人 月締 / 定例配達</td><td>請求書発行 + 銀行振込 or オンライン継続課金</td></tr>
+</table>
+<p>どれか1つだけ入れても穴が残るため、<strong>最低でも対面 + オンラインの2系統</strong>を併設するのが現実解。</p>
+
+<h3>候補比較（2026-05時点・参考値）</h3>
+<table>
+  <tr><th>サービス</th><th>主用途</th><th>月額</th><th>決済手数料</th><th>入金サイクル</th><th>コメント</th></tr>
+  <tr><td><strong>Square</strong></td><td>対面+オンライン+請求書、全部入り</td><td>0円</td><td>3.25%（IC/タッチ） / 3.95%（オンライン）</td><td>最短翌営業日</td><td>端末¥4,980〜。Square Invoices で見積もり後決済も同一管理。中小飲食店の標準解</td></tr>
+  <tr><td><strong>AirPay / AirPay QR</strong></td><td>対面（IC/タッチ/QR各種）</td><td>0円</td><td>3.24%</td><td>月3-6回</td><td>リクルート系。撮影現場での Suica/PayPay 集金に強い</td></tr>
+  <tr><td><strong>STORES 決済</strong></td><td>対面+オンライン</td><td>0円</td><td>3.24%</td><td>翌々営業日</td><td>日本語UIが店主操作向き</td></tr>
+  <tr><td><strong>Stripe</strong></td><td>オンライン特化、API連携</td><td>0円</td><td>3.6%</td><td>7日後（標準）</td><td>見積もりフォームと自前で組むなら最短。法人請求書/サブスクも可</td></tr>
+  <tr><td><strong>PayPay for Business</strong></td><td>コード決済特化</td><td>0円</td><td>1.6%（決済）</td><td>月1-2回</td><td>コード決済率の高い客層向けサブ扱い</td></tr>
+  <tr><td><strong>GMOペイメントゲートウェイ / ゼウス</strong></td><td>法人請求書・継続課金主体</td><td>月額 1-2万円〜</td><td>3.0-3.5%</td><td>月締</td><td>月商が伸びた段階で検討。初期は重い</td></tr>
+</table>
+
+<h3>推奨構成（段階導入）</h3>
+<p><strong>Step 1（リニューアル本実装と同時 or 直後）</strong></p>
+<ul>
+  <li><strong>対面: AirPay または Square 端末を1台</strong> ─ 配達ドライバー携行 / 店頭兼用、IC・タッチ・QR・主要クレカ全対応、月額0円・端末数千円・初期負担最小</li>
+  <li><strong>オンライン見積もり後: Square Invoices もしくは Stripe Invoices</strong> ─ 見積もりフォーム → 店主確定 → 決済リンク付メール送信 → 法人担当者がカードで即決済 → 着金確認後に確定発注。振込待ち時間ゼロ、月末請求書処理も発生しない</li>
+</ul>
+<p><strong>Step 2（Phase 2 kintone CRM連携と同期）</strong></p>
+<ul>
+  <li>顧客マスタに「決済手段」フィールドを追加</li>
+  <li>リピート法人にはカード情報トークン化保存（Stripe Customer / Square Card on File）</li>
+  <li>定例配達は予約決済 → 配達翌日自動引き落とし</li>
+</ul>
+<p><strong>Step 3（Phase 4 法人会員制度と同期）</strong></p>
+<ul>
+  <li>月締請求書 + 自動カード課金（GMO/ゼウス検討）</li>
+  <li>撮影現場向け定額プランの月額自動引き落とし</li>
+</ul>
+
+<h3>想定コスト・利益インパクト（仮算）</h3>
+<ul>
+  <li>端末初期費用: ¥5,000〜¥30,000（Square端末 / AirPayレンタル）</li>
+  <li>月額固定費: ¥0（Step 2 まで）</li>
+  <li>決済手数料: 平均 3.3% 前後</li>
+</ul>
+<p>仕出し売上のうち<strong>ポータル経由を月10万円ぶん直販に巻き取れた場合</strong>の試算:</p>
+<ul>
+  <li>ポータル手数料 20% = 月¥20,000 削減</li>
+  <li>直販決済手数料 3.3% = 月¥3,300</li>
+  <li><strong>差額 月¥16,700 = 年¥200,000 直接利益化</strong></li>
+</ul>
+<p>※ 試算は仮値。実際の月商・ポータル比率を確認できれば再計算する。</p>
+
+<h3>この提案で店主確認必須リスト（追加）</h3>
+<ol start="13">
+  <li><strong>現状の集金方法の内訳</strong>（現金/振込/ポータル経由 の比率）</li>
+  <li><strong>既に決済端末を持っているか</strong>（AirPay/Square/その他、過去契約も含めて）</li>
+  <li><strong>法人取引先の請求書フォーマット要望</strong>（クレカ決済を嫌う先がないか）</li>
+  <li><strong>入金サイクルの希望</strong>（最短翌営業日 vs 月締、運転資金的にどちらが楽か）</li>
+</ol>
+
+<hr>
+
+<h2>12. 投資価値の所感</h2>
+<p>この店は「<strong>25年の営業実績 × 大阪市内の好立地 × メディア掲載 × LINE既運用 × ポータル7社接続</strong>」という、Web集客で土台が完璧な資産を既に持っている。にもかかわらず、現サイトが資産を可視化できていないため、<strong>投資効率が極端に悪い状態</strong>。</p>
+<p>逆に言えば、リニューアル + CRM連携 + 請求書分析 + 直接決済導入を整えれば、<strong>新規広告投資ほぼゼロで法人売上の自社直販化が進む</strong>ポテンシャルがある。仕出し系ポータル20%手数料の巻き取り効果だけでも、月間仕出し売上の増分20%相当が直接利益化する計算。</p>
+
+<hr>
+<p class="note">このドキュメントは2026-04-30時点の調査結果。新たな情報・店主確認結果が出たら随時更新する。</p>
+
+</div>
+</body>
+</html>
