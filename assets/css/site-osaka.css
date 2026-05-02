@@ -152,9 +152,54 @@ body {
   object-fit: cover;
 }
 
+/* ─── ヒーロー モザイク (B案: 元気なトーン) ─── */
+.hero__visual--mosaic { padding: 16px var(--pad-x); }
+.hero-mosaic {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
+}
+.hero-mosaic picture {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 8px 22px rgba(214,54,53,0.18);
+  background: var(--c-ink, #1a1614);
+  transform: translateZ(0);
+}
+.hero-mosaic picture::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 70%, rgba(0,0,0,0.3) 100%);
+  pointer-events: none;
+}
+.hero-mosaic img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.hero-mosaic picture:hover img { transform: scale(1.07); }
+.hero-mosaic picture:nth-child(2) img { filter: saturate(1.08); }
+.hero-mosaic picture:nth-child(5) img { filter: saturate(1.06); }
+
 @media (min-width: 900px) {
   .hero__inner { grid-template-columns: 6fr 5fr; }
   .hero__copy { padding: 96px var(--pad-x) 96px; }
+  .hero__visual--mosaic { padding: 32px var(--pad-x) 32px 0; }
+  .hero-mosaic { min-height: 520px; gap: 10px; }
+}
+
+@media (max-width: 700px) {
+  .hero-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    min-height: 340px;
+  }
 }
 
 /* ボタンを元気版に上書き */
