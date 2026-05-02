@@ -119,6 +119,57 @@
     margin-right: 6px;
     margin-bottom: 6px;
   }
+  /* スクリーンショット用 */
+  .ss-row { display: grid; grid-template-columns: 1fr; gap: 18px; margin-bottom: 24px; }
+  @media (min-width: 720px) { .ss-row.cols-2 { grid-template-columns: 1fr 1fr; } }
+  .ss-caption { font-size: 12px; color: #6a6260; margin-bottom: 6px; letter-spacing: 0.05em; }
+  .ss-frame {
+    background: #f7f3ec;
+    border: 1px solid #d6cfc1;
+    padding: 6px;
+    box-shadow: 0 4px 12px rgba(26,22,20,0.06);
+    overflow: hidden;
+  }
+  .ss-frame-bar {
+    background: #1a1614;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 5px;
+    margin: -6px -6px 6px -6px;
+  }
+  .ss-frame-bar span {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #4a4340;
+  }
+  .ss-frame-bar span:first-child { background: #d63635; }
+  .ss-frame-bar span:nth-child(2) { background: #f4c430; }
+  .ss-frame-bar span:nth-child(3) { background: #4a9a4a; }
+  .ss-scroll {
+    max-height: 480px;
+    overflow-y: auto;
+    background: #fff;
+  }
+  .ss-scroll-tall { max-height: 720px; }
+  .ss-scroll img { display: block; width: 100%; height: auto; }
+  /* モバイル枠っぽく */
+  .ss-mobile-wrap {
+    max-width: 280px;
+    margin: 0 auto;
+    background: #1a1614;
+    border-radius: 28px;
+    padding: 10px 6px;
+    box-shadow: 0 8px 24px rgba(26,22,20,0.18);
+  }
+  .ss-mobile-wrap .ss-scroll {
+    max-height: 560px;
+    border-radius: 18px;
+    background: #f7f3ec;
+  }
+  .ss-mobile-wrap .ss-scroll img {
+    border-radius: 0;
+  }
 </style>
 </head>
 <body>
@@ -138,6 +189,78 @@
     <span class="meta-tag">スマートフォン対応</span>
     <span class="meta-tag">外部送信ゼロ・クローズド運用</span>
     <span class="meta-tag">日本語UI</span>
+  </div>
+
+  <h2>画面イメージ</h2>
+  <p class="lead" style="margin-bottom:24px;">
+    架空テストデータでの実際の画面例です。スクロール可能なフレーム内で全体を確認できます。
+  </p>
+
+  <h3>ダッシュボード — 全体状況がひと目で</h3>
+  <p class="ss-caption">顧客数・注文数・累計売上・月別推移・ポータル別/業種別の構成比をワンページに集約。</p>
+  <div class="ss-row">
+    <div class="ss-frame">
+      <div class="ss-frame-bar"><span></span><span></span><span></span></div>
+      <div class="ss-scroll">
+        <img src="assets/images/crm/dashboard-desktop.jpg" alt="ダッシュボード PC画面" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <h3>取込画面 — スマホで撮影 → 確認 → 確認済みにする</h3>
+  <p class="ss-caption">カメラ起動・複数枚アップロード・自動読取結果の確認 までを片手で完結。</p>
+  <div class="ss-row cols-2">
+    <div>
+      <p class="ss-caption">PC画面</p>
+      <div class="ss-frame">
+        <div class="ss-frame-bar"><span></span><span></span><span></span></div>
+        <div class="ss-scroll">
+          <img src="assets/images/crm/import-desktop.jpg" alt="取込画面 PC" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="ss-caption">スマホ画面 (iPhone想定)</p>
+      <div class="ss-mobile-wrap">
+        <div class="ss-scroll">
+          <img src="assets/images/crm/import-mobile.jpg" alt="取込画面 スマホ" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>分析ダッシュボード — 7軸を1ページに</h3>
+  <p class="ss-caption">月次推移・支払構成・顧客ランク図・獲得時期グループ・売上の流れ図・大阪市24区マップ・要望分析の全7軸。</p>
+  <div class="ss-row">
+    <div class="ss-frame">
+      <div class="ss-frame-bar"><span></span><span></span><span></span></div>
+      <div class="ss-scroll ss-scroll-tall">
+        <img src="assets/images/crm/analytics-desktop.jpg" alt="分析ダッシュボード" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <h3>顧客一覧・注文一覧</h3>
+  <p class="ss-caption">過去データを検索/絞り込み可能。注文一覧は過去全件 (約1000件) を一望。</p>
+  <div class="ss-row cols-2">
+    <div>
+      <p class="ss-caption">顧客一覧</p>
+      <div class="ss-frame">
+        <div class="ss-frame-bar"><span></span><span></span><span></span></div>
+        <div class="ss-scroll">
+          <img src="assets/images/crm/customers-desktop.jpg" alt="顧客一覧" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="ss-caption">注文一覧</p>
+      <div class="ss-frame">
+        <div class="ss-frame-bar"><span></span><span></span><span></span></div>
+        <div class="ss-scroll ss-scroll-tall">
+          <img src="assets/images/crm/orders-desktop.jpg" alt="注文一覧" loading="lazy">
+        </div>
+      </div>
+    </div>
   </div>
 
   <h2>3つのコア機能</h2>
@@ -209,13 +332,13 @@
   <p>サイトからの新規問い合わせを自動的に顧客マスタに取り込み、見積もり履歴も一元管理。</p>
 
   <div class="cta">
-    <h2>ソースコード・詳細仕様</h2>
-    <p>実装の中身、画面構成、技術詳細をご確認いただけます (要アクセス権)</p>
+    <h2>ソースコード・実装詳細</h2>
+    <p>画面構成・データ構造・運用マニュアルなど、実装一式をご確認いただけます</p>
     <a class="btn-gh" href="https://github.com/word-trainning/rinran-crm" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1-.02-1.96-3.2.7-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.18.91-.26 1.89-.39 2.86-.39s1.95.13 2.86.39c2.2-1.49 3.16-1.18 3.16-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.8.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
-      GitHub で詳細を見る
+      GitHub でソースを見る
     </a>
-    <p class="note">※ プライベートリポジトリです。アクセス権の付与をご希望の場合はお声がけください。</p>
+    <p class="note">※ プライベートリポジトリです。アクセス権の付与をご希望の場合はお声がけください。<br>実画面の操作デモは、現在 開発機にて稼働中。お打合せの場で実機からご覧いただけます。</p>
   </div>
 </div>
 </body>
