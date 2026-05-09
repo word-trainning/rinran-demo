@@ -20,7 +20,7 @@
 | `quote.html` / `quote-osaka.html` | お見積もりフォーム |
 | `compare.html` | 案比較ページ + 提案ドキュメント入口 |
 | `crm.html` | 顧客管理システム提案 |
-| `pricing.html` | 料金プラン (初期286,000円 / 月額35,000円 / 一括5%OFF) |
+| `pricing.html` | 料金プラン (初期286,000円 / 一括5%OFF / 月額プランは別途相談) |
 | `roadmap.html` | 導入ロードマップ (Phase 1〜4) |
 | `contract.html` | 業務委託契約書・守秘義務条項 雛形 |
 | `docs/asset-inventory.html` | 既存資産棚卸しドキュメント |
