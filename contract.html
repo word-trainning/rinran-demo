@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>業務委託契約書・守秘義務条項 (テンプレート)｜出前中華りんらん リニューアル提案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<script src="assets/js/gate.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Noto Sans JP", sans-serif; background: #f7f3ec; color: #1a1614; line-height: 1.85; }
+  a { color: #8b1a1a; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-family: "Noto Serif JP", serif; font-size: 30px; font-weight: 500; margin-bottom: 6px; }
+  h1 small { display: block; font-size: 12px; letter-spacing: 0.3em; color: #8b1a1a; margin-bottom: 16px; }
+  .lead { color: #4a4340; margin-bottom: 32px; max-width: 760px; }
+  h2 { font-family: "Noto Serif JP", serif; font-size: 22px; font-weight: 500; margin-top: 56px; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid #8b1a1a; }
+  p { margin-bottom: 14px; }
+  .back { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #4a4340; text-decoration: none; }
+  .back:hover { color: #8b1a1a; }
+
+  .draft-banner {
+    background: #fdf6e7;
+    border: 1px solid #c9a55b;
+    padding: 18px 22px;
+    margin-bottom: 32px;
+    font-size: 13px;
+    color: #4a4340;
+  }
+  .draft-banner b { color: #8b1a1a; }
+
+  /* 契約書本体 */
+  .contract-doc {
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    padding: 48px 56px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    line-height: 1.95;
+  }
+  @media (max-width: 600px) { .contract-doc { padding: 28px 24px; } }
+  .contract-doc h3 {
+    font-family: "Noto Serif JP", serif;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 28px;
+    letter-spacing: 0.1em;
+  }
+  .contract-doc .preamble {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e8dcc4;
+    font-size: 14px;
+    color: #4a4340;
+  }
+  .contract-doc .article {
+    margin-bottom: 22px;
+  }
+  .contract-doc .article-title {
+    font-family: "Noto Serif JP", serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #8b1a1a;
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+  .contract-doc .article-body {
+    padding-left: 16px;
+    color: #1a1614;
+  }
+  .contract-doc .article-body ol {
+    list-style: decimal;
+    padding-left: 24px;
+    margin: 4px 0;
+  }
+  .contract-doc .article-body ol li {
+    padding: 2px 0;
+  }
+  .contract-doc .article-body ul {
+    list-style: disc;
+    padding-left: 24px;
+    margin: 4px 0;
+  }
+
+  .signature-block {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 2px solid #1a1614;
+  }
+  .signature-block .date {
+    text-align: right;
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+  .signature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 600px) {
+    .signature-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  .sig-party {
+    border: 1px solid #d6cfc1;
+    padding: 20px 22px;
+    background: #fdf6e7;
+  }
+  .sig-party h4 {
+    font-family: "Noto Serif JP", serif;
+    font-size: 14px;
+    color: #8b1a1a;
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid #e8dcc4;
+    padding-bottom: 8px;
+  }
+  .sig-party .field {
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+  .sig-party .field label {
+    display: block;
+    color: #6a6260;
+    font-size: 11px;
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+  .sig-party .field .line {
+    border-bottom: 1px solid #1a1614;
+    min-height: 24px;
+    padding: 4px 0;
+  }
+  .sig-party .field .line.tall { min-height: 40px; }
+
+  /* 締結フローボックス */
+  .flow-box {
+    background: #1a1614;
+    color: #f7f3ec;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+  .flow-box h3 {
+    color: #f4c430;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .flow-box ol {
+    padding-left: 20px;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  .flow-box ol li { margin-bottom: 8px; }
+  .flow-box ol li b { color: #f4c430; }
+
+  /* ナビ */
+  .pagenav {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid #d6cfc1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .pagenav a {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    color: #1a1614;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .pagenav a:hover { background: #fdf6e7; }
+
+  @media print {
+    .back, .pagenav, .draft-banner, .flow-box { display: none; }
+    body { background: #fff; }
+    .contract-doc { border: none; padding: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="compare.html" class="back">← 提案トップへ戻る</a>
+  <h1>業務委託契約書・守秘義務条項<small>CONTRACT TEMPLATE — 雛形</small></h1>
+  <p class="lead">
+    本ページは、業務委託契約書および守秘義務条項の<strong>雛形</strong>です。
+    実際の契約締結時には、本雛形をベースとした正式な書面を別途交付し、
+    契約条件 (金額・期間・特記事項) を確定したうえで双方が署名いたします。
+  </p>
+
+  <div class="draft-banner">
+    <b>本ページの位置づけ:</b>
+    本ページは契約条項を事前にご確認いただくための雛形です。<br>
+    <b>実際の契約条件・金額・期間は別途締結する正式書面により確定します。</b>
+    雛形の内容についてご質問・ご要望がある場合は、契約書面の作成前にお申し出ください。
+  </div>
+
+  <h2>契約締結の流れ</h2>
+  <div class="flow-box">
+    <h3>SIGNING PROCESS — 遠隔開始 / 後日対面で正本締結</h3>
+    <ol>
+      <li><b>Step 1 — 雛形の事前確認:</b> 本ページの条項をご確認いただきます。ご質問・修正のご要望はこの段階でお申し出ください。</li>
+      <li><b>Step 2 — 正式書面の電子交付:</b> 契約条件 (金額・期間・特記事項) を反映した正式な業務委託契約書および守秘義務条項書をPDFでメール送付します。</li>
+      <li><b>Step 3 — 着手金のご入金 = 暫定的な契約成立:</b> 担当者が遠隔地にいるため、対面でのご署名前にお振込みをもって暫定的な同意とみなし、業務に着手します。</li>
+      <li><b>Step 4 — 制作・納品作業の進行:</b> 業務委託契約書記載の業務内容に従って、HPリニューアルおよびCRM構築・データ入力作業を進めます。</li>
+      <li><b>Step 5 — 後日、現地訪問にて書類正本に双方サイン:</b> 担当者が大阪に赴いた際、業務委託契約書および守秘義務条項書の正本2通を持参し、店主と担当者の双方が署名・押印して正式な書面契約として完成させます。各1通ずつ保管。</li>
+    </ol>
+  </div>
+
+  <h2>業務委託契約書 (雛形)</h2>
+  <div class="contract-doc">
+    <h3>業務委託契約書</h3>
+    <div class="preamble">
+      委託者 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿ (以下「甲」という) と
+      受託者 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿ (以下「乙」という) は、
+      甲が乙に対し、ホームページのリニューアルおよび顧客管理システムの構築・運用業務を委託することに関し、以下のとおり業務委託契約 (以下「本契約」という) を締結する。
+    </div>
+
+    <div class="article">
+      <div class="article-title">第1条 (委託業務)</div>
+      <div class="article-body">
+        甲は乙に対し、以下の業務 (以下「本件業務」という) を委託し、乙はこれを受託する。
+        <ol>
+          <li>ホームページのリニューアル (デザイン・構築・公開作業)</li>
+          <li>顧客管理システム (CRM) の構築および本番環境へのデプロイ</li>
+          <li>過去注文書のCRMへのデータ入力作業</li>
+          <li>運営改善のための戦略提案書の作成および提出</li>
+          <li>納品後3ヶ月間の効果計測および月次レポート作成</li>
+          <li>その他、別途定める保守・運用業務</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第2条 (契約期間)</div>
+      <div class="article-body">
+        <ol>
+          <li>本契約の有効期間は、契約締結日から本件業務の納品 (第5条所定) およびその後の効果計測3ヶ月の終了日までとする。</li>
+          <li>4ヶ月目以降の保守運用については、別途月額契約 (基本プラン) として継続するものとし、いずれか一方が30日前までに書面または電磁的方法で通知することにより終了できるものとする。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第3条 (委託料)</div>
+      <div class="article-body">
+        <ol>
+          <li>甲は乙に対し、本件業務の対価として、別紙「料金プラン」記載の金額 (税込) を支払うものとする。</li>
+          <li>支払方法は以下のいずれかから甲が選択する。
+            <ul>
+              <li>一括払い (5%割引適用) — 契約締結時に全額をお支払い</li>
+              <li>分割払い — 契約締結時に50%、納品時に50%をお支払い</li>
+            </ul>
+          </li>
+          <li>4ヶ月目以降の月額基本プラン料金は、別紙料金プラン記載の月額35,000円 (税込) とし、当月分を当月末日までに翌月分前払いで支払うものとする。</li>
+          <li>月10時間を超えるデータ入力作業については、超過時間1時間あたり2,500円 (税込) で別途請求する。</li>
+          <li>サーバー利用料・ドメイン利用料については、甲が直接事業者に支払うものとし、本契約の委託料には含まれない。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第4条 (支払方法)</div>
+      <div class="article-body">
+        <ol>
+          <li>甲は乙が指定する金融機関口座への振込みにより支払うものとする。振込手数料は甲の負担とする。</li>
+          <li>遠隔地のため、本契約書正本への双方署名前であっても、<strong>着手金の入金をもって本契約条項への同意がなされたものとみなし</strong>、乙は業務に着手することができる。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第5条 (納品)</div>
+      <div class="article-body">
+        <ol>
+          <li>本件業務の納品は、<strong>既存の過去注文書のCRMへの入力作業の完了</strong>をもって行われるものとする。</li>
+          <li>乙は納品時、甲に対し本件業務の完了を書面または電磁的方法で報告するものとする。</li>
+          <li>納品後3ヶ月間の効果計測フェーズは、納品時の支払いを乙が確認した後に開始するものとする。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第6条 (報酬請求の制限)</div>
+      <div class="article-body">
+        乙は、本ホームページおよびCRMの導入に起因して甲の売上が増加した場合であっても、当該売上に対する歩合・成果報酬その他いかなる名目においても追加の報酬を請求しないものとする。本契約はフラットフィー方式を採用する。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第7条 (知的財産権)</div>
+      <div class="article-body">
+        <ol>
+          <li>本件業務の遂行により生じる成果物 (HTML・CSS・JavaScript・画像・データベース構造・運用マニュアル等) の著作権は、本件業務の対価の完済をもって甲に譲渡されるものとする。ただし、汎用的に利用可能なツール・ライブラリ・ノウハウについては乙が引き続き保有する。</li>
+          <li>乙は、甲の事前の書面による承諾を得たうえで、本件業務の事実およびその概要を制作実績として公表することができる (店舗名・ロゴ等の利用可否は別途協議)。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第8条 (個人情報・データの取扱い)</div>
+      <div class="article-body">
+        <ol>
+          <li>乙は、本件業務の遂行にあたり甲から提供を受けた顧客情報・注文情報その他の個人情報を、個人情報保護法および本契約の趣旨に従って厳重に管理するものとする。</li>
+          <li>乙は、当該個人情報を本件業務の目的以外には利用せず、第三者への開示・提供を行わない。</li>
+          <li>乙は、当該個人情報を国内サーバ内でのみ取り扱い、外部送信機能を実装しないものとする。</li>
+          <li>本契約終了時、乙は甲の請求に応じて、CRMに蓄積された全データをCSV形式で甲に引き渡したうえで、サーバから当該データを完全に削除するものとする。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第9条 (再委託)</div>
+      <div class="article-body">
+        乙は、甲の事前の書面による承諾なく、本件業務の全部または一部を第三者に再委託してはならない。ただし、定型的な実装作業の一部にAI開発支援ツールを使用することは、再委託に該当しないものとする。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第10条 (障害対応・サービスレベル)</div>
+      <div class="article-body">
+        <ol>
+          <li>乙の障害対応は、平日 (土日祝日を除く) 10時から18時までの時間帯において、ベストエフォートで実施する。</li>
+          <li>夜間・休日の即時対応や復旧時間の保証は、本契約には含まれない。これらが必要な場合は別途オプション契約を締結する。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第11条 (契約の解除)</div>
+      <div class="article-body">
+        <ol>
+          <li>甲または乙が本契約に違反し、相手方から相当の期間を定めて是正の催告を受けたにもかかわらず当該期間内に是正がなされない場合、相手方は本契約を解除することができる。</li>
+          <li>解除の場合、納品済みの成果物および提供済みのサービスに対応する委託料は返還の対象とならない。未提供のサービスに対応する前払金は返還する。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第12条 (損害賠償)</div>
+      <div class="article-body">
+        甲または乙が本契約に違反し、相手方に損害を与えた場合、当該損害を賠償する責を負う。ただし、乙の賠償責任の上限は、本件業務に関して甲が乙に対し過去12ヶ月間に支払った委託料の総額を上限とする。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第13条 (反社会的勢力の排除)</div>
+      <div class="article-body">
+        甲および乙は、自らおよびその役員が反社会的勢力でないこと、ならびに反社会的勢力との関係を一切有しないことを確約する。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第14条 (協議事項)</div>
+      <div class="article-body">
+        本契約に定めのない事項または本契約の解釈に疑義が生じた場合は、甲乙誠意をもって協議のうえ解決する。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第15条 (合意管轄)</div>
+      <div class="article-body">
+        本契約に関する一切の紛争は、甲の本店所在地を管轄する地方裁判所を第一審の専属的合意管轄裁判所とする。
+      </div>
+    </div>
+
+    <div class="signature-block">
+      <p>本契約の成立を証するため、本書 2通を作成し、甲乙双方が署名 (または記名押印) のうえ、各1通ずつ保管する。</p>
+      <p class="date">令和　　年　　月　　日</p>
+      <div class="signature-grid">
+        <div class="sig-party">
+          <h4>甲 (委託者)</h4>
+          <div class="field">
+            <label>所在地</label>
+            <div class="line tall"></div>
+          </div>
+          <div class="field">
+            <label>店舗名・屋号</label>
+            <div class="line"></div>
+          </div>
+          <div class="field">
+            <label>代表者氏名</label>
+            <div class="line"></div>
+          </div>
+          <div class="field">
+            <label>署名 / 押印</label>
+            <div class="line tall"></div>
+          </div>
+        </div>
+        <div class="sig-party">
+          <h4>乙 (受託者)</h4>
+          <div class="field">
+            <label>所在地</label>
+            <div class="line tall"></div>
+          </div>
+          <div class="field">
+            <label>屋号</label>
+            <div class="line"></div>
+          </div>
+          <div class="field">
+            <label>担当者氏名</label>
+            <div class="line"></div>
+          </div>
+          <div class="field">
+            <label>署名 / 押印</label>
+            <div class="line tall"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>守秘義務条項 (雛形)</h2>
+  <div class="contract-doc">
+    <h3>秘密保持に関する合意書</h3>
+    <div class="preamble">
+      委託者 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿ (以下「甲」という) と
+      受託者 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿ (以下「乙」という) は、
+      業務委託契約に基づき相互に開示する情報の秘密保持に関し、以下のとおり合意する。
+    </div>
+
+    <div class="article">
+      <div class="article-title">第1条 (秘密情報の定義)</div>
+      <div class="article-body">
+        本合意書において「秘密情報」とは、甲乙間で開示される一切の情報のうち、書面・口頭・電磁的方法を問わず、開示時に秘密である旨が明示された情報、または合理的に秘密と認められる情報をいい、以下を含むがこれらに限らない。
+        <ul>
+          <li>顧客情報 (氏名・所在地・連絡先・注文履歴・要望)</li>
+          <li>取引先情報 (法人顧客・ポータル事業者との取引条件)</li>
+          <li>売上・財務に関する情報</li>
+          <li>店舗運営に関するノウハウ・営業戦略</li>
+          <li>本件業務の遂行過程で開発される技術情報・ソースコード</li>
+          <li>その他、甲乙が秘密として取り扱うことを合意した情報</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第2条 (秘密保持義務)</div>
+      <div class="article-body">
+        <ol>
+          <li>甲乙は、相手方の秘密情報を厳に秘密として保持し、相手方の事前の書面による承諾なく、第三者に開示・漏洩してはならない。</li>
+          <li>甲乙は、秘密情報を本件業務の遂行目的以外に使用してはならない。</li>
+          <li>甲乙は、秘密情報を取り扱う者を必要最小限の範囲に限定し、当該者にも本合意書と同等の秘密保持義務を遵守させる責任を負う。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第3条 (例外)</div>
+      <div class="article-body">
+        以下の情報は秘密情報から除外する。
+        <ol>
+          <li>開示時にすでに公知であった情報</li>
+          <li>開示後、自己の責によらず公知となった情報</li>
+          <li>開示時にすでに正当に保有していた情報</li>
+          <li>第三者から正当な権利のもとで取得した情報</li>
+          <li>法令または裁判所・行政機関の命令により開示が要求された情報 (この場合、可能な限り事前に相手方に通知する)</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第4条 (秘密情報の管理)</div>
+      <div class="article-body">
+        <ol>
+          <li>乙は、甲から開示された顧客個人情報を国内サーバ内でのみ取り扱い、海外サーバへの転送および外部送信機能の実装を行わないものとする。</li>
+          <li>乙は、業務上必要な範囲を超えて秘密情報を複製・保管しないものとし、複製した場合はその所在および用途を明確にする。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第5条 (有効期間)</div>
+      <div class="article-body">
+        本合意書は、業務委託契約の有効期間中およびその終了後5年間にわたり効力を有するものとする。ただし、顧客個人情報に関する秘密保持義務は期間制限なく継続するものとする。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第6条 (秘密情報の返還・廃棄)</div>
+      <div class="article-body">
+        業務委託契約の終了時、乙は甲の指示に従い、保有するすべての秘密情報 (CRMデータ・バックアップ・関連書類) を、CSV形式での引渡し後にサーバから完全削除し、その旨を書面で甲に報告するものとする。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第7条 (違反時の措置)</div>
+      <div class="article-body">
+        本合意書に違反して相手方に損害を与えた場合、違反した当事者は当該損害を賠償する責を負う。また、相手方は違反行為の差止めを請求することができる。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title">第8条 (協議事項・準拠法)</div>
+      <div class="article-body">
+        本合意書に定めのない事項は、業務委託契約の規定を準用するほか、甲乙誠意をもって協議する。本合意書は日本法に準拠する。
+      </div>
+    </div>
+
+    <div class="signature-block">
+      <p>本合意書の成立を証するため、本書 2通を作成し、甲乙双方が署名 (または記名押印) のうえ、各1通ずつ保管する。</p>
+      <p class="date">令和　　年　　月　　日</p>
+      <div class="signature-grid">
+        <div class="sig-party">
+          <h4>甲 (委託者)</h4>
+          <div class="field">
+            <label>所在地</label>
+            <div class="line tall"></div>
+          </div>
+          <div class="field">
+            <label>店舗名・屋号</label>
+            <div class="line"></div>
+          </div>
+          <div class="field">
+            <label>代表者氏名</label>
+            <div class="line"></div>
+          </div>
+          <div class="field">
+            <label>署名 / 押印</label>
+            <div class="line tall"></div>
+          </div>
+        </div>
+        <div class="sig-party">
+          <h4>乙 (受託者)</h4>
+          <div class="field">
+            <label>所在地</label>
+            <div class="line tall"></div>
+          </div>
+          <div class="field">
+            <label>屋号</label>
+            <div class="line"></div>
+          </div>
+          <div class="field">
+            <label>担当者氏名</label>
+            <div class="line"></div>
+          </div>
+          <div class="field">
+            <label>署名 / 押印</label>
+            <div class="line tall"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="draft-banner">
+    <b>注記:</b>
+    本雛形は<strong>個人事業主間の小規模業務委託</strong>を想定した一般的なテンプレートです。
+    特殊な業務要件 (高度な機密情報・大規模個人情報・行政との関わり等) がある場合は、専門家の助言を得て条項を追加することを推奨します。
+    本契約締結前に内容を慎重にご確認ください。
+  </div>
+
+  <div class="pagenav">
+    <a href="compare.html">← 提案トップ</a>
+    <a href="pricing.html">← 料金プラン</a>
+    <a href="roadmap.html">← 導入ロードマップ</a>
+    <a href="crm.html">顧客管理システム提案</a>
+  </div>
+</div>
+</body>
+</html>

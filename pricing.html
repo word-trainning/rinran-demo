@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>料金プラン｜出前中華りんらん リニューアル提案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<script src="assets/js/gate.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Noto Sans JP", sans-serif; background: #f7f3ec; color: #1a1614; line-height: 1.75; }
+  a { color: #8b1a1a; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-family: "Noto Serif JP", serif; font-size: 32px; font-weight: 500; margin-bottom: 6px; }
+  h1 small { display: block; font-size: 12px; letter-spacing: 0.3em; color: #8b1a1a; margin-bottom: 16px; }
+  .lead { color: #4a4340; margin-bottom: 40px; max-width: 760px; }
+  h2 { font-family: "Noto Serif JP", serif; font-size: 22px; font-weight: 500; margin-top: 56px; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid #8b1a1a; }
+  h3 { font-size: 14px; letter-spacing: 0.18em; color: #8b1a1a; margin-top: 28px; margin-bottom: 10px; }
+  p { margin-bottom: 14px; }
+  .back { display: inline-block; margin-bottom: 32px; font-size: 13px; color: #4a4340; text-decoration: none; }
+  .back:hover { color: #8b1a1a; }
+
+  /* 料金テーブル */
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    background: #fff;
+    border: 1px solid #d6cfc1;
+  }
+  .price-table th, .price-table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid #e8dcc4;
+    font-size: 14px;
+    vertical-align: top;
+  }
+  .price-table th {
+    background: #fdf6e7;
+    font-weight: 600;
+    color: #4a4340;
+    width: 35%;
+  }
+  .price-table td.amount {
+    text-align: right;
+    font-family: "Noto Serif JP", serif;
+    font-size: 16px;
+    color: #1a1614;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .price-table tr.total td,
+  .price-table tr.total th {
+    background: #1a1614;
+    color: #f4c430;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .price-table tr.total td.amount {
+    color: #f4c430;
+    font-size: 20px;
+  }
+  .price-table .note-row td {
+    background: #f7f3ec;
+    color: #6a6260;
+    font-size: 12px;
+    padding: 10px 18px;
+  }
+
+  /* 支払いカード */
+  .pay-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 16px; }
+  @media (min-width: 720px) { .pay-grid { grid-template-columns: 1fr 1fr; } }
+  .pay-card {
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    padding: 22px 24px;
+    position: relative;
+  }
+  .pay-card.recommend { border: 2px solid #8b1a1a; }
+  .pay-card .badge {
+    position: absolute; top: -10px; left: 16px;
+    background: #8b1a1a; color: #fff;
+    font-size: 11px; letter-spacing: 0.1em;
+    padding: 3px 10px;
+  }
+  .pay-card h4 {
+    font-family: "Noto Serif JP", serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .pay-card .amount-big {
+    font-family: "Noto Serif JP", serif;
+    font-size: 26px;
+    color: #8b1a1a;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .pay-card .amount-big small { font-size: 13px; color: #6a6260; }
+  .pay-card p { font-size: 13px; color: #4a4340; margin-bottom: 0; }
+
+  /* プラン強調カード */
+  .plan-card {
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+  }
+  .plan-card .plan-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e8dcc4;
+  }
+  .plan-card h4 {
+    font-family: "Noto Serif JP", serif;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .plan-card .plan-price {
+    font-family: "Noto Serif JP", serif;
+    font-size: 22px;
+    color: #8b1a1a;
+    font-weight: 600;
+  }
+  .plan-card .plan-price small { font-size: 13px; color: #6a6260; font-weight: 400; }
+  .plan-card ul { list-style: none; padding-left: 0; }
+  .plan-card ul li {
+    padding: 6px 0 6px 22px;
+    font-size: 14px;
+    position: relative;
+    border-bottom: 1px dashed #e8dcc4;
+  }
+  .plan-card ul li::before {
+    content: "✓";
+    color: #8b1a1a;
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+  .plan-card.minimum { background: #fdf6e7; border-color: #e8dcc4; }
+
+  /* 約束事リスト */
+  .promise-list {
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    padding: 22px 28px;
+    margin-bottom: 16px;
+  }
+  .promise-list ul { list-style: none; padding-left: 0; }
+  .promise-list ul li {
+    padding: 10px 0 10px 28px;
+    position: relative;
+    border-bottom: 1px dashed #e8dcc4;
+    font-size: 14px;
+  }
+  .promise-list ul li:last-child { border-bottom: none; }
+  .promise-list ul li::before {
+    content: "✓";
+    color: #4a9a4a;
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  /* 流れリスト */
+  .flow-list {
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    padding: 24px 28px;
+  }
+  .flow-list ol {
+    list-style: none;
+    counter-reset: fl;
+    padding-left: 0;
+  }
+  .flow-list ol li {
+    counter-increment: fl;
+    padding: 14px 0 14px 48px;
+    position: relative;
+    border-bottom: 1px dashed #e8dcc4;
+    font-size: 14px;
+  }
+  .flow-list ol li:last-child { border-bottom: none; }
+  .flow-list ol li::before {
+    content: counter(fl);
+    position: absolute;
+    left: 0; top: 16px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: #8b1a1a; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+  }
+  .flow-list ol li b { font-weight: 600; display: block; margin-bottom: 4px; }
+  .flow-list ol li small { color: #6a6260; font-size: 12px; display: block; margin-top: 4px; line-height: 1.6; }
+
+  /* 補足ボックス */
+  .info-box {
+    background: #fdf6e7;
+    border-left: 4px solid #c9a55b;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #4a4340;
+  }
+  .info-box b { color: #1a1614; }
+
+  /* ナビ */
+  .pagenav {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid #d6cfc1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .pagenav a {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    color: #1a1614;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .pagenav a:hover { background: #fdf6e7; }
+  .pagenav a.contract { background: #1a1614; color: #f4c430; border-color: #1a1614; }
+  .pagenav a.contract:hover { background: #4a4340; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="compare.html" class="back">← 提案トップへ戻る</a>
+  <h1>料金プラン<small>PRICING — フラッグシップ特別価格</small></h1>
+  <p class="lead">
+    本リニューアル+顧客管理システム導入のお見積もりです。
+    AI開発を活用した小規模・運用しやすい構成で、初期投資を抑えつつ
+    <strong>「集客×顧客分析×継続改善」をワンパッケージ</strong>でご提供します。
+    本価格は<strong>初回フラッグシップ特別価格</strong>として設定しています。
+  </p>
+
+  <h2>初期費用</h2>
+  <table class="price-table">
+    <tr>
+      <th>ホームページ改善 (リニューアル)</th>
+      <td>A案/B案デザイン2案 × 4ページ構成、レスポンシブ、見積もりフォーム、メディア掲載コーナー、LINE/電話導線</td>
+      <td class="amount">88,000円</td>
+    </tr>
+    <tr>
+      <th>顧客管理システム (CRM) 制作</th>
+      <td>注文書スマホ撮影→自動読取→確認 / 顧客マスタ / 注文履歴 / 7軸分析ダッシュボード / 要望管理 / 大阪市24区マップ</td>
+      <td class="amount">88,000円</td>
+    </tr>
+    <tr>
+      <th>戦略提案 (運営改善案)</th>
+      <td>CRMに蓄積されたデータをもとに、お得意様傾向・離脱リスク・現場対応の優先順位を可視化した運営改善提案書をご提出</td>
+      <td class="amount">50,000円</td>
+    </tr>
+    <tr>
+      <th>効果計測 (3ヶ月経過観察)</th>
+      <td>納品後3ヶ月間、月次で集計レポートを作成しご報告。問い合わせ件数・客単価・顧客傾向の変化をトラッキング</td>
+      <td class="amount">20,000円 × 3ヶ月<br>= 60,000円</td>
+    </tr>
+    <tr class="total">
+      <th>初期合計</th>
+      <td>—</td>
+      <td class="amount">286,000円</td>
+    </tr>
+    <tr class="note-row">
+      <td colspan="3">※ 表示価格はすべて税込。経過観察3ヶ月終了後は再契約 (基本プラン) へ移行します。</td>
+    </tr>
+  </table>
+
+  <h2>お支払い方法</h2>
+  <div class="pay-grid">
+    <div class="pay-card recommend">
+      <span class="badge">おすすめ</span>
+      <h4>一括払い</h4>
+      <p class="amount-big">271,700円 <small>(5% OFF)</small></p>
+      <p>契約成立時に全額。手続きが最もシンプルで、双方の事務負担が最小です。286,000円から<strong>14,300円割引</strong>。</p>
+    </div>
+    <div class="pay-card">
+      <h4>分割払い (2回)</h4>
+      <p class="amount-big">143,000円 × 2回</p>
+      <p>契約時 50% (143,000円) / 納品時 50% (143,000円)。納品 = 既存CRMへの過去注文書の入力作業完了をもって。</p>
+    </div>
+  </div>
+  <div class="info-box">
+    <b>納品の定義:</b> 既存の過去注文書(約1000件想定)のCRMへの入力作業完了をもって、いったんの納品とします。
+    <strong>3ヶ月の経過観察フェーズは、納品時のお支払いを確認後に開始</strong>します。
+  </div>
+
+  <h2>サーバー・ドメインについて</h2>
+  <div class="info-box">
+    <b>新規費用は発生しません。</b>
+    現在ご負担いただいている年間約 <b>50,000円</b> のサーバー・ドメイン費用を、
+    <strong>顧客分析の土台を支えるインフラへ活用経路を切り替えていただく</strong>提案です。
+    現状は表向きのホームページのためだけに使われている費用が、
+    今後は<strong>「集客 + データ蓄積 + 分析 + 改善提案」のすべてを支える基盤投資</strong>に変わります。
+  </div>
+  <p style="font-size:13px; color:#6a6260; margin-bottom:0;">
+    ドメイン名義は現状のまま店舗名義で引き継ぎます。サーバ移行が必要な場合も既存契約期間内に作業し、二重支払いが発生しないよう調整します。
+  </p>
+
+  <h2>4ヶ月目以降 月額プラン (基本プラン)</h2>
+  <div class="plan-card">
+    <div class="plan-head">
+      <h4>基本プラン (HP保守 + CRM運用 + 入力代行)</h4>
+      <div class="plan-price">月額 35,000円 <small>(税込)</small></div>
+    </div>
+    <ul>
+      <li><b>HP保守</b> — 軽微修正・お知らせ更新・障害対応 (平日10-18時 ベストエフォート)</li>
+      <li><b>CRM保守</b> — 動作監視・バックアップ確認・小規模な機能改善</li>
+      <li><b>注文書入力代行</b> — 月10時間以内の入力作業を時間換算で対応 (店主は写真を送るだけでOK)</li>
+      <li><b>バナー・お知らせ更新</b> — 都度依頼に対応 (内容が大きい場合は別途見積)</li>
+      <li><b>10時間超過分</b> — 2,500円/h で対応 (事前にお知らせ)</li>
+    </ul>
+  </div>
+
+  <h2>CRMが不要になった場合のHPのみ保守プラン</h2>
+  <div class="plan-card minimum">
+    <div class="plan-head">
+      <h4>HPのみ保守プラン</h4>
+      <div class="plan-price">年額 30,000円 <small>(税込・サーバー代/ドメイン代込み)</small></div>
+    </div>
+    <ul>
+      <li>ホームページの維持・軽微更新対応</li>
+      <li>サーバー代・ドメイン代を含む (お客様側で別途支払い不要)</li>
+      <li>CRMが不要となった場合は<strong>データをCSVでエクスポート後、サーバから削除</strong></li>
+      <li>大幅なリニューアルや機能追加は別途お見積</li>
+    </ul>
+  </div>
+
+  <h2>スポット対応 (都度依頼)</h2>
+  <table class="price-table">
+    <tr>
+      <th>バナー制作</th>
+      <td>季節キャンペーン・新商品告知・イベント案内など</td>
+      <td class="amount">5,000円〜</td>
+    </tr>
+    <tr>
+      <th>軽微修正</th>
+      <td>テキスト修正・画像差し替え・電話番号変更など</td>
+      <td class="amount">5,000円〜</td>
+    </tr>
+    <tr>
+      <th>お知らせ更新</th>
+      <td>営業時間変更・休業案内・メニュー追加情報など</td>
+      <td class="amount">5,000円〜</td>
+    </tr>
+    <tr class="note-row">
+      <td colspan="3">※ 内容により金額は変動します。事前にお見積もりをご提示します。</td>
+    </tr>
+  </table>
+
+  <h2>大切なお約束</h2>
+  <div class="promise-list">
+    <ul>
+      <li><b>売上歩合・成果報酬は一切いただきません。</b> ホームページ経由のご注文や直接オーダーが増えても、その売上分の追加報酬を請求することはありません (フラットフィー方式)。</li>
+      <li><b>写真は店主から送付いただくのみで完結します。</b> 撮影代行・カメラマン手配は本プランには含まれません (別オプション)。</li>
+      <li><b>本価格は初回フラッグシップ特別価格です。</b> AI開発・小規模運用・知人紹介のため特別に設定した価格で、定価は別途応相談です。</li>
+      <li><b>業務委託契約書・守秘義務条項を別途締結します。</b> お客様情報・注文情報をお預かりする業務であるため、書面で双方の責任範囲を明確化します。</li>
+      <li><b>障害対応は平日10-18時のベストエフォート対応です。</b> 夜間・休日対応や即時復旧保証はオプション (別途応相談)。</li>
+      <li><b>CRM契約終了時はデータをCSVで全件エクスポートしてお渡し</b>後、サーバから完全削除します (個人情報保護のため)。</li>
+    </ul>
+  </div>
+
+  <h2>契約締結の流れ</h2>
+  <div class="flow-list">
+    <ol>
+      <li>
+        <b>お見積もり同意</b>
+        <small>本ページの内容をご確認いただき、内容に同意される旨をご連絡ください。</small>
+      </li>
+      <li>
+        <b>業務委託契約書 (電子) を交付</b>
+        <small>遠隔地対応のため、まずは契約書PDFをメールでお送りします。<a href="contract.html">→ 契約書テンプレートを見る</a></small>
+      </li>
+      <li>
+        <b>着手金のご入金 = 暫定的な契約成立</b>
+        <small>遠隔のため対面でのご署名前に作業着手します。<strong>入金をもって契約条項への同意とみなす</strong>ものとします。</small>
+      </li>
+      <li>
+        <b>制作・納品作業</b>
+        <small>HPリニューアル → CRM構築 → 過去注文書の入力作業 までを順次進めます。</small>
+      </li>
+      <li>
+        <b>納品時 残金のお支払い</b>
+        <small>既存CRMへの過去注文書の入力作業完了をもって納品。残金 (分割の場合) をご入金ください。</small>
+      </li>
+      <li>
+        <b>後日、現地訪問にて書類正本に双方サイン</b>
+        <small>担当者が大阪に赴いた際に、業務委託契約書および守秘義務条項書の正本を持参します。<strong>その場で店主と担当者の双方が署名</strong>し、正式な書面契約として完成させます。</small>
+      </li>
+      <li>
+        <b>3ヶ月の経過観察 → 4ヶ月目から基本プランへ移行</b>
+        <small>納品後3ヶ月の効果計測を経て、月額35,000円の基本プランへ自動移行します (停止希望時はお申し出ください)。</small>
+      </li>
+    </ol>
+  </div>
+
+  <div class="pagenav">
+    <a href="compare.html">← 提案トップ</a>
+    <a href="crm.html">顧客管理システム提案</a>
+    <a href="roadmap.html">導入ロードマップ →</a>
+    <a href="contract.html" class="contract">契約書テンプレートを見る</a>
+  </div>
+</div>
+</body>
+</html>

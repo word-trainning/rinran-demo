@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>導入ロードマップ｜出前中華りんらん リニューアル提案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<script src="assets/js/gate.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Noto Sans JP", sans-serif; background: #f7f3ec; color: #1a1614; line-height: 1.75; }
+  a { color: #8b1a1a; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-family: "Noto Serif JP", serif; font-size: 32px; font-weight: 500; margin-bottom: 6px; }
+  h1 small { display: block; font-size: 12px; letter-spacing: 0.3em; color: #8b1a1a; margin-bottom: 16px; }
+  .lead { color: #4a4340; margin-bottom: 40px; max-width: 760px; }
+  h2 { font-family: "Noto Serif JP", serif; font-size: 22px; font-weight: 500; margin-top: 56px; margin-bottom: 18px; padding-left: 12px; border-left: 4px solid #8b1a1a; }
+  p { margin-bottom: 14px; }
+  .back { display: inline-block; margin-bottom: 32px; font-size: 13px; color: #4a4340; text-decoration: none; }
+  .back:hover { color: #8b1a1a; }
+
+  /* タイムライン全体 */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 16px;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: #d6cfc1;
+  }
+  .phase {
+    position: relative;
+    margin-bottom: 36px;
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    padding: 24px 28px;
+  }
+  .phase::before {
+    content: "";
+    position: absolute;
+    left: -32px; top: 28px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #8b1a1a;
+  }
+  .phase.done::before { background: #8b1a1a; }
+  .phase.now::before { background: #f4c430; border-color: #c9a55b; }
+
+  .phase-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e8dcc4;
+  }
+  .phase-head h3 {
+    font-family: "Noto Serif JP", serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: #1a1614;
+  }
+  .phase-head .status {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+  .status.s-done { background: #4a9a4a; color: #fff; }
+  .status.s-now { background: #f4c430; color: #1a1614; }
+  .status.s-next { background: #fdf6e7; color: #8b1a1a; border: 1px solid #e8dcc4; }
+  .status.s-future { background: #f7f3ec; color: #6a6260; border: 1px solid #d6cfc1; }
+
+  .phase-summary { color: #4a4340; font-size: 14px; margin-bottom: 12px; }
+
+  .phase ul.steps {
+    list-style: none;
+    padding-left: 0;
+  }
+  .phase ul.steps li {
+    padding: 10px 0 10px 0;
+    border-bottom: 1px dashed #e8dcc4;
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: 80px 1fr 120px;
+    gap: 12px;
+    align-items: baseline;
+  }
+  @media (max-width: 600px) {
+    .phase ul.steps li { grid-template-columns: 1fr; }
+  }
+  .phase ul.steps li:last-child { border-bottom: none; }
+  .phase ul.steps .step-id {
+    font-family: "Noto Serif JP", serif;
+    font-size: 13px;
+    color: #8b1a1a;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .phase ul.steps .step-name { color: #1a1614; }
+  .phase ul.steps .step-name b { font-weight: 600; }
+  .phase ul.steps .step-name small { display: block; color: #6a6260; font-size: 12px; margin-top: 2px; }
+  .phase ul.steps .step-dur {
+    font-size: 12px;
+    color: #6a6260;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .info-box {
+    background: #fdf6e7;
+    border-left: 4px solid #c9a55b;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #4a4340;
+  }
+  .info-box b { color: #1a1614; }
+
+  .total-box {
+    background: #1a1614;
+    color: #f7f3ec;
+    padding: 28px 32px;
+    margin-top: 32px;
+  }
+  .total-box h3 {
+    color: #f4c430;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .total-box p {
+    font-size: 14px;
+    line-height: 1.85;
+    opacity: 0.92;
+    margin-bottom: 0;
+  }
+  .total-box b { color: #f4c430; }
+
+  /* ナビ */
+  .pagenav {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid #d6cfc1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .pagenav a {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    color: #1a1614;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .pagenav a:hover { background: #fdf6e7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="compare.html" class="back">← 提案トップへ戻る</a>
+  <h1>導入ロードマップ<small>ROADMAP — Phase 1〜4</small></h1>
+  <p class="lead">
+    ホームページのリニューアルと顧客管理システム導入を、<strong>段階的に・確実に</strong>進めるための工程表です。
+    Phase 1の検証はすでに完了しており、Phase 2以降が本契約後の実作業範囲となります。
+    各Phaseは前段階の完了をもって次へ進むため、途中での方針転換にも柔軟に対応できます。
+  </p>
+
+  <h2>全体像</h2>
+
+  <div class="timeline">
+
+    <div class="phase done">
+      <div class="phase-head">
+        <h3>Phase 1 — 提案・検証 (完了済み)</h3>
+        <span class="status s-done">完了</span>
+      </div>
+      <p class="phase-summary">
+        ホームページリニューアル案と顧客管理システムの<strong>動くプロトタイプを構築済み</strong>。
+        架空データでの動作検証も完了しており、本ページに表示しているのが実際の成果物です。
+      </p>
+      <ul class="steps">
+        <li>
+          <span class="step-id">1-A</span>
+          <span class="step-name"><b>HPデモ A案/B案 構築</b><small>高級洗練 / 大阪元気の2方向性</small></span>
+          <span class="step-dur">完了</span>
+        </li>
+        <li>
+          <span class="step-id">1-B</span>
+          <span class="step-name"><b>CRM Phase 1 機能完成</b><small>取込・分析・要望管理の基本フロー</small></span>
+          <span class="step-dur">完了</span>
+        </li>
+        <li>
+          <span class="step-id">1-C</span>
+          <span class="step-name"><b>架空テストデータでの動作検証</b><small>1000件規模の注文データで動作確認</small></span>
+          <span class="step-dur">完了</span>
+        </li>
+        <li>
+          <span class="step-id">1-D</span>
+          <span class="step-name"><b>操作マニュアル整備</b><small>店主向け平易な日本語マニュアル</small></span>
+          <span class="step-dur">完了</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="phase now">
+      <div class="phase-head">
+        <h3>Phase 2 — 本番昇格 (契約後の実作業範囲)</h3>
+        <span class="status s-now">これからの作業</span>
+      </div>
+      <p class="phase-summary">
+        本契約後、以下のステップで本番運用に乗せていきます。<strong>合計 約5〜7週間</strong>を想定 (各ステップは並行進行も可)。
+      </p>
+      <ul class="steps">
+        <li>
+          <span class="step-id">2-A</span>
+          <span class="step-name"><b>HP本実装</b><small>デモを正式デザインに昇格、写真差し替え (店主提供素材)</small></span>
+          <span class="step-dur">2〜3週間</span>
+        </li>
+        <li>
+          <span class="step-id">2-B</span>
+          <span class="step-name"><b>CRM 本番サーバへのデプロイ</b><small>国内VPS / HTTPS化 / 自動起動 / 日次バックアップ</small></span>
+          <span class="step-dur">1週間</span>
+        </li>
+        <li>
+          <span class="step-id">2-C</span>
+          <span class="step-name"><b>OCR (自動読取) 精度向上</b><small>tesseract導入で実際の注文書読取精度を確保</small></span>
+          <span class="step-dur">3〜5日</span>
+        </li>
+        <li>
+          <span class="step-id">2-D</span>
+          <span class="step-name"><b>過去注文書の取込作業</b><small>店主から送付いただいた注文書をCRMに入力 (約1000件想定)</small></span>
+          <span class="step-dur">1週間〜</span>
+        </li>
+        <li>
+          <span class="step-id">2-E</span>
+          <span class="step-name"><b>店主オンボーディング・操作研修</b><small>実機での操作練習、よくある操作の確認</small></span>
+          <span class="step-dur">2〜3日</span>
+        </li>
+        <li>
+          <span class="step-id">2-F</span>
+          <span class="step-name"><b>本番運用開始 = 納品</b><small>過去注文書の入力作業完了をもって納品とする</small></span>
+          <span class="step-dur">完了時点</span>
+        </li>
+      </ul>
+      <div class="info-box" style="margin-top:14px;">
+        <b>納品 = 2-Fの完了時点。</b>このタイミングで分割払いの残金 (143,000円) をご入金いただきます。
+        その後、入金確認をもって次フェーズ (3ヶ月経過観察) を開始します。
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head">
+        <h3>Phase 2.5 — 効果計測・経過観察 (3ヶ月)</h3>
+        <span class="status s-next">納品後</span>
+      </div>
+      <p class="phase-summary">
+        納品後の3ヶ月間、月次で効果計測レポートを作成しご報告します。
+        <strong>「導入して終わり」ではなく、実運用で見えてきた課題を次に活かす</strong>ためのフェーズです。
+      </p>
+      <ul class="steps">
+        <li>
+          <span class="step-id">1ヶ月目</span>
+          <span class="step-name"><b>初動レポート</b><small>HP問い合わせ件数・新規顧客獲得・運用フィット感の確認</small></span>
+          <span class="step-dur">月次レポート</span>
+        </li>
+        <li>
+          <span class="step-id">2ヶ月目</span>
+          <span class="step-name"><b>傾向分析レポート</b><small>顧客ランク変化・要望タイプの集計・支払方法の偏り分析</small></span>
+          <span class="step-dur">月次レポート</span>
+        </li>
+        <li>
+          <span class="step-id">3ヶ月目</span>
+          <span class="step-name"><b>総括レポート + 次期提案</b><small>3ヶ月の総括 + 4ヶ月目以降の改善ポイント整理</small></span>
+          <span class="step-dur">月次レポート</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head">
+        <h3>Phase 3 — 連携拡張 (任意・段階導入)</h3>
+        <span class="status s-future">将来構想</span>
+      </div>
+      <p class="phase-summary">
+        基本プラン継続中に、必要に応じて以下の機能拡張をご相談いただけます。
+        いずれも<strong>追加実装は別途お見積もり</strong>となりますが、現基盤の上に積み上げる前提で設計しています。
+      </p>
+      <ul class="steps">
+        <li>
+          <span class="step-id">3-A</span>
+          <span class="step-name"><b>ホームページ見積もりフォーム → CRM 自動取込</b><small>サイトからの問い合わせを自動的に顧客マスタに反映</small></span>
+          <span class="step-dur">任意</span>
+        </li>
+        <li>
+          <span class="step-id">3-B</span>
+          <span class="step-name"><b>LINE公式アカウント連携</b><small>LINE経由の問い合わせ・注文を一元管理</small></span>
+          <span class="step-dur">任意</span>
+        </li>
+        <li>
+          <span class="step-id">3-C</span>
+          <span class="step-name"><b>直接決済導入の検討</b><small>Square / AirPay 等の店頭・出張決済の導入支援</small></span>
+          <span class="step-dur">任意</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head">
+        <h3>Phase 4 — 経営支援機能 (将来・任意)</h3>
+        <span class="status s-future">将来構想</span>
+      </div>
+      <p class="phase-summary">
+        運用が安定し、データ蓄積が進んだ段階で検討可能な発展機能群。
+        <strong>本契約には含まれません。</strong>必要性が見えた段階でご相談ください。
+      </p>
+      <ul class="steps">
+        <li>
+          <span class="step-id">4-A</span>
+          <span class="step-name"><b>法人会員制度・定例配達契約管理</b><small>毎週固定の定例配達を予約管理化</small></span>
+          <span class="step-dur">任意</span>
+        </li>
+        <li>
+          <span class="step-id">4-B</span>
+          <span class="step-name"><b>撮影現場向け定額プラン管理</b><small>ロケ弁ヘビーユーザー向けのサブスク形式</small></span>
+          <span class="step-dur">任意</span>
+        </li>
+        <li>
+          <span class="step-id">4-C</span>
+          <span class="step-name"><b>月次経営レポートの自動生成</b><small>PDF/メール送信で店主の手元に届く形式</small></span>
+          <span class="step-dur">任意</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="total-box">
+    <h3>SUMMARY — 全体スケジュール感</h3>
+    <p>
+      <b>Phase 1 (提案・検証)</b> 完了済み<br>
+      <b>Phase 2 (本番昇格)</b> 契約後 <b>5〜7週間</b> で納品<br>
+      <b>Phase 2.5 (効果計測)</b> 納品後 <b>3ヶ月</b><br>
+      <b>4ヶ月目以降</b> 月額35,000円の基本プランへ自動移行<br>
+      <b>Phase 3 / Phase 4</b> 将来必要に応じてご相談 (別途お見積)
+    </p>
+  </div>
+
+  <div class="pagenav">
+    <a href="compare.html">← 提案トップ</a>
+    <a href="pricing.html">← 料金プランへ戻る</a>
+    <a href="crm.html">顧客管理システム提案</a>
+    <a href="contract.html">契約書テンプレート →</a>
+  </div>
+</div>
+</body>
+</html>

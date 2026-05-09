@@ -18,7 +18,11 @@
 | `corporate.html` / `corporate-osaka.html` | 法人仕出しページ |
 | `delivery.html` / `delivery-osaka.html` | 個別配達ページ |
 | `quote.html` / `quote-osaka.html` | お見積もりフォーム |
-| `compare.html` | 案比較ページ |
+| `compare.html` | 案比較ページ + 提案ドキュメント入口 |
+| `crm.html` | 顧客管理システム提案 |
+| `pricing.html` | 料金プラン (初期286,000円 / 月額35,000円 / 一括5%OFF) |
+| `roadmap.html` | 導入ロードマップ (Phase 1〜4) |
+| `contract.html` | 業務委託契約書・守秘義務条項 雛形 |
 | `docs/asset-inventory.html` | 既存資産棚卸しドキュメント |
 | `assets/pdf/menu.pdf` | 出前メニュー（2026年3月版） |
 | `assets/pdf/chirashi.pdf` | 宅配琳蘭 保存版チラシ |
