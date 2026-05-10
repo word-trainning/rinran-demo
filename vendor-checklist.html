@@ -186,6 +186,91 @@
     margin-left: 8px;
   }
   body.dirty .dirty-indicator { display: inline; }
+
+  .post-save {
+    display: none;
+    background: #1a1614;
+    color: #f7f3ec;
+    padding: 24px;
+    margin: 20px 0;
+    border-radius: 6px;
+    border-left: 4px solid #f4c430;
+  }
+  body.just-saved .post-save { display: block; }
+  .post-save h3 {
+    color: #f4c430;
+    font-family: "Noto Serif JP", serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+  .post-save .step {
+    margin: 12px 0;
+    padding-left: 32px;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .post-save .step .num {
+    position: absolute;
+    left: 0; top: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: #f4c430;
+    color: #1a1614;
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cmd-box {
+    background: #0f0c0a;
+    border: 1px solid #4a4340;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    font-family: ui-monospace, "Menlo", "Consolas", monospace;
+    font-size: 13px;
+    color: #f4c430;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.5;
+    word-break: break-all;
+  }
+  .cmd-box code { flex: 1; }
+  .btn-copy {
+    background: #f4c430;
+    color: #1a1614;
+    border: none;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-family: "Noto Sans JP", sans-serif;
+  }
+  .btn-copy:hover { background: #fff; }
+  .btn-copy.copied { background: #4a9a4a; color: #fff; }
+  .post-save .hint {
+    font-size: 12px;
+    color: #d6cfc1;
+    margin-top: 14px;
+    line-height: 1.7;
+  }
+  .post-save .hint a { color: #f4c430; }
+  .post-save .close-x {
+    float: right;
+    background: transparent;
+    border: 1px solid #4a4340;
+    color: #d6cfc1;
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
 </style>
 </head>
 <body>
@@ -222,10 +307,50 @@
   </div>
 
   <div class="controls">
-    <a href="#" class="btn-save" id="btn-save" data-edit-only style="display:none;">📥 進捗を progress.json でダウンロード</a>
+    <a href="#" class="btn-save" id="btn-save" data-edit-only style="display:none;">📥 進捗を保存 (ダウンロード)</a>
     <span class="dirty-indicator">● 未保存の変更あり</span>
     <a href="#" class="btn-reset" id="btn-reset" data-edit-only>チェック状態をリセット</a>
     <a href="internal-only.html" class="btn-reset" style="border-color:#8b1a1a; color:#8b1a1a;">🔒 内部管理ページ (ローカル限定)</a>
+  </div>
+
+  <div class="post-save" id="post-save">
+    <button class="close-x" id="close-post-save">閉じる</button>
+    <h3>✅ progress.json をダウンロードしました</h3>
+    <p style="font-size:13px; color:#d6cfc1; margin-bottom:16px;">
+      あと <strong style="color:#f4c430;">1ステップ</strong> で店主にも進捗が共有されます。下のコマンドをコピーして端末に貼り付けるだけです。
+    </p>
+
+    <div class="step">
+      <span class="num">1</span>
+      <b>ターミナルを開く</b>（Ctrl + Alt + T、または画面下のターミナルアイコン）
+    </div>
+
+    <div class="step">
+      <span class="num">2</span>
+      <b>下のコマンドをコピーして貼り付け、Enter を押す</b>
+      <div class="cmd-box">
+        <code id="one-liner">cd ~/hp-factory-demo/clients/rinran && ./update-progress.sh</code>
+        <button class="btn-copy" id="btn-copy">コピー</button>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="num">3</span>
+      <b>「✅ GitHub に push 完了」と表示されたら終了。</b>店主が <code>vendor-checklist.html</code> を開けば最新状態が見えます。
+    </div>
+
+    <p class="hint">
+      💡 <b>もっと楽にしたい場合</b>: 一度だけ下を実行してエイリアス登録すれば、次回からは <code>rinran-push</code> と打つだけで完了します。
+    </p>
+    <div class="cmd-box">
+      <code id="alias-line">echo "alias rinran-push='cd ~/hp-factory-demo/clients/rinran && ./update-progress.sh'" >> ~/.bashrc && source ~/.bashrc</code>
+      <button class="btn-copy" id="btn-copy-alias">コピー</button>
+    </div>
+
+    <p class="hint">
+      ⚠ 失敗した場合は、ターミナルに出る赤いエラーメッセージを haluu に見せてください。<br>
+      もし手動でやりたい場合: <code>cp ~/Downloads/progress.json progress.json && git add progress.json && git commit -m "進捗更新" && git push</code>
+    </p>
   </div>
 
   <h2><span class="phase-badge phase-yellow"></span>段階 0 — 提案・合意<span class="stage-id">CONTRACTING</span><span class="stage-dur">契約前 〜 締結</span></h2>
@@ -445,6 +570,49 @@
       URL.revokeObjectURL(url);
       setDirty(false);
       document.getElementById('last-updated').textContent = '最終更新: ' + formatUpdated(now) + ' (ローカル / push 後にGitHub反映)';
+
+      // 次のステップ案内を表示してスクロール
+      document.body.classList.add('just-saved');
+      document.getElementById('post-save').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // 「閉じる」ボタン
+    document.getElementById('close-post-save').addEventListener('click', () => {
+      document.body.classList.remove('just-saved');
+    });
+
+    // クリップボードコピー
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = '✓ コピー済み';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        // fallback: 古いブラウザ用
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch(e) {}
+        document.body.removeChild(ta);
+        btn.textContent = '✓ コピー済み';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'コピー';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+    document.getElementById('btn-copy').addEventListener('click', () => {
+      copyToClipboard(document.getElementById('one-liner').textContent, document.getElementById('btn-copy'));
+    });
+    document.getElementById('btn-copy-alias').addEventListener('click', () => {
+      copyToClipboard(document.getElementById('alias-line').textContent, document.getElementById('btn-copy-alias'));
     });
 
     // 未保存のまま離脱しようとしたら警告

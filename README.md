@@ -39,18 +39,24 @@
 
 ## 受注者進捗の更新方法
 
-1. ブラウザで `vendor-checklist.html?edit=1` を開く（編集モード）
-2. チェックボックスをクリックして進捗を更新
-3. 「📥 進捗を progress.json でダウンロード」ボタンを押す
-4. ダウンロードした `progress.json` を取り込んで push:
-   ```bash
-   ./update-progress.sh ~/Downloads/progress.json
-   ```
-   または手動で:
-   ```bash
-   cp ~/Downloads/progress.json progress.json
-   git add progress.json && git commit -m "chore: 進捗更新" && git push origin main
-   ```
-5. push 後数十秒〜1分で GitHub Pages に反映、店主が閲覧モードで最新状態を確認可能
+### かんたん 3 ステップ
 
-店主向け URL（パスワード入力後）: `https://word-trainning.github.io/rinran-demo/vendor-checklist.html`
+1. ブラウザで `vendor-checklist.html?edit=1` を開いてチェックを更新
+2. 「📥 進捗を保存 (ダウンロード)」ボタンを押す
+3. 画面に出てくる **「次のコマンド」をコピー → ターミナルに貼り付けて Enter**
+   - 自動で `progress.json` 更新 → commit → push まで完了
+   - 「✅ 完了！」と出れば成功
+
+### 初回だけセットアップ (任意・楽になる)
+
+`~/.bashrc` に以下を追記すると、次回からは `rinran-push` と打つだけで完了します：
+
+```bash
+echo "alias rinran-push='cd ~/hp-factory-demo/clients/rinran && ./update-progress.sh'" >> ~/.bashrc && source ~/.bashrc
+```
+
+### 店主側の閲覧 URL
+
+`https://word-trainning.github.io/rinran-demo/vendor-checklist.html`（パスワード入力後）
+
+GitHub Pages の反映に push 後 30 秒〜1 分かかります。
