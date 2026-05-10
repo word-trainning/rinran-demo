@@ -1,5 +1,10 @@
 {
-  "updated_at": "2026-05-11T08:30:00+09:00",
+  "updated_at": "2026-05-10T23:19:45.317Z",
   "note": "受注者 (hp-factory) 側の進捗 SoT。vendor-checklist.html が起動時に fetch して反映する。",
-  "checks": {}
+  "checks": {
+    "stage-0:0": true,
+    "stage-0:1": true,
+    "stage-0:2": true,
+    "stage-0:3": true
+  }
 }
