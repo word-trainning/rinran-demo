@@ -139,12 +139,59 @@
     margin-right: 6px;
     margin-bottom: 16px;
   }
+  .mode-banner {
+    padding: 10px 16px;
+    margin-bottom: 22px;
+    font-size: 13px;
+    border-radius: 4px;
+    line-height: 1.6;
+  }
+  .mode-banner.view {
+    background: #e8f0e8;
+    border-left: 4px solid #4a9a4a;
+    color: #2a4a2a;
+  }
+  .mode-banner.edit {
+    background: #fdf6e7;
+    border-left: 4px solid #f4c430;
+    color: #8b6b00;
+  }
+  .last-updated {
+    font-size: 12px;
+    color: #6a6260;
+    margin-bottom: 18px;
+    padding: 8px 12px;
+    background: #fff;
+    border-left: 3px solid #d6cfc1;
+  }
+  body.view-mode ul.checklist li { cursor: default; }
+  body.view-mode ul.checklist li:hover { background: #fff; }
+  body.view-mode .btn-reset[data-edit-only] { display: none; }
+  .btn-save {
+    background: #8b1a1a;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-save:hover { background: #6b1010; }
+  .dirty-indicator {
+    display: none;
+    font-size: 12px;
+    color: #d63635;
+    margin-left: 8px;
+  }
+  body.dirty .dirty-indicator { display: inline; }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  受注者 (hp-factory) 専用ページ ／ 関係者以外閲覧禁止 ／ チェック状態はこの端末のブラウザにのみ保存されます
+<div class="topbar" id="topbar">
+  受注者 (hp-factory) 作業状況 ／ 関係者以外閲覧禁止
 </div>
 
 <div class="wrap">
@@ -152,8 +199,15 @@
   <h1>受注者側 作業チェックリスト<small>VENDOR CHECKLIST — RINRAN PROJECT</small></h1>
   <p class="lead">
     出前中華りんらん リニューアル + 購買傾向分析CRM 案件の、<strong>受注者 (hp-factory) 側の作業を時系列でまとめたチェックリスト</strong>です。
-    各項目をクリックするとチェックが付き、状態はこの端末のブラウザにのみ保存されます (GitHub には保存されません)。
+    進捗は <code>progress.json</code> に保存され、GitHub に push されると関係者に最新状態が共有されます。
   </p>
+
+  <div id="mode-banner" class="mode-banner view">
+    <b>👁 閲覧モード</b> — 進捗確認のみ。チェック操作はできません。
+    （受注者は URL 末尾に <code>?edit=1</code> を付けて編集モードへ）
+  </div>
+
+  <div class="last-updated" id="last-updated">最終更新: 読み込み中…</div>
 
   <div>
     <span class="meta-tag">既存サーバ・ドメイン継続</span>
@@ -168,7 +222,9 @@
   </div>
 
   <div class="controls">
-    <a href="#" class="btn-reset" id="btn-reset">チェック状態をリセット</a>
+    <a href="#" class="btn-save" id="btn-save" data-edit-only style="display:none;">📥 進捗を progress.json でダウンロード</a>
+    <span class="dirty-indicator">● 未保存の変更あり</span>
+    <a href="#" class="btn-reset" id="btn-reset" data-edit-only>チェック状態をリセット</a>
     <a href="internal-only.html" class="btn-reset" style="border-color:#8b1a1a; color:#8b1a1a;">🔒 内部管理ページ (ローカル限定)</a>
   </div>
 
@@ -262,17 +318,39 @@
   </ul>
 
   <div class="note" style="margin-top:48px; background:#1a1614; color:#f7f3ec; border-left-color:#f4c430;">
-    <b style="color:#f4c430;">🔒 内部管理事項</b><br>
+    <b style="color:#f4c430;">🔒 内部管理事項 (受注者のみ)</b><br>
     入金確認・帳簿記帳・契約書控え保管・個人情報削除証跡などの<strong>受注者側の内部管理事項</strong>は、
     別ページ <a href="internal-only.html" style="color:#f4c430; text-decoration:underline;">internal-only.html</a> に分離しています。
-    このファイルは <code>.gitignore</code> で GitHub にはコミットされず、この端末のローカルにのみ存在します。
+    このファイルは <code>.gitignore</code> で GitHub にはコミットされず、受注者の端末のローカルにのみ存在します。
+    店主側からはアクセスできません。
+  </div>
+
+  <div class="note" style="background:#fdf6e7; border-left-color:#8b1a1a; margin-top:24px;">
+    <b>📡 進捗の同期について</b><br>
+    このチェックリストの進捗は <code>progress.json</code> に保存され、GitHub に push されると関係者全員に共有されます。
+    受注者は編集モード (<code>?edit=1</code>) でチェック → ダウンロード → <code>./update-progress.sh</code> で push してください。
+    店主は通常 URL でアクセスし、最新状態を閲覧できます (チェック操作はできません)。
   </div>
 </div>
 
 <script>
 (function() {
-  const STORAGE_KEY = 'rinran-vendor-checklist-v1';
-  const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  // 編集モード判定: ?edit=1 が付いていれば編集モード
+  const isEditMode = new URLSearchParams(location.search).get('edit') === '1';
+  document.body.classList.add(isEditMode ? 'edit-mode' : 'view-mode');
+
+  // モード表示切替
+  const modeBanner = document.getElementById('mode-banner');
+  const topbar = document.getElementById('topbar');
+  if (isEditMode) {
+    modeBanner.className = 'mode-banner edit';
+    modeBanner.innerHTML = '<b>✏ 編集モード</b> — チェック操作可能。終わったら「📥 進捗を progress.json でダウンロード」を押し、リポジトリの progress.json を上書きして <code>./update-progress.sh</code> または <code>git push</code> してください。';
+    topbar.textContent = '受注者 (hp-factory) 編集モード ／ 操作後は progress.json を更新して push';
+    document.getElementById('btn-save').style.display = 'inline-block';
+  }
+
+  let state = { checks: {}, updated_at: null };
+  let dirty = false;
 
   function keyOf(li) {
     const stage = li.parentElement.dataset.stage;
@@ -285,7 +363,7 @@
     let done = 0;
     items.forEach(li => {
       const k = keyOf(li);
-      if (state[k]) {
+      if (state.checks[k]) {
         li.classList.add('done');
         done++;
       } else {
@@ -298,25 +376,85 @@
     document.getElementById('bar').style.width = pct + '%';
   }
 
-  document.querySelectorAll('ul.checklist li').forEach(li => {
-    li.addEventListener('click', () => {
-      const k = keyOf(li);
-      state[k] = !state[k];
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  function setDirty(v) {
+    dirty = v;
+    document.body.classList.toggle('dirty', v);
+  }
+
+  function formatUpdated(iso) {
+    if (!iso) return '未更新';
+    try {
+      const d = new Date(iso);
+      const pad = n => String(n).padStart(2, '0');
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())} (${Intl.DateTimeFormat().resolvedOptions().timeZone})`;
+    } catch(e) { return iso; }
+  }
+
+  // progress.json を fetch (キャッシュ回避のため query 付与)
+  fetch('progress.json?t=' + Date.now())
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(json => {
+      state.checks = json.checks || {};
+      state.updated_at = json.updated_at || null;
+      document.getElementById('last-updated').textContent = '最終更新: ' + formatUpdated(state.updated_at);
+      update();
+    })
+    .catch(err => {
+      document.getElementById('last-updated').textContent = '最終更新: 読み込み失敗 (progress.json が見つかりません)';
       update();
     });
-  });
 
-  document.getElementById('btn-reset').addEventListener('click', (e) => {
-    e.preventDefault();
-    if (confirm('すべてのチェック状態をリセットしますか？')) {
-      localStorage.removeItem(STORAGE_KEY);
-      for (const k in state) delete state[k];
-      update();
-    }
-  });
+  // 編集モードのみクリック可能
+  if (isEditMode) {
+    document.querySelectorAll('ul.checklist li').forEach(li => {
+      li.addEventListener('click', () => {
+        const k = keyOf(li);
+        state.checks[k] = !state.checks[k];
+        if (!state.checks[k]) delete state.checks[k];
+        setDirty(true);
+        update();
+      });
+    });
 
-  update();
+    document.getElementById('btn-reset').addEventListener('click', (e) => {
+      e.preventDefault();
+      if (confirm('すべてのチェック状態をリセットしますか？\n(ダウンロードして push するまで GitHub には反映されません)')) {
+        state.checks = {};
+        setDirty(true);
+        update();
+      }
+    });
+
+    document.getElementById('btn-save').addEventListener('click', (e) => {
+      e.preventDefault();
+      const now = new Date().toISOString();
+      state.updated_at = now;
+      const output = {
+        updated_at: now,
+        note: '受注者 (hp-factory) 側の進捗 SoT。vendor-checklist.html が起動時に fetch して反映する。',
+        checks: state.checks
+      };
+      const blob = new Blob([JSON.stringify(output, null, 2) + '\n'], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'progress.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      setDirty(false);
+      document.getElementById('last-updated').textContent = '最終更新: ' + formatUpdated(now) + ' (ローカル / push 後にGitHub反映)';
+    });
+
+    // 未保存のまま離脱しようとしたら警告
+    window.addEventListener('beforeunload', (e) => {
+      if (dirty) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    });
+  }
 })();
 </script>
 
