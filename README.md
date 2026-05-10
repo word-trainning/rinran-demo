@@ -18,7 +18,8 @@
 | `corporate.html` / `corporate-osaka.html` | 法人仕出しページ |
 | `delivery.html` / `delivery-osaka.html` | 個別配達ページ |
 | `quote.html` / `quote-osaka.html` | お見積もりフォーム |
-| `compare.html` | 案比較ページ + 提案ドキュメント入口 |
+| `compare.html` | （旧）案比較ページ → 現在は `pricing.html` への自動リダイレクト stub |
+| `pricing.html` | 料金プラン（提案の主軸ページ）。下部に導入ロードマップ・契約書・CRM・受注者TODO・既存資産棚卸しの分岐リンク |
 | `crm.html` | 顧客管理システム提案 |
 | `pricing.html` | 料金プラン (初期286,000円 / 一括5%OFF / 月額プランは別途相談) |
 | `roadmap.html` | 導入ロードマップ (Phase 1〜4) |
