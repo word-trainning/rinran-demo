@@ -155,10 +155,14 @@
 
 <div class="summary-grid">
   <div><div class="num">38</div>即活用できる資産</div>
-  <div><div class="num">6</div>撮り直し推奨</div>
+  <div><div class="num">6</div>既存写真を活用 (再加工)</div>
   <div><div class="num">11</div>店主確認必須</div>
   <div><div class="num">7</div>削除推奨</div>
 </div>
+
+<p style="background:#fdf6e7; border-left:4px solid #8b1a1a; padding:14px 18px; margin:14px 0 0; font-size:14px;">
+  <b>写真方針:</b> 新規撮影は行いません。既存写真をそのまま活用し、必要に応じてトリミング・色補正・WebP 化などの最適化のみ実施します。
+</p>
 
 <h3>元サイトの状態認識</h3>
 <ul>
@@ -237,7 +241,7 @@
   <tr><td>ステーキ.png</td><td>サーロイン御膳</td><td>75点・PNG透過なしならJPG変換推奨</td><td>仕出し高級弁当ページ</td></tr>
   <tr><td>焼肉.png</td><td>焼肉御膳</td><td>75点・同上</td><td>同上</td></tr>
 </table>
-<p><strong>撮り直し推奨</strong>: ヒーロー1枚 + 仕出し高級弁当4品 = <strong>計5枚プロ撮影（1日3-5万円想定）</strong>。残りはスマホ自前で十分（撮影ガイド別紙）。</p>
+<p><strong>写真方針</strong>: 新規撮影は行わず、上記既存写真をそのまま活用します。トリミング・色補正・WebP 変換などの最適化のみで構成します。店主が追加で送付いただける素材があれば随時組み入れます (スマホで撮ったものでも可)。</p>
 
 <h3>2-2. 高級弁当系写真（要店主確認）</h3>
 <table>
@@ -369,9 +373,9 @@
   <li><strong>各ポータルの手数料率</strong>（yuizen 把握分以外、6社分）</li>
   <li><strong>Twitter @mune_nori の運用状況</strong>（投稿頻度・店主が直接運用か）</li>
   <li><strong>コロナ期感染予防対策の継続状況</strong>（店内営業時の表示要否）</li>
-  <li><strong>写真撮り直しの予算と時期</strong>（プロ撮影 5枚で3-5万円、本契約後別見積り）</li>
+  <li><strong>追加で活用できる店主側の既存写真の有無</strong>（スマホで撮った素材含む。新規撮影は行わない方針）</li>
   <li><strong>見積もりフォームの送信先メールアドレス</strong>（infoでいいか別アドレスか）</li>
-  <li><strong>CMSテーマ・WordPressプラグインなど、現サイトの保守元</strong>（移行時のドメイン管理者確認）</li>
+  <li><strong>CMSテーマ・WordPressプラグインなど、現サイトの保守元</strong>（既存サーバ・ドメインを継続利用するため、現契約の管理者・更新時期の確認）</li>
 </ol>
 
 <hr>
@@ -382,23 +386,25 @@
 <ul>
   <li>4ページ構成（トップ・法人仕出し・見積もりフォーム・個別配達）</li>
   <li>A案/B案デモ → 店主合意 → 実装</li>
-  <li>写真撮り直し（プロ5枚 + 店主自前）</li>
-  <li>ドメイン rinran.net 維持、サーバ移行</li>
+  <li><strong>写真は既存サイトの素材を活用</strong>（新規撮影なし、最適化のみ）</li>
+  <li><strong>ドメイン rinran.net・既存サーバとも現契約を引き継ぎ、新規契約・サーバ移行は行わない</strong></li>
 </ul>
 
-<h3>Phase 2: 見積もりフォーム × kintone CRM連携</h3>
+<h3>Phase 2: 見積もりフォーム × Google スプレッドシート連携（低コスト構成）</h3>
 <ul>
-  <li>見積もりフォーム送信 → kintone自動登録</li>
-  <li>顧客マスタ・案件管理・配達履歴の一元管理</li>
-  <li>LINE/メール/電話の問い合わせも統合</li>
+  <li>見積もりフォーム送信 → <strong>Google スプレッドシート自動行追加</strong> + GAS から店舗 Gmail へ通知メール</li>
+  <li><strong>有料 SaaS (kintone 等) は使わず、Google 無料枠で月額ゼロ円運用</strong></li>
+  <li>店主は普段使いの Gmail / スマホでスプレッドシートを開くだけで確認可能</li>
+  <li>LINE/メール/電話の問い合わせも必要に応じてスプレッドシートに手動転記して集約</li>
 </ul>
 
-<h3>Phase 3: 既存個別会社の請求書情報分析システム</h3>
+<h3>Phase 3: 既存個別会社の請求書情報分析システム（業界傾向分析専用）</h3>
 <ul>
-  <li>過去の請求書データ（既存資産）を分析対象に</li>
-  <li>顧客別の発注頻度・客単価・季節傾向の可視化</li>
-  <li>上位顧客への優先対応 / 離脱顧客への再アプローチ材料化</li>
-  <li>kintoneと連携、別プロジェクトとして構築予定</li>
+  <li>過去の請求書データから <strong>個人名・会社名・連絡先・住所を除いた業種・用途・金額・頻度のみ</strong> を抽出</li>
+  <li><strong>業種カテゴリ別</strong>の発注頻度・客単価・季節傾向の可視化</li>
+  <li>用途は<strong>「各業界の購買傾向把握」に限定</strong>し、特定顧客への直接営業 (DM・架電) には一切使用しない</li>
+  <li>仕出し弁当系ポータル (yuizen 等) の利用規約抵触リスクを構造的に排除するための設計判断</li>
+  <li>スプレッドシート連携で完結、別プロジェクト <code>rinran-crm</code> として構築予定</li>
 </ul>
 
 <h3>Phase 4 以降（仮）</h3>
@@ -446,7 +452,7 @@
   <li><strong>対面: AirPay または Square 端末を1台</strong> ─ 配達ドライバー携行 / 店頭兼用、IC・タッチ・QR・主要クレカ全対応、月額0円・端末数千円・初期負担最小</li>
   <li><strong>オンライン見積もり後: Square Invoices もしくは Stripe Invoices</strong> ─ 見積もりフォーム → 店主確定 → 決済リンク付メール送信 → 法人担当者がカードで即決済 → 着金確認後に確定発注。振込待ち時間ゼロ、月末請求書処理も発生しない</li>
 </ul>
-<p><strong>Step 2（Phase 2 kintone CRM連携と同期）</strong></p>
+<p><strong>Step 2（Phase 2 Google スプレッドシート連携と同期）</strong></p>
 <ul>
   <li>顧客マスタに「決済手段」フィールドを追加</li>
   <li>リピート法人にはカード情報トークン化保存（Stripe Customer / Square Card on File）</li>

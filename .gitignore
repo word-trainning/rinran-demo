@@ -5,3 +5,6 @@
 node_modules/
 .vscode/
 .idea/
+
+# 受注者側の内部管理ページ (経理・入金・契約書控え等を含むためコミット禁止)
+internal-only.html

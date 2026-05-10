@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>受注者側 作業チェックリスト｜出前中華りんらん 案件</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<script src="assets/js/gate.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Noto Sans JP", sans-serif; background: #f7f3ec; color: #1a1614; line-height: 1.75; }
+  a { color: #8b1a1a; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-family: "Noto Serif JP", serif; font-size: 32px; font-weight: 500; margin-bottom: 6px; }
+  h1 small { display: block; font-size: 12px; letter-spacing: 0.3em; color: #8b1a1a; margin-bottom: 16px; }
+  .lead { color: #4a4340; margin-bottom: 28px; max-width: 760px; }
+  h2 { font-family: "Noto Serif JP", serif; font-size: 22px; font-weight: 500; margin-top: 44px; margin-bottom: 12px; padding-left: 12px; border-left: 4px solid #8b1a1a; display: flex; align-items: baseline; gap: 12px; }
+  h2 .stage-id { font-size: 12px; letter-spacing: 0.18em; color: #8b1a1a; font-family: "Noto Sans JP", sans-serif; }
+  h2 .stage-dur { margin-left: auto; font-size: 12px; color: #6a6260; font-weight: 400; letter-spacing: 0.05em; }
+  .phase-badge {
+    display: inline-block;
+    width: 14px; height: 14px; border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+  .phase-yellow { background: #f4c430; }
+  .phase-green  { background: #4a9a4a; }
+  .phase-blue   { background: #4a7a9a; }
+  ul.checklist { list-style: none; padding-left: 0; margin-bottom: 16px; }
+  ul.checklist li {
+    padding: 10px 12px 10px 38px;
+    border-bottom: 1px dashed #e8dcc4;
+    font-size: 15px;
+    position: relative;
+    background: #fff;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  ul.checklist li:hover { background: #fdf6e7; }
+  ul.checklist li::before {
+    content: "";
+    position: absolute;
+    left: 12px; top: 14px;
+    width: 18px; height: 18px;
+    border: 1.5px solid #8b1a1a;
+    border-radius: 3px;
+    background: #fff;
+  }
+  ul.checklist li.done {
+    color: #8b8580;
+    text-decoration: line-through;
+    background: #f0ece2;
+  }
+  ul.checklist li.done::before {
+    background: #8b1a1a;
+  }
+  ul.checklist li.done::after {
+    content: "";
+    position: absolute;
+    left: 17px; top: 16px;
+    width: 6px; height: 11px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  ul.checklist li b { font-weight: 600; }
+  ul.checklist li .sub { display: block; font-size: 12px; color: #6a6260; margin-top: 2px; }
+  .note {
+    background: #fdf6e7;
+    border-left: 4px solid #8b1a1a;
+    padding: 14px 18px;
+    margin: 12px 0 20px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .progress-bar {
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    padding: 14px 18px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+  }
+  .progress-bar .bar-outer {
+    flex: 1;
+    height: 10px;
+    background: #ede5d6;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .progress-bar .bar-inner {
+    height: 100%;
+    background: #8b1a1a;
+    width: 0;
+    transition: width 0.3s;
+  }
+  .progress-bar .count { font-weight: 600; color: #1a1614; min-width: 110px; text-align: right; }
+  .controls { margin-bottom: 24px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-reset {
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    color: #4a4340;
+    padding: 8px 16px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-reset:hover { background: #fdf6e7; }
+  .back {
+    display: inline-block;
+    margin-bottom: 32px;
+    font-size: 13px;
+    color: #4a4340;
+    text-decoration: none;
+  }
+  .back:hover { color: #8b1a1a; }
+  .topbar {
+    background: #1a1614;
+    color: #f7f3ec;
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .topbar a { color: #f4c430; text-decoration: underline; }
+  .meta-tag {
+    display: inline-block;
+    background: #fdf6e7;
+    border: 1px solid #e8dcc4;
+    padding: 4px 10px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #8b1a1a;
+    margin-right: 6px;
+    margin-bottom: 16px;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  受注者 (hp-factory) 専用ページ ／ 関係者以外閲覧禁止 ／ チェック状態はこの端末のブラウザにのみ保存されます
+</div>
+
+<div class="wrap">
+  <a href="compare.html" class="back">← 比較ページへ戻る</a>
+  <h1>受注者側 作業チェックリスト<small>VENDOR CHECKLIST — RINRAN PROJECT</small></h1>
+  <p class="lead">
+    出前中華りんらん リニューアル + 購買傾向分析CRM 案件の、<strong>受注者 (hp-factory) 側の作業を時系列でまとめたチェックリスト</strong>です。
+    各項目をクリックするとチェックが付き、状態はこの端末のブラウザにのみ保存されます (GitHub には保存されません)。
+  </p>
+
+  <div>
+    <span class="meta-tag">既存サーバ・ドメイン継続</span>
+    <span class="meta-tag">新規撮影なし</span>
+    <span class="meta-tag">Google Sheets 無料運用</span>
+    <span class="meta-tag">個人情報非保持 CRM</span>
+  </div>
+
+  <div class="progress-bar">
+    <div class="bar-outer"><div class="bar-inner" id="bar"></div></div>
+    <div class="count" id="count">0 / 0</div>
+  </div>
+
+  <div class="controls">
+    <a href="#" class="btn-reset" id="btn-reset">チェック状態をリセット</a>
+    <a href="internal-only.html" class="btn-reset" style="border-color:#8b1a1a; color:#8b1a1a;">🔒 内部管理ページ (ローカル限定)</a>
+  </div>
+
+  <h2><span class="phase-badge phase-yellow"></span>段階 0 — 提案・合意<span class="stage-id">CONTRACTING</span><span class="stage-dur">契約前 〜 締結</span></h2>
+  <ul class="checklist" data-stage="stage-0">
+    <li>デモ URL (gate.html) パスワードを店主へ通知</li>
+    <li>A 案 / B 案の決定を回収</li>
+    <li><code>compare</code> / <code>crm</code> / <code>pricing</code> / <code>roadmap</code> / <code>contract</code> 一式の事前送付</li>
+    <li>質疑応答ラウンド (オンライン or 対面 1 回)</li>
+    <li>修正点をデモに反映</li>
+    <li>契約書最終版を双方校正 (条項追記要望反映)</li>
+    <li>業務委託契約締結 (製本 or PDF 電子サイン)</li>
+    <li><b>初期費用 286,000 円の請求書発行</b><span class="sub">一括 5% OFF か分割かを確定したうえで</span></li>
+    <li>入金確認</li>
+  </ul>
+
+  <h2><span class="phase-badge phase-green"></span>段階 1 — キックオフ<span class="stage-id">KICKOFF</span><span class="stage-dur">Day 0 〜 Day 3</span></h2>
+  <ul class="checklist" data-stage="stage-1">
+    <li>キックオフ MTG 1 時間 (連絡チャネル / 担当窓口 / スケジュール合意)</li>
+    <li><b>既存サイト一式のバックアップ取得</b><span class="sub">HTML / CSS / 画像 / DB ダンプ ／ FTP 経由</span></li>
+    <li><b>既存サーバ・ドメインのアクセス情報受領</b><span class="sub">FTP/SSH/CMS 管理画面 ID/PW、ドメイン管理者 ID/PW、現サーバ事業者・契約プラン</span></li>
+    <li><b>既存サーバの技術仕様確認</b><span class="sub">OS / PHP・Python バージョン / PostgreSQL 対応可否 / ディスク空き容量 / SSL 設定状況</span></li>
+    <li>既存 Google アカウント情報受領 (フォーム / スプレッドシート設置先)</li>
+    <li>共有ドライブ作成 (Google Drive)</li>
+    <li>進捗管理スプレッドシート起票</li>
+  </ul>
+
+  <h2><span class="phase-badge phase-green"></span>段階 2-A — HP 本実装<span class="stage-id">PHASE 2-A</span><span class="stage-dur">Week 1 〜 Week 3</span></h2>
+  <div class="note">
+    写真は <strong>既存サイトの素材をそのまま活用</strong>。新規撮影・カメラマン手配は行わない。トリミング / 色補正 / WebP 変換などの最適化のみ実施する。
+  </div>
+  <ul class="checklist" data-stage="stage-2a">
+    <li>テキストコンテンツ最終版を店主と FIX</li>
+    <li><b>既存サイトから写真資産を抽出・一覧化</b><span class="sub">即活用 38 点 + 弁当主要 6 点</span></li>
+    <li>店主側に追加で活用できる写真素材がないか確認・受領 (スマホ素材含む可)</li>
+    <li>写真選定・トリミング・色補正・WebP / progressive JPEG 変換</li>
+    <li>法人仕出し・個別配達・店舗情報ページの本実装</li>
+    <li><b>見積もりフォームの Google フォーム化</b></li>
+    <li><b>GAS スクリプト作成</b><span class="sub">スプレッドシート転記 + 店舗 Gmail 通知メール</span></li>
+    <li>スマホ実機テスト (iPhone / Android 最低 1 台ずつ)</li>
+    <li>PageSpeed Insights / Lighthouse スコア確認</li>
+  </ul>
+
+  <h2><span class="phase-badge phase-green"></span>段階 2-B — 既存サーバへの公開切替<span class="stage-id">PHASE 2-B</span><span class="stage-dur">Week 3 末</span></h2>
+  <div class="note">
+    <strong>新規サーバ契約・DNS 切替は行わない</strong>。既存サーバ・既存ドメイン (rinran.net) の上で旧 HTML を新 HTML に差し替える形で公開する。
+  </div>
+  <ul class="checklist" data-stage="stage-2b">
+    <li>旧サイトの完全バックアップ再取得 (公開直前版)</li>
+    <li>新サイト一式を既存サーバにアップロード (ステージング領域 or 別ディレクトリで一旦設置)</li>
+    <li>既存 SSL 設定の動作確認、不足あれば Let's Encrypt (certbot) で補強</li>
+    <li>店主合意の時間帯で公開切替 (旧 HTML → 新 HTML)</li>
+    <li><b>切替後動作確認</b><span class="sub">フォーム送信 → スプレッドシート反映 → 店舗 Gmail 通知 までを実通信で検証</span></li>
+    <li>旧 URL のリダイレクト設定 (パス変更がある場合)</li>
+  </ul>
+
+  <h2><span class="phase-badge phase-green"></span>段階 2-C/D — CRM 本番昇格<span class="stage-id">PHASE 2-C/D</span><span class="stage-dur">Week 4 〜 Week 5</span></h2>
+  <div class="note">
+    <strong>第一案: 既存サーバへ同居設置</strong> (店主の追加契約不要)。<br>
+    第二案: 既存サーバが Python / PostgreSQL に対応していない場合のみ、店主と相談のうえ国内 VPS を別途追加。追加費用が発生する場合は事前合意。
+  </div>
+  <ul class="checklist" data-stage="stage-2cd">
+    <li><b>CRM 設置先の決定</b><span class="sub">既存サーバ同居 or 追加 VPS (店主合意)</span></li>
+    <li>サーバ初期設定 (systemd / nginx / certbot ／ 既存構成に合わせる)</li>
+    <li>CRM デプロイ・自動起動確認</li>
+    <li>tesseract 導入 + OCR 精度調整</li>
+    <li><b>個人情報自動マスク処理の動作検証</b><span class="sub">業種・用途・金額のみ抽出されること、氏名/電話/住所/担当者名/会社名がDBに到達しないことを実データで確認</span></li>
+    <li>注文書原本の即時破棄処理の動作確認</li>
+    <li>注文書 50〜100 枚での取込テスト</li>
+    <li><b>自動取込がうまくいかない場合の直接入力フローを店主に共有</b><span class="sub">OCR 失敗時・読取り精度が出ない注文書・電話注文は、画面上で「直接入力」モードに切替えて手で業種・用途・金額のみ登録できる手順をマニュアル化。研修でも実機で操作練習</span></li>
+    <li>直接入力モードでも個人情報フィールドが入力欄に表示されないことを確認</li>
+    <li>日次バックアップ cron 設定</li>
+    <li>アクセス制限 (IP / Basic 認証) 設定</li>
+  </ul>
+
+  <h2><span class="phase-badge phase-green"></span>段階 2-E/F — 店主オンボーディング<span class="stage-id">PHASE 2-E/F</span><span class="stage-dur">Week 6 〜 Week 7</span></h2>
+  <ul class="checklist" data-stage="stage-2ef">
+    <li>操作マニュアル最終版 (<code>docs/OPERATIONS.md</code>)</li>
+    <li>画面操作研修 2〜3 日 (店主自活できる状態まで)</li>
+    <li><b>自動取込 → 直接入力モード切替の実機練習</b><span class="sub">OCRが失敗したケースを店主が自分で直接入力で復旧できるところまで研修</span></li>
+    <li>本番運用開始</li>
+    <li>初週モニタリング</li>
+    <li>30 日サポート期間スタート</li>
+  </ul>
+
+  <h2><span class="phase-badge phase-blue"></span>段階 3 — 効果計測<span class="stage-id">PHASE 3</span><span class="stage-dur">公開後 1 〜 3 ヶ月</span></h2>
+  <ul class="checklist" data-stage="stage-3">
+    <li>月額プラン / スポット対応の方針合意 (4 ヶ月目以降の継続契約)</li>
+    <li>月次レビュー MTG (任意)</li>
+    <li>効果指標トラッキング: 問い合わせ件数 / 直接受注比率 / ポータル経由比率の推移</li>
+  </ul>
+
+  <div class="note" style="margin-top:48px; background:#1a1614; color:#f7f3ec; border-left-color:#f4c430;">
+    <b style="color:#f4c430;">🔒 内部管理事項</b><br>
+    入金確認・帳簿記帳・契約書控え保管・個人情報削除証跡などの<strong>受注者側の内部管理事項</strong>は、
+    別ページ <a href="internal-only.html" style="color:#f4c430; text-decoration:underline;">internal-only.html</a> に分離しています。
+    このファイルは <code>.gitignore</code> で GitHub にはコミットされず、この端末のローカルにのみ存在します。
+  </div>
+</div>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'rinran-vendor-checklist-v1';
+  const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+  function keyOf(li) {
+    const stage = li.parentElement.dataset.stage;
+    const idx = Array.prototype.indexOf.call(li.parentElement.children, li);
+    return stage + ':' + idx;
+  }
+
+  function update() {
+    const items = document.querySelectorAll('ul.checklist li');
+    let done = 0;
+    items.forEach(li => {
+      const k = keyOf(li);
+      if (state[k]) {
+        li.classList.add('done');
+        done++;
+      } else {
+        li.classList.remove('done');
+      }
+    });
+    const total = items.length;
+    document.getElementById('count').textContent = done + ' / ' + total + ' 完了';
+    const pct = total > 0 ? Math.round(done / total * 100) : 0;
+    document.getElementById('bar').style.width = pct + '%';
+  }
+
+  document.querySelectorAll('ul.checklist li').forEach(li => {
+    li.addEventListener('click', () => {
+      const k = keyOf(li);
+      state[k] = !state[k];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      update();
+    });
+  });
+
+  document.getElementById('btn-reset').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (confirm('すべてのチェック状態をリセットしますか？')) {
+      localStorage.removeItem(STORAGE_KEY);
+      for (const k in state) delete state[k];
+      update();
+    }
+  });
+
+  update();
+})();
+</script>
+
+</body>
+</html>
