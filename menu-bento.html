@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="出前中華りんらん 仕出し弁当ラインナップ。御膳・幕の内・大満足シリーズ・大皿中華オードブル・円卓中華まで、シリーズ別に一覧。食材タグで絞り込みできます。">
+<title>仕出し弁当ラインナップ｜出前中華りんらん</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/gate.js"></script>
+<style>
+  /* ページ専用スタイル：食材タグフィルタ */
+  .bento-hero {
+    background: var(--c-ivory, #f8f4ee);
+    padding: clamp(56px, 7vw, 96px) 0 clamp(32px, 4vw, 48px);
+    border-bottom: 1px solid var(--c-line);
+  }
+  .bento-hero__inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 32px);
+    text-align: center;
+  }
+  .bento-hero h1 {
+    font-family: var(--f-display);
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 12px 0 18px;
+    letter-spacing: 0.04em;
+  }
+  .bento-hero p {
+    color: var(--c-ink-soft);
+    line-height: 1.95;
+    margin: 0 auto;
+    max-width: 640px;
+    font-size: 14px;
+  }
+
+  .filter-bar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--c-line);
+    padding: 14px clamp(16px, 4vw, 32px);
+  }
+  .filter-bar__inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .filter-bar__label {
+    font-size: 13px;
+    color: var(--c-ink-soft);
+    letter-spacing: 0.06em;
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+  .filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+  }
+  .filter-tag {
+    background: #fff;
+    color: var(--c-ink);
+    border: 1px solid var(--c-line);
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-family: inherit;
+    transition: all 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .filter-tag:hover { border-color: var(--c-gold, #c9a961); }
+  .filter-tag.on {
+    background: var(--c-red, #b8362e);
+    color: #fff;
+    border-color: var(--c-red, #b8362e);
+  }
+  .filter-reset {
+    background: transparent;
+    color: var(--c-ink-soft);
+    border: 0;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+    padding: 6px 8px;
+    margin-left: auto;
+  }
+  .filter-count {
+    font-size: 12px;
+    color: var(--c-ink-soft);
+    margin-left: 6px;
+  }
+  .filter-count strong { color: var(--c-red, #b8362e); }
+
+  .bento-page {
+    padding: clamp(40px, 5vw, 64px) 0;
+    background: var(--c-bg, #fff);
+  }
+  .bento-page .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 32px);
+  }
+
+  .series-section {
+    margin-bottom: clamp(48px, 6vw, 72px);
+  }
+  .series-section.hidden { display: none; }
+
+  .series-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 0 14px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--c-line);
+  }
+  @media (min-width: 720px) {
+    .series-head { flex-direction: row; align-items: baseline; gap: 24px; }
+  }
+  .series-head h2 {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--c-ink);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    position: relative;
+    padding-left: 14px;
+  }
+  .series-head h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    background: var(--c-red, #b8362e);
+  }
+  .series-head p {
+    font-size: 12.5px;
+    color: var(--c-ink-soft);
+    margin: 0;
+    line-height: 1.7;
+  }
+  .series-count {
+    font-size: 12px;
+    color: var(--c-ink-soft);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (min-width: 640px) {
+    .bento-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  }
+  @media (min-width: 960px) {
+    .bento-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  .bento-card {
+    margin: 0;
+    background: #fff;
+    border: 1px solid var(--c-line);
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .bento-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(26,22,20,0.08);
+  }
+  .bento-card.hidden { display: none; }
+  .bento-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+  .bento-card__body {
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .bento-card__name {
+    font-size: 13.5px;
+    color: var(--c-ink);
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .bento-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: auto;
+  }
+  .bento-card__tag {
+    font-size: 10.5px;
+    color: var(--c-ink-soft);
+    background: var(--c-ivory, #f8f4ee);
+    padding: 2px 7px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+
+  .empty-msg {
+    text-align: center;
+    padding: 64px 16px;
+    color: var(--c-ink-soft);
+    font-size: 14px;
+    display: none;
+  }
+  .empty-msg.on { display: block; }
+
+  .bento-cta {
+    margin-top: clamp(40px, 5vw, 56px);
+    padding: clamp(32px, 4vw, 44px) clamp(20px, 4vw, 32px);
+    background: var(--c-ivory, #f8f4ee);
+    border-left: 3px solid var(--c-gold, #c9a961);
+    text-align: center;
+  }
+  .bento-cta h3 {
+    font-family: var(--f-display);
+    font-size: 20px;
+    margin: 0 0 10px;
+  }
+  .bento-cta p {
+    font-size: 13.5px;
+    color: var(--c-ink-soft);
+    margin: 0 0 22px;
+    line-height: 1.85;
+  }
+  .bento-cta__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== COMPARE BANNER ===== -->
+<div class="compare-banner">
+  仕出し弁当ラインナップ ／ <a href="index.html">トップに戻る</a> ／ <a href="delivery.html">麺・チャーハン等の個別配達メニュー</a> ／ <a href="pricing.html">料金プラン</a>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="site-logo">琳蘭<small>RINRAN since 2001</small></a>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="corporate.html">法人仕出し</a></li>
+        <li><a href="quote.html">お見積もり</a></li>
+        <li><a href="menu-bento.html" aria-current="page">仕出し弁当</a></li>
+        <li><a href="delivery.html">個別配達</a></li>
+      </ul>
+    </nav>
+    <a href="https://lin.ee/Fi2l5eG" class="line-cta" target="_blank" rel="noopener">LINEで相談</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="bento-hero">
+  <div class="bento-hero__inner">
+    <p class="eyebrow">Bento Lineup</p>
+    <h1>仕出し弁当ラインナップ</h1>
+    <p>会議・研修・撮影現場・パーティーなど、シーンに応じてお選びいただける、出前中華りんらんの仕出し弁当です。<br>シリーズごとに整理しました。食材タグでの絞り込みもできます。</p>
+  </div>
+</section>
+
+<!-- ===== FILTER ===== -->
+<div class="filter-bar">
+  <div class="filter-bar__inner">
+    <span class="filter-bar__label">食材で絞り込み</span>
+    <div class="filter-tags" id="filter-tags">
+      <button class="filter-tag" data-tag="焼肉">焼肉</button>
+      <button class="filter-tag" data-tag="油淋鶏">油淋鶏</button>
+      <button class="filter-tag" data-tag="エビチリ">エビチリ</button>
+      <button class="filter-tag" data-tag="エビマヨ">エビマヨ</button>
+      <button class="filter-tag" data-tag="酢豚">酢豚</button>
+      <button class="filter-tag" data-tag="黒酢酢豚">黒酢酢豚</button>
+      <button class="filter-tag" data-tag="八宝菜">八宝菜</button>
+      <button class="filter-tag" data-tag="すき焼き">すき焼き</button>
+      <button class="filter-tag" data-tag="ステーキ">ステーキ</button>
+      <button class="filter-tag" data-tag="お魚">お魚</button>
+      <button class="filter-tag" data-tag="点心">点心</button>
+      <button class="filter-tag" data-tag="炒飯">炒飯</button>
+    </div>
+    <button class="filter-reset" id="filter-reset">すべて表示</button>
+    <span class="filter-count"><strong id="visible-count">17</strong>/17 件</span>
+  </div>
+</div>
+
+<!-- ===== BENTO SERIES ===== -->
+<section class="bento-page">
+  <div class="container">
+
+    <!-- 特選御膳 -->
+    <div class="series-section" data-series="特選御膳">
+      <div class="series-head">
+        <h2>特選御膳</h2>
+        <p>主菜を贅沢に組み合わせた、上質な御膳タイプ。会食・接待・特別な会議の場に。</p>
+        <span class="series-count"></span>
+      </div>
+      <div class="bento-grid">
+        <figure class="bento-card" data-tags="すき焼き,お魚">
+          <img loading="lazy" src="img/main_lg【特選】牛すき焼き&季節のお魚御膳.jpg" alt="特選 牛すき焼き&季節のお魚御膳">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">特選 牛すき焼き&季節のお魚御膳</h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">すき焼き</span><span class="bento-card__tag">お魚</span></div>
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <!-- 御膳シリーズ -->
+    <div class="series-section" data-series="御膳">
+      <div class="series-head">
+        <h2>御膳シリーズ</h2>
+        <p>定番の主菜を御膳仕立てで。炒飯付きや大海老添えなど、満足感のある一段重ね。</p>
+        <span class="series-count"></span>
+      </div>
+      <div class="bento-grid">
+        <figure class="bento-card" data-tags="黒酢酢豚,エビチリ,炒飯">
+          <img loading="lazy" src="img/65620a75ae116.黒酢酢豚×エビチリ御膳(炒飯)jpg.jpg" alt="黒酢酢豚×エビチリ御膳（炒飯付き）">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">黒酢酢豚×エビチリ御膳<br><small>(炒飯付き)</small></h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">黒酢酢豚</span><span class="bento-card__tag">エビチリ</span><span class="bento-card__tag">炒飯</span></div>
+          </div>
+        </figure>
+        <figure class="bento-card" data-tags="酢豚,エビマヨ">
+          <img loading="lazy" src="img/65620b0071451酢豚×エビマヨ御膳.jpg" alt="酢豚×エビマヨ御膳">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">酢豚×エビマヨ御膳</h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">酢豚</span><span class="bento-card__tag">エビマヨ</span></div>
+          </div>
+        </figure>
+        <figure class="bento-card" data-tags="酢豚,エビチリ">
+          <img loading="lazy" src="img/main_lg酢豚御膳＋大海老チリ付き26.jpg" alt="酢豚御膳＋大海老チリ">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">酢豚御膳＋大海老チリ</h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">酢豚</span><span class="bento-card__tag">エビチリ</span></div>
+          </div>
+        </figure>
+        <figure class="bento-card" data-tags="八宝菜,酢豚">
+          <img loading="lazy" src="img/main_lg【贅沢4種メイン】八宝菜×酢豚弁当.jpg" alt="贅沢4種メイン 八宝菜×酢豚弁当">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">贅沢4種メイン<br>八宝菜×酢豚弁当</h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">八宝菜</span><span class="bento-card__tag">酢豚</span></div>
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <!-- 幕の内 -->
+    <div class="series-section" data-series="幕の内">
+      <div class="series-head">
+        <h2>幕の内シリーズ</h2>
+        <p>主菜+小鉢で品数豊富。中華の枠を超えてサーロイン・焼肉も。どんなシーンにも合わせやすい一段。</p>
+        <span class="series-count"></span>
+      </div>
+      <div class="bento-grid">
+        <figure class="bento-card" data-tags="ステーキ">
+          <img loading="lazy" src="img/main_lgサーロインステーキ幕の内弁当.jpg" alt="サーロインステーキ幕の内弁当">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">サーロインステーキ幕の内弁当</h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">ステーキ</span></div>
+          </div>
+        </figure>
+        <figure class="bento-card" data-tags="焼肉">
+          <img loading="lazy" src="img/main_lg焼肉幕の内弁当.jpg" alt="焼肉幕の内弁当">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">焼肉幕の内弁当</h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">焼肉</span></div>
+          </div>
+        </figure>
+        <figure class="bento-card" data-tags="">
+          <img loading="lazy" src="img/main中華幕ノ内_lg.jpg" alt="中華幕の内弁当">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">中華幕の内弁当</h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">中華定番</span></div>
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <!-- メイン2種弁当（人気組合せ） -->
+    <div class="series-section" data-series="メイン2種">
+      <div class="series-head">
+        <h2>メイン2種弁当（人気組合せ）</h2>
+        <p>看板メニューを2品ペアにした王道シリーズ。「キング×キング」の組み合わせは固定ファン多数。</p>
+        <span class="series-count"></span>
+      </div>
+      <div class="bento-grid">
+        <figure class="bento-card" data-tags="エビチリ,油淋鶏">
+          <img loading="lazy" src="img/main_lg海老チリ×油淋鶏弁当.jpg" alt="海老チリ×油淋鶏弁当">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">海老チリ×油淋鶏弁当</h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">エビチリ</span><span class="bento-card__tag">油淋鶏</span></div>
+          </div>
+        </figure>
+        <figure class="bento-card" data-tags="エビチリ,酢豚">
+          <img loading="lazy" src="img/main_lg大海老チリ×酢豚弁当.jpg" alt="大海老チリ×酢豚弁当">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">大海老チリ×酢豚弁当</h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">エビチリ</span><span class="bento-card__tag">酢豚</span></div>
+          </div>
+        </figure>
+        <figure class="bento-card" data-tags="油淋鶏,エビチリ">
+          <img loading="lazy" src="img/main_lg油淋鶏×大海老チリ弁当14.jpg" alt="油淋鶏×大海老チリ弁当">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">油淋鶏×大海老チリ弁当</h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">油淋鶏</span><span class="bento-card__tag">エビチリ</span></div>
+          </div>
+        </figure>
+        <figure class="bento-card" data-tags="油淋鶏,エビマヨ">
+          <img loading="lazy" src="img/main_lg油淋鶏×大海老マヨ弁当12.jpg" alt="油淋鶏×大海老マヨ弁当">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">油淋鶏×大海老マヨ弁当</h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">油淋鶏</span><span class="bento-card__tag">エビマヨ</span></div>
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <!-- 大満足シリーズ -->
+    <div class="series-section" data-series="大満足">
+      <div class="series-head">
+        <h2>大満足シリーズ（甘味付き）</h2>
+        <p>食後の甘味までセット。研修・会議の昼食で「これ一つで完結」させたいときに。</p>
+        <span class="series-count"></span>
+      </div>
+      <div class="bento-grid">
+        <figure class="bento-card" data-tags="油淋鶏">
+          <img loading="lazy" src="img/main_lg【大満足】油淋鶏弁当～甘味付き～.jpg" alt="大満足 油淋鶏弁当（甘味付き）">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">大満足 油淋鶏弁当<br><small>～甘味付き～</small></h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">油淋鶏</span></div>
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <!-- 5種メイン円卓中華 -->
+    <div class="series-section" data-series="円卓中華">
+      <div class="series-head">
+        <h2>5種メイン円卓中華</h2>
+        <p>5種のメイン料理を円卓スタイルで取り分け。少人数の会食や撮影現場の差し入れに。</p>
+        <span class="series-count"></span>
+      </div>
+      <div class="bento-grid">
+        <figure class="bento-card" data-tags="点心">
+          <img loading="lazy" src="img/main_lg【5種メイン料理＋点心】円卓中華 ～喜悦～.jpg" alt="円卓中華 喜悦（5種メイン＋点心）">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">円卓中華 喜悦<br><small>5種メイン料理＋点心</small></h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">点心</span></div>
+          </div>
+        </figure>
+        <figure class="bento-card" data-tags="">
+          <img loading="lazy" src="img/【5種メイン料理】円卓中華 ～喜～.jpg" alt="円卓中華 喜（5種メイン料理）">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">円卓中華 喜<br><small>5種メイン料理</small></h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">中華定番</span></div>
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <!-- 大皿中華オードブル -->
+    <div class="series-section" data-series="オードブル">
+      <div class="series-head">
+        <h2>大皿中華オードブル（4〜5人前）</h2>
+        <p>パーティー・宴席・打ち上げに。4〜5人前を1皿にまとめた、シェアスタイルの中華。</p>
+        <span class="series-count"></span>
+      </div>
+      <div class="bento-grid">
+        <figure class="bento-card" data-tags="エビマヨ">
+          <img loading="lazy" src="img/main_lg【大皿中華オードブル】吉祥 ～エビマヨ～(4～5人前).jpg" alt="大皿中華オードブル 吉祥（エビマヨ）">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">大皿中華オードブル 吉祥<br><small>～エビマヨ～(4〜5人前)</small></h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">エビマヨ</span></div>
+          </div>
+        </figure>
+        <figure class="bento-card" data-tags="エビチリ">
+          <img loading="lazy" src="img/main_lg【大皿中華オードブル】富貴 ～エビチリ～(4～5人前).jpg" alt="大皿中華オードブル 富貴（エビチリ）">
+          <div class="bento-card__body">
+            <h3 class="bento-card__name">大皿中華オードブル 富貴<br><small>～エビチリ～(4〜5人前)</small></h3>
+            <div class="bento-card__tags"><span class="bento-card__tag">エビチリ</span></div>
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <p class="empty-msg" id="empty-msg">該当する弁当が見つかりませんでした。<br>別の食材タグをお試しください。</p>
+
+    <div class="bento-cta">
+      <h3>このほかの組み合わせ、特注も承ります</h3>
+      <p>掲載しているのは定番ラインナップの一部です。<br>「100食を会議室別に分ける」「アレルギー配慮」「ロケ現場で温かいまま」など、ご要望は個別にご相談ください。</p>
+      <div class="bento-cta__buttons">
+        <a href="quote.html" class="btn btn--primary">お見積もりを依頼</a>
+        <a href="tel:06-6371-0077" class="btn btn--gold">電話 06-6371-0077</a>
+        <a href="delivery.html" class="btn btn--ghost">麺・チャーハン等を見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <p class="site-footer__logo">琳蘭</p>
+        <p class="site-footer__addr">出前中華りんらん<br>〒531-0074 大阪市北区本庄東2-13-11<br>TEL 06-6371-0077 ／ FAX 06-6371-0078<br>営業時間 11:00〜21:00（年中無休）</p>
+      </div>
+      <div>
+        <h4>MENU</h4>
+        <ul>
+          <li><a href="corporate.html">法人仕出し</a></li>
+          <li><a href="quote.html">お見積もり</a></li>
+          <li><a href="menu-bento.html">仕出し弁当</a></li>
+          <li><a href="delivery.html">個別配達</a></li>
+          <li><a href="index.html#access">店舗情報</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>CONTACT</h4>
+        <ul>
+          <li><a href="tel:06-6371-0077">TEL 06-6371-0077</a></li>
+          <li><a href="mailto:info@rinran.net">info@rinran.net</a></li>
+          <li><a href="https://lin.ee/Fi2l5eG" target="_blank" rel="noopener">LINE公式</a></li>
+          <li><a href="https://www.instagram.com/chinese_restaurant_rinran/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <p>© 2001–2026 出前中華りんらん</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const activeTags = new Set();
+  const tagButtons = document.querySelectorAll(".filter-tag");
+  const cards = document.querySelectorAll(".bento-card");
+  const sections = document.querySelectorAll(".series-section");
+  const visibleCount = document.getElementById("visible-count");
+  const emptyMsg = document.getElementById("empty-msg");
+  const totalCount = cards.length;
+
+  function applyFilter() {
+    let visible = 0;
+    cards.forEach(card => {
+      const cardTags = (card.dataset.tags || "").split(",").map(s => s.trim()).filter(Boolean);
+      let show;
+      if (activeTags.size === 0) {
+        show = true;
+      } else {
+        // OR フィルタ: 選択したタグのいずれかを含むカードを表示
+        show = [...activeTags].some(t => cardTags.includes(t));
+      }
+      card.classList.toggle("hidden", !show);
+      if (show) visible++;
+    });
+
+    // セクション単位で「全カード非表示なら見出しも隠す」
+    sections.forEach(sec => {
+      const remain = sec.querySelectorAll(".bento-card:not(.hidden)").length;
+      sec.classList.toggle("hidden", remain === 0);
+      const counter = sec.querySelector(".series-count");
+      if (counter) counter.textContent = activeTags.size ? `${remain} 件` : "";
+    });
+
+    visibleCount.textContent = visible;
+    emptyMsg.classList.toggle("on", visible === 0);
+  }
+
+  tagButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const t = btn.dataset.tag;
+      if (activeTags.has(t)) {
+        activeTags.delete(t);
+        btn.classList.remove("on");
+      } else {
+        activeTags.add(t);
+        btn.classList.add("on");
+      }
+      applyFilter();
+    });
+  });
+
+  document.getElementById("filter-reset").addEventListener("click", () => {
+    activeTags.clear();
+    tagButtons.forEach(b => b.classList.remove("on"));
+    applyFilter();
+  });
+
+  // 初期表示
+  visibleCount.textContent = totalCount;
+})();
+</script>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>
