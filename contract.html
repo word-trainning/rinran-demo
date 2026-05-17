@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>業務委託契約書・守秘義務条項 (テンプレート)｜出前中華りんらん リニューアル提案</title>
+<title>業務委託契約書・守秘義務条項｜出前中華りんらん リニューアル</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
 <script src="assets/js/gate.js"></script>
 <style>
@@ -20,7 +20,7 @@
   .back { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #4a4340; text-decoration: none; }
   .back:hover { color: #8b1a1a; }
 
-  .draft-banner {
+  .info-banner {
     background: #fdf6e7;
     border: 1px solid #c9a55b;
     padding: 18px 22px;
@@ -28,7 +28,46 @@
     font-size: 13px;
     color: #4a4340;
   }
-  .draft-banner b { color: #8b1a1a; }
+  .info-banner b { color: #8b1a1a; }
+
+  .action-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .action-bar a.btn-primary,
+  .action-bar a.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 22px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .action-bar a.btn-primary {
+    background: #8b1a1a;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(139, 26, 26, 0.25);
+  }
+  .action-bar a.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(139, 26, 26, 0.35);
+  }
+  .action-bar a.btn-secondary {
+    background: #fff;
+    color: #1a1614;
+    border: 1px solid #8b1a1a;
+  }
+  .action-bar a.btn-secondary:hover {
+    background: #fdf6e7;
+  }
+  .action-bar .ico {
+    font-size: 18px;
+  }
 
   /* 契約書本体 */
   .contract-doc {
@@ -66,6 +105,19 @@
     margin-bottom: 6px;
     letter-spacing: 0.05em;
   }
+  .contract-doc .article-title .tag {
+    display: inline-block;
+    font-size: 10px;
+    background: #8b1a1a;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-right: 8px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    vertical-align: middle;
+  }
+  .contract-doc .article-title .tag.kept { background: #6a6260; }
   .contract-doc .article-body {
     padding-left: 16px;
     color: #1a1614;
@@ -82,6 +134,13 @@
     list-style: disc;
     padding-left: 24px;
     margin: 4px 0;
+  }
+  .contract-doc .article-body ol ol {
+    list-style: lower-alpha;
+    margin: 4px 0;
+  }
+  .contract-doc .article-body strong {
+    background: linear-gradient(transparent 60%, #fdf6e7 60%);
   }
 
   .signature-block {
@@ -126,6 +185,11 @@
     font-size: 11px;
     margin-bottom: 4px;
     letter-spacing: 0.05em;
+  }
+  .sig-party .field .filled {
+    padding: 4px 0;
+    font-size: 14px;
+    color: #1a1614;
   }
   .sig-party .field .line {
     border-bottom: 1px solid #1a1614;
@@ -178,217 +242,400 @@
   .pagenav a:hover { background: #fdf6e7; }
 
   @media print {
-    .back, .pagenav, .draft-banner, .flow-box { display: none; }
+    .back, .pagenav, .info-banner, .flow-box { display: none; }
     body { background: #fff; }
     .contract-doc { border: none; padding: 0; box-shadow: none; }
+    .contract-doc .article-title .tag { display: none; }
+    .contract-doc .article-body strong { background: none; }
   }
 </style>
 </head>
 <body>
 <div class="wrap">
   <a href="pricing.html" class="back">← 料金プランへ戻る</a>
-  <h1>業務委託契約書・守秘義務条項<small>CONTRACT TEMPLATE — 雛形</small></h1>
+  <h1>業務委託契約書・守秘義務条項<small>CONTRACT — RINRAN PROJECT</small></h1>
   <p class="lead">
-    本ページは、業務委託契約書および守秘義務条項の<strong>雛形</strong>です。
-    実際の契約締結時には、本雛形をベースとした正式な書面を別途交付し、
-    契約条件 (金額・期間・特記事項) を確定したうえで双方が署名いたします。
+    出前中華りんらん リニューアル + 購買傾向分析CRM 案件における、業務委託契約書および守秘義務条項の本文です。
+    本 HTML 版は閲覧用であり、<strong>正本は PDF 版</strong>(<code>contract-revised.pdf</code>)とします。
+    PDF 版と本 HTML 版で文言に相違がある場合は、PDF 版の文言を優先します。
   </p>
 
-  <div class="draft-banner">
-    <b>本ページの位置づけ:</b>
-    本ページは契約条項を事前にご確認いただくための雛形です。<br>
-    <b>実際の契約条件・金額・期間は別途締結する正式書面により確定します。</b>
-    雛形の内容についてご質問・ご要望がある場合は、契約書面の作成前にお申し出ください。
+  <div class="action-bar">
+    <a href="assets/pdf/contract.pdf" class="btn-primary" download="rinran-contract.pdf">
+      <span class="ico">📄</span> 契約書PDFをダウンロード
+    </a>
+    <a href="payment.html" class="btn-secondary">
+      <span class="ico">💴</span> 振込金額・期日・口座情報を見る
+    </a>
+  </div>
+
+  <div class="info-banner">
+    <b>本契約の成立方式:</b>
+    甲乙が遠隔地に所在することから、<strong>甲による着手金(または一括払い)の入金をもって本契約は成立</strong>します(契約成立期日: <strong>2026年5月25日</strong>)。
+    後日、乙が大阪に滞在する <strong>2026年6月15日〜19日</strong>の期間内に対面し、原本2通に双方署名・各1通保管します。対面署名は確認的なものであり、契約はすでに成立しています。
   </div>
 
   <h2>契約締結の流れ</h2>
   <div class="flow-box">
     <h3>SIGNING PROCESS — 遠隔開始 / 後日対面で正本締結</h3>
     <ol>
-      <li><b>Step 1 — 雛形の事前確認:</b> 本ページの条項をご確認いただきます。ご質問・修正のご要望はこの段階でお申し出ください。</li>
-      <li><b>Step 2 — 正式書面の電子交付:</b> 契約条件 (金額・期間・特記事項) を反映した正式な業務委託契約書および守秘義務条項書をPDFでメール送付します。</li>
-      <li><b>Step 3 — 着手金のご入金 = 暫定的な契約成立:</b> 担当者が遠隔地にいるため、対面でのご署名前にお振込みをもって暫定的な同意とみなし、業務に着手します。</li>
-      <li><b>Step 4 — 制作・納品作業の進行:</b> 業務委託契約書記載の業務内容に従って、HPリニューアルおよびCRM構築・データ入力作業を進めます。</li>
-      <li><b>Step 5 — 後日、現地訪問にて書類正本に双方サイン:</b> 担当者が大阪に赴いた際、業務委託契約書および守秘義務条項書の正本2通を持参し、店主と担当者の双方が署名・押印して正式な書面契約として完成させます。各1通ずつ保管。</li>
+      <li><b>Step 1 — 本文の事前確認:</b> 本ページおよび PDF 版で全条項をご確認いただきます。ご質問・修正のご要望はこの段階でお申し出ください。</li>
+      <li><b>Step 2 — 正式書面の電子交付:</b> 確定条件を反映した業務委託契約書および守秘義務条項書を PDF でメール送付します。</li>
+      <li><b>Step 3 — 入金 = 契約成立 (2026年5月25日 まで):</b> 甲が一括払い(271,700円(税込)、5%割引適用)または分割払い着手金(85,800円(税込))を乙の指定口座に振り込んだ時点で、本契約は両当事者間に有効に成立します。</li>
+      <li><b>Step 4 — 制作・納品作業の進行:</b> 本契約第1条記載の業務内容に従って、HPリニューアル および CRM構築・データ入力作業を進めます。</li>
+      <li><b>Step 5 — 後日、対面にて原本署名 (2026年6月15日〜19日 のいずれか):</b> 乙が大阪に滞在する期間中、業務委託契約書および守秘義務条項書の原本2通を持参し、双方が署名・押印のうえ各1通を保管します。これは既に成立している契約を確認的に書面化するものです。</li>
     </ol>
   </div>
 
-  <h2>業務委託契約書 (雛形)</h2>
+  <h2>業務委託契約書</h2>
   <div class="contract-doc">
     <h3>業務委託契約書</h3>
     <div class="preamble">
-      委託者 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿ (以下「甲」という) と
-      受託者 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿ (以下「乙」という) は、
-      甲が乙に対し、ホームページのリニューアルおよび顧客管理システムの構築・運用業務を委託することに関し、以下のとおり業務委託契約 (以下「本契約」という) を締結する。
+      委託者 <strong>原田 強</strong>(以下「甲」という。大阪府大阪市北区本庄東所在、出前中華 りんらん 事業主)と、
+      受託者 hp-factory(屋号) 代表 <strong>福田 春美</strong>(以下「乙」という。北海道小樽市所在)は、
+      ホームページのリニューアル業務および顧客管理システム(CRM=Customer Relationship Management、顧客の購買履歴等を蓄積し分析するための仕組み)の構築・運用業務(以下「本業務」という)について、以下のとおり業務委託契約(以下「本契約」という)を締結する。
     </div>
 
     <div class="article">
-      <div class="article-title">第1条 (委託業務)</div>
+      <div class="article-title"><span class="tag">改訂</span>第1条 (委託業務)</div>
       <div class="article-body">
-        甲は乙に対し、以下の業務 (以下「本件業務」という) を委託し、乙はこれを受託する。
+        甲は、乙に対し、以下に定める本業務を委託し、乙はこれを受託する。
         <ol>
-          <li>ホームページのリニューアル (デザイン・構築・公開作業)</li>
-          <li>顧客管理システム (CRM) の構築および本番環境へのデプロイ</li>
-          <li>過去注文書のCRMへのデータ入力作業</li>
-          <li>運営改善のための戦略提案書の作成および提出</li>
-          <li>納品後3ヶ月間の効果計測および月次レポート作成</li>
-          <li>その他、別途定める保守・運用業務</li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="article">
-      <div class="article-title">第2条 (契約期間)</div>
-      <div class="article-body">
-        <ol>
-          <li>本契約の有効期間は、契約締結日から本件業務の納品 (第5条所定) およびその後の効果計測3ヶ月の終了日までとする。</li>
-          <li>4ヶ月目以降の保守運用については、効果計測期間中に甲乙協議のうえ内容・金額を定め、別途月額契約として締結するものとする。締結後は、いずれか一方が30日前までに書面または電磁的方法で通知することにより終了できるものとする。</li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="article">
-      <div class="article-title">第3条 (委託料)</div>
-      <div class="article-body">
-        <ol>
-          <li>甲は乙に対し、本件業務の対価として、別紙「料金プラン」記載の金額 (税込) を支払うものとする。</li>
-          <li>支払方法は以下のいずれかから甲が選択する。
+          <li><strong>ホームページのリニューアル</strong>
             <ul>
-              <li>一括払い (5%割引適用) — 契約締結時に全額をお支払い</li>
-              <li>分割払い — 契約締結時に50%、納品時に50%をお支払い</li>
+              <li>既存サイトのバックアップ取得(乙がアクセス可能な範囲、かつ既存サーバが提供する標準的なバックアップ手段で取得可能なデータに限る)</li>
+              <li>テキスト最終版の甲との確定</li>
+              <li>既存写真資産の抽出・最適化(トリミング・色補正・WebP変換等。新規撮影は本契約の範囲外)</li>
+              <li>「法人仕出し」「個別配達」「店舗情報」の各ページ実装</li>
+              <li>見積もりフォームの Google フォーム化、および GAS(Google Apps Script)による通知メール実装</li>
+              <li>既存サーバ (rinran.net) 上での公開切替</li>
             </ul>
           </li>
-          <li>4ヶ月目以降の月額プラン (HP・CRMの保守、注文書入力代行等) の内容および金額は、納品後3ヶ月の経過観察期間中に甲乙協議のうえ別途定めるものとし、別途覚書または追加合意書を取り交わす。</li>
-          <li>サーバー利用料・ドメイン利用料については、甲が直接事業者に支払うものとし、本契約の委託料には含まれない。</li>
+          <li><strong>顧客管理システム(CRM)の構築・運用</strong>(乙名義の国内 VPS=Virtual Private Server、仮想専用サーバ 上で運用)
+            <ul>
+              <li>国内 VPS の契約および OS・ミドルウェア(Linux / Python / uvicorn / nginx / Let's Encrypt)の構築</li>
+              <li>CRM 用専用サブドメイン(例 <code>crm.rinran.net</code>)の DNS 設定支援</li>
+              <li>CRM アプリケーション(FastAPI + SQLite + ECharts)のデプロイ</li>
+              <li>OCR(Optical Character Recognition)エンジン(tesseract または同等品)の導入と精度調整</li>
+              <li>合理的な範囲での個人情報自動マスク処理の実装と動作検証</li>
+              <li>注文書原本データの所定期間内破棄処理</li>
+              <li>直接入力フォーム(OCR 失敗時・電話注文時のバックアップ手段)の実装</li>
+              <li>店舗専用ログインアカウントの開設(bcrypt 認証)</li>
+              <li>分析画面の実装(月次 / 支払 / RFM / コホート / サンキー / 24区マップ / 要望タイプ別)</li>
+              <li>日次バックアップ(cron)設定と別ロケーション(乙ローカルまたは別クラウドストレージ)への複製</li>
+              <li>アクセス制限・SSL/TLS 設定</li>
+            </ul>
+          </li>
+          <li><strong>過去注文書の CRM データ入力</strong>(甲が乙に提供した過去注文書の全件(約1,000枚を予定)の入力完了をもって納品判定とする)</li>
+          <li><strong>操作マニュアル(<code>OPERATIONS.md</code>)交付と画面操作研修</strong>(計 2〜3 日。具体的な研修日程・時間は、乙が大阪に滞在する 2026年6月15日 から 19日 までの期間内において、甲乙協議のうえ調整する)
+            <ul>
+              <li>注文書アップロード → 確認 → 承認のフロー</li>
+              <li>直接入力フォームの使い方</li>
+              <li>分析画面の見方</li>
+              <li>異常時の連絡手順(甲はトラブル対応せず、乙に連絡するのみで足りる)</li>
+            </ul>
+          </li>
+          <li><strong>納品後 30 日間の初期サポート</strong>(平日 10:00〜18:00 ベストエフォート。第10条準用)</li>
+          <li><strong>納品後 3 ヶ月間の効果計測フェーズ</strong>
+            <ul>
+              <li>月次レポート(A4 1〜2枚程度の指標サマリ:問合せ件数・直接受注比率・ポータル経由比率)</li>
+              <li>任意 MTG: 月 1 時間以内</li>
+            </ul>
+          </li>
+          <li><strong>4 ヶ月目以降の月額保守・スポット対応</strong>は、甲乙協議のうえ別途締結する。月額プランには、以下を含むことを想定する:
+            <ul>
+              <li><strong>(HP 側)</strong> 季節メニュー差替え・お知らせ更新・写真差替え・文言修正等の軽微な改修(月 <strong>5 件</strong>まで)</li>
+              <li><strong>(CRM 側)</strong> VPS 費用・バックアップ運用・OS / ミドルウェアアップデート対応・軽微な機能修正</li>
+              <li><strong>(共通)</strong> 月次レポート・任意 MTG・障害対応(平日 10:00〜18:00 ベストエフォート)</li>
+              <li>上記範囲を超える大規模改修・新機能追加・写真撮影等はスポット契約とし、別途見積りのうえ実施する。</li>
+            </ul>
+          </li>
         </ol>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第4条 (支払方法)</div>
+      <div class="article-title"><span class="tag kept">維持</span>第2条 (契約期間)</div>
+      <div class="article-body">
+        本契約の有効期間は、本契約締結日から本業務の完了日までとする。ただし、第6条・第7条・第8条・第12条・第18条のうち守秘義務に関する部分は、本契約終了後も引き続き効力を有する。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title"><span class="tag">改訂</span>第3条 (委託料)</div>
       <div class="article-body">
         <ol>
-          <li>甲は乙が指定する金融機関口座への振込みにより支払うものとする。振込手数料は甲の負担とする。</li>
-          <li>遠隔地のため、本契約書正本への双方署名前であっても、<strong>着手金の入金をもって本契約条項への同意がなされたものとみなし</strong>、乙は業務に着手することができる。</li>
+          <li>甲は、乙に対し、本業務の対価として金 <strong>286,000円(税込)</strong>を支払う(以下「初期委託料」という)。</li>
+          <li><strong>甲が初期委託料の全額を 2026年5月25日 までに一括で支払う場合、乙は初期委託料の 5% を割引き、支払額を 271,700円(税込)とする。</strong></li>
+          <li><strong>大阪現地への乙の出張(契約締結関連および納品時の現地研修・対面署名のための出張を含む)に関する交通費・宿泊費等の出張費用は、初期委託料に含むものとし、別途請求はしない。</strong></li>
+          <li><strong>4 ヶ月目以降の月額委託料(月額プラン)の金額は、納品完了後に運用業務の範囲を確認・確定したうえで、甲乙協議により別途定める。契約締結時点での想定金額レンジは、月額 15,000円 〜 25,000円(税込)とし、HP 側の改修頻度(月 5 件想定)・CRM 側の運用負荷・追加要望の頻度等の運用実績を踏まえて確定する。</strong></li>
+          <li>本業務に関し、<strong>HP 用の既存サーバ・既存ドメイン(rinran.net)・既存 Google アカウント</strong>等、甲の名義で契約されているサービスの利用料は、すべて甲が直接負担する。</li>
+          <li>本業務に関し、<strong>CRM 運用のための国内 VPS の利用料</strong>は、乙が契約名義人として直接支払い、その費用は初期委託料または月額プラン(契約後)に含むものとし、別途請求はしない。<strong>乙は、想定月額 3,000円(税込)を上限として、VPS プロバイダおよびプランを乙の責任で選定する。</strong>ただし、VPS 事業者の値上げ・サービス停止等により年額費用が大幅に変動した場合、または運用上必要なストレージ容量・帯域等の要件変動により上限を超過する見込みとなった場合は、甲乙協議のうえ月額プランに反映するものとする。</li>
+          <li><strong>乙は、適格請求書発行事業者(インボイス発行事業者)としての登録を受けていない。したがって、本契約に基づく委託料の支払いについて、甲が課税事業者である場合、消費税相当額の仕入税額控除につき経過措置による制限がある可能性があることを、甲は了承するものとする。</strong></li>
         </ol>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第5条 (納品)</div>
+      <div class="article-title"><span class="tag">改訂</span>第4条 (支払方法・契約の成立)</div>
       <div class="article-body">
         <ol>
-          <li>本件業務の納品は、<strong>既存の過去注文書のCRMへの入力作業の完了</strong>をもって行われるものとする。</li>
-          <li>乙は納品時、甲に対し本件業務の完了を書面または電磁的方法で報告するものとする。</li>
-          <li>納品後3ヶ月間の効果計測フェーズは、納品時の支払いを乙が確認した後に開始するものとする。</li>
+          <li><strong>甲乙は遠隔地に所在することから、本契約の成立は、甲による初期委託料の一部または全部の入金(以下「契約成立金」という)をもって行うものとする。契約成立金の入金期日は、2026年5月25日(以下「契約成立期日」という)とする。</strong></li>
+          <li><strong>甲は、以下のいずれかの方法を選択して支払う。</strong>
+            <ul>
+              <li><strong>(ア) 一括払い:</strong> 第3条第2項に基づき初期委託料の 5% を割引いた金額(271,700円(税込))を、2026年5月25日(契約成立期日)までに一括で乙の指定する金融機関口座に振込により支払う。</li>
+              <li><strong>(イ) 分割払い:</strong> 初期委託料の 30%(着手金、85,800円(税込))を 2026年5月25日(契約成立期日)までに乙の指定する金融機関口座に振込により支払い、残金 70%(200,200円(税込))を 第5条に定める納品完了月の月末(2026年6月30日 を想定)までに同様の方法で支払う。</li>
+            </ul>
+          </li>
+          <li><strong>甲による前項に基づく契約成立金の入金をもって、本契約は両当事者間に有効に成立したものとみなす。</strong>(後日対面時の原本署名は確認的なものであり、本契約の成立要件ではない。後記「締結」項参照)</li>
+          <li>第5条に定める納品完了が予定より遅延した場合、前項(イ)分割払いの残金支払期日は、納品完了確認月の翌月末まで延期されるものとし、当該延期について甲乙間に異議は生じないものとする。</li>
+          <li>振込手数料は甲の負担とする。</li>
+          <li><strong>振込先口座情報は、本契約と一体をなす別葉「<a href="payment.html">お振込金額・期日・口座情報</a>」(関係者限定の閲覧ページ)にて甲乙間で別途授受する。当該別葉に記載の口座を正式な振込先とする。</strong></li>
         </ol>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第6条 (報酬請求の制限)</div>
-      <div class="article-body">
-        乙は、本ホームページおよびCRMの導入に起因して甲の売上が増加した場合であっても、当該売上に対する歩合・成果報酬その他いかなる名目においても追加の報酬を請求しないものとする。本契約はフラットフィー方式を採用する。
-      </div>
-    </div>
-
-    <div class="article">
-      <div class="article-title">第7条 (知的財産権)</div>
+      <div class="article-title"><span class="tag kept">維持</span>第5条 (納品)</div>
       <div class="article-body">
         <ol>
-          <li>本件業務の遂行により生じる成果物 (HTML・CSS・JavaScript・画像・データベース構造・運用マニュアル等) の著作権は、本件業務の対価の完済をもって甲に譲渡されるものとする。ただし、汎用的に利用可能なツール・ライブラリ・ノウハウについては乙が引き続き保有する。</li>
-          <li>乙は、甲の事前の書面による承諾を得たうえで、本件業務の事実およびその概要を制作実績として公表することができる (店舗名・ロゴ等の利用可否は別途協議)。</li>
+          <li>乙は、本業務のうち以下のすべてを完了した時点で、甲に納品完了通知をメールで送信し、甲の検収をもって納品完了とする。
+            <ul>
+              <li>ホームページのリニューアル版が rinran.net 上で公開されていること</li>
+              <li>CRM が甲乙協議のうえ確定したサブドメイン(例 <code>crm.rinran.net</code>)上で稼働し、店舗アカウントでログインできること</li>
+              <li><strong>甲が乙に提供した過去注文書の全件(約1,000枚を予定)の CRM 入力が完了していること</strong></li>
+              <li><code>OPERATIONS.md</code> の交付と画面操作研修が完了していること</li>
+            </ul>
+          </li>
+          <li>甲は、納品完了通知の受領後 <strong>14 日以内</strong>に検収を行い、不具合がない場合は検収完了の旨をメールで返信する。同期間内に甲から書面または電子メールによる異議の申出がない場合は、検収が完了したものとみなす。</li>
         </ol>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第8条 (個人情報・データの取扱い)</div>
+      <div class="article-title"><span class="tag kept">維持</span>第6条 (報酬請求の制限)</div>
+      <div class="article-body">
+        本業務の対価は第3条に定める委託料(フラットフィー=定額制)のみとし、乙は、本業務に起因して甲に発生した売上・予約件数・問合せ件数等の成果に応じた追加報酬を請求しない。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title"><span class="tag kept">維持</span>第7条 (知的財産権)</div>
       <div class="article-body">
         <ol>
-          <li>乙は、本件業務の遂行にあたり甲から提供を受けた顧客情報・注文情報その他の個人情報を、個人情報保護法および本契約の趣旨に従って厳重に管理するものとする。</li>
-          <li>乙は、当該個人情報を本件業務の目的以外には利用せず、第三者への開示・提供を行わない。</li>
-          <li>乙は、当該個人情報を国内サーバ内でのみ取り扱い、外部送信機能を実装しないものとする。</li>
-          <li>本契約終了時、乙は甲の請求に応じて、CRMに蓄積された全データをCSV形式で甲に引き渡したうえで、サーバから当該データを完全に削除するものとする。</li>
+          <li>本業務により乙が制作した成果物(ホームページのソースコード・デザイン・CRM アプリケーションのソースコード・各種ドキュメントを含む)の著作権は、第3条に定める委託料の全額支払いの完了時に、乙から甲に移転する。ただし、乙が本業務の遂行に汎用的に用いるツール・ライブラリ・コードスニペット等(乙が事前から保有し、または第三者からライセンスを受けて利用しているもの)については、乙にその権利が留保される。</li>
+          <li>オープンソースソフトウェア(OSS)のライセンスについては、各 OSS の定めに従う。</li>
+          <li>本契約終了時には、第18条(成果物の引渡しと業務的自活)の定めに従い、最新版の成果物一式を甲に引渡す。</li>
         </ol>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第9条 (再委託)</div>
-      <div class="article-body">
-        乙は、甲の事前の書面による承諾なく、本件業務の全部または一部を第三者に再委託してはならない。ただし、定型的な実装作業の一部にAI開発支援ツールを使用することは、再委託に該当しないものとする。
-      </div>
-    </div>
-
-    <div class="article">
-      <div class="article-title">第10条 (障害対応・サービスレベル)</div>
+      <div class="article-title"><span class="tag">改訂</span>第8条 (個人情報・データの取扱い)</div>
       <div class="article-body">
         <ol>
-          <li>乙の障害対応は、平日 (土日祝日を除く) 10時から18時までの時間帯において、ベストエフォートで実施する。</li>
-          <li>夜間・休日の即時対応や復旧時間の保証は、本契約には含まれない。これらが必要な場合は別途オプション契約を締結する。</li>
+          <li>乙は、本業務遂行のために知り得た甲および甲の顧客に関する個人情報を、個人情報保護法その他関係法令を遵守して取り扱い、本業務の目的の範囲を超えて利用しない。</li>
+          <li><strong>本 CRM は「個人情報非保持」を設計原則とし、業種・用途・金額のみをデータベース(SQLite)に格納する。</strong></li>
+          <li><strong>氏名・電話番号・住所・担当者名・会社名は、OCR 取込時に合理的な範囲で自動マスク処理を施し、原則としてデータベースに格納しない。</strong></li>
+          <li><strong>注文書原本データ(画像・PDF 等)は、取込後 7 日以内に破棄する。</strong></li>
+          <li><strong>直接入力フォームにおいても、上記個人情報フィールドは画面に表示しない。</strong></li>
+          <li><strong>上記マスク・破棄処理が正しく動作することを、本番運用開始前に実データで動作検証する。</strong></li>
+          <li><strong>万一マスク漏れが判明した場合、乙は速やかに当該データを削除し、甲に書面で報告する。</strong></li>
+          <li><strong>データは乙(haluu)名義の国内 VPS 内でのみ取り扱い、海外サーバへの転送および外部送信機能の実装は行わない。</strong></li>
+          <li><strong>バックアップは乙が日次取得・別ロケーション保管し、保管データも国内のみとする。</strong></li>
+          <li><strong>契約終了時は第18条(成果物の引渡しと業務的自活)の定めに従って引渡しを行い、乙 VPS 上のデータおよびバックアップは、引渡し完了確認後 30 日以内に完全削除のうえ、削除完了を書面で報告する。</strong></li>
+          <li>食べログ・ホットペッパー等の外部ポータルの規約に抵触する顧客名簿化・二次利用は行わない。</li>
         </ol>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第11条 (契約の解除)</div>
+      <div class="article-title"><span class="tag kept">維持</span>第9条 (再委託)</div>
+      <div class="article-body">
+        乙は、本業務の全部または重要な部分を、甲の事前の書面による同意なく第三者に再委託しない。ただし、AI 開発支援ツール(コード生成 AI・文章校正 AI 等)の利用は、再委託に該当しないものとする。乙が本条に基づき再委託を行った場合、乙は再委託先の行為について甲に対し責任を負う。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title"><span class="tag kept">維持</span>第10条 (障害対応)</div>
       <div class="article-body">
         <ol>
-          <li>甲または乙が本契約に違反し、相手方から相当の期間を定めて是正の催告を受けたにもかかわらず当該期間内に是正がなされない場合、相手方は本契約を解除することができる。</li>
-          <li>解除の場合、納品済みの成果物および提供済みのサービスに対応する委託料は返還の対象とならない。未提供のサービスに対応する前払金は返還する。</li>
+          <li>本業務の遂行中および第1条第5項に定める初期サポート期間中、ならびに第1条第6項に定める効果計測フェーズ中、乙は、ホームページおよび CRM に関する障害発生の連絡を甲から受けた場合、<strong>平日 10:00〜18:00 のベストエフォート</strong>(=可能な限り速やかに、ただし応答時間・復旧時間を保証するものではない)で対応する。</li>
+          <li>乙は、24 時間 365 日のサービス提供保証(SLA=Service Level Agreement)を行わない。</li>
+          <li>VPS 事業者・既存サーバ事業者・ドメイン事業者起因の障害については、乙はバックアップによる復旧努力を行うが、復旧時間の保証はしない。</li>
+          <li>不可抗力(自然災害・大規模停電・通信障害・サイバー攻撃・パンデミック・乙の重篤な傷病等)による対応遅延・サービス停止については、乙は責任を負わない。</li>
         </ol>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第12条 (損害賠償)</div>
+      <div class="article-title"><span class="tag kept">維持</span>第11条 (契約解除)</div>
       <div class="article-body">
-        甲または乙が本契約に違反し、相手方に損害を与えた場合、当該損害を賠償する責を負う。ただし、乙の賠償責任の上限は、本件業務に関して甲が乙に対し過去12ヶ月間に支払った委託料の総額を上限とする。
+        <ol>
+          <li>甲または乙は、相手方が本契約の重要な義務に違反し、相当の期間(原則 14 日)を定めて催告(=書面で改善を求めること)してもなお改善されない場合、本契約を解除することができる。</li>
+          <li>甲または乙は、相手方が支払不能・破産手続開始・民事再生手続開始等の事由に該当した場合、催告なく直ちに本契約を解除できる。</li>
+          <li>本契約が解除された場合、乙は第18条(成果物の引渡しと業務的自活)に従い、その時点までの成果物の引渡しを行う。既払の委託料の返還については、業務の進捗に応じて甲乙協議のうえ定める。</li>
+        </ol>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第13条 (反社会的勢力の排除)</div>
+      <div class="article-title"><span class="tag kept">維持</span>第12条 (損害賠償)</div>
       <div class="article-body">
-        甲および乙は、自らおよびその役員が反社会的勢力でないこと、ならびに反社会的勢力との関係を一切有しないことを確約する。
+        <ol>
+          <li>甲または乙が本契約に違反し、相手方に損害を与えた場合、その損害を賠償する責任を負う。</li>
+          <li>乙の損害賠償の上限は、損害発生時点から遡って 12 ヶ月の間に甲が乙に支払った委託料の総額を上限とする。</li>
+          <li>ただし、乙の故意または重大な過失に起因する損害については、本上限は適用されない。</li>
+          <li>間接損害・特別損害・逸失利益(=本来得られたはずの売上等)については、乙は責任を負わない。</li>
+        </ol>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第14条 (協議事項)</div>
+      <div class="article-title"><span class="tag kept">維持</span>第13条 (反社会的勢力の排除)</div>
       <div class="article-body">
-        本契約に定めのない事項または本契約の解釈に疑義が生じた場合は、甲乙誠意をもって協議のうえ解決する。
+        <ol>
+          <li>甲および乙は、自らが暴力団・暴力団員・暴力団準構成員・暴力団関係企業・総会屋・社会運動等標榜ゴロ・特殊知能暴力集団等の反社会的勢力(以下「反社会的勢力」という)でないこと、および反社会的勢力との間に経済的・人的関係を有しないことを表明し、保証する。</li>
+          <li>相手方が前項に違反した場合、催告なく本契約を解除することができる。本解除により損害が生じても、解除した側は責任を負わない。</li>
+        </ol>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第15条 (合意管轄)</div>
+      <div class="article-title"><span class="tag kept">維持</span>第14条 (協議事項)</div>
       <div class="article-body">
-        本契約に関する一切の紛争は、甲の本店所在地を管轄する地方裁判所を第一審の専属的合意管轄裁判所とする。
+        本契約に定めのない事項または本契約の解釈について疑義が生じた場合は、甲乙誠意をもって協議のうえ解決する。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title"><span class="tag kept">維持</span>第15条 (合意管轄)</div>
+      <div class="article-body">
+        本契約に関して紛争が生じた場合、訴額に応じて大阪地方裁判所または大阪簡易裁判所を第一審の専属的合意管轄裁判所とする。
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title"><span class="tag">新設</span>第16条 (業務範囲外・免責)</div>
+      <div class="article-body">
+        以下は本業務の範囲外とし、乙はこれらに関し何らの責任を負わない。
+        <ol>
+          <li>新規写真撮影・カメラマン手配・商品スタイリング</li>
+          <li>集客数・売上・検索順位(SEO)・予約数の保証</li>
+          <li>食べログ・ホットペッパー等の外部ポータルの代理運用、規約変更・アカウント停止への対応</li>
+          <li>ポータル経由顧客の名簿化等、ポータル規約に抵触するおそれがある業務</li>
+          <li>既存サーバ事業者・既存ドメイン事業者起因の障害・データ消失</li>
+          <li><strong>VPS 事業者起因の障害・サービス停止・データ消失</strong>(乙はバックアップで復旧努力するが、復旧時間の保証はしない)</li>
+          <li><strong>自然災害・大規模停電・通信障害・サイバー攻撃・パンデミック等の不可抗力によるサービス停止</strong></li>
+          <li>大規模リニューアル(全面デザイン変更)、有料 SaaS(例: kintone)の月額契約</li>
+          <li>法律・税務・許認可・食品衛生に関する助言</li>
+          <li>景品表示法上の最上級表現(「史上最速」「日本一」「No.1」等)の使用。甲が独自に追加した同種表現に起因する第三者クレーム・行政指導は甲の責任とする。</li>
+          <li><strong>OCR 認識精度の 100% 保証</strong>(注文書フォーマット・手書きの品質に依存するため、ベストエフォートとする)</li>
+          <li><strong>24 時間 365 日のサービス提供保証(SLA)</strong>(障害対応は平日 10:00〜18:00 のベストエフォート)</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title"><span class="tag">新設</span>第17条 (甲の協力義務)</div>
+      <div class="article-body">
+        甲は、本業務の円滑な遂行のため、以下の協力を行う。
+        <ol>
+          <li>既存サーバ・既存ドメイン・既存 Google アカウントの管理画面 ID / パスワード を業務開始時に乙に提供する。</li>
+          <li>CRM 用サブドメイン(例 <code>crm.rinran.net</code>)について、乙の指示に従い A レコード(=ドメインを特定のサーバ IP アドレスに紐づける DNS 設定)を追加する。</li>
+          <li>乙に提供する写真・テキスト等の素材について、自らが正当な権利を有していること、または適法に利用できることを保証する。</li>
+          <li>テキスト最終版・公開切替日時・CRM 設計仕様の確認・合意を、乙からの提示後速やかに行う。</li>
+          <li>上記アクセス情報・連絡先等に変更が生じた場合は、事前に乙に通知する。</li>
+          <li>CRM のログイン認証情報(ID・パスワード)を適切に管理し、第三者に開示しない。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title"><span class="tag">新設</span>第18条 (成果物の引渡しと業務的自活)</div>
+      <div class="article-body">
+        <ol>
+          <li>乙は、納品時に以下を甲に交付する。
+            <ul>
+              <li>ソースコード一式(甲指定の GitHub リポジトリへの push、または ZIP アーカイブのいずれか)</li>
+              <li>データベース構造定義(SQLite スキーマ)</li>
+              <li><code>OPERATIONS.md</code>(店主向け運用マニュアル)</li>
+              <li><code>INFRA.md</code>(VPS 構成書。systemd / nginx / cron / Let's Encrypt 設定等を記載した引継ぎ用文書)</li>
+            </ul>
+          </li>
+          <li>乙は、甲が単独で日常業務(注文書アップロード → 確認 → 承認、直接入力、分析画面の閲覧)を遂行できる状態を目指し、計 2〜3 日の画面操作研修を行う。<strong>研修の具体的な日程・時間配分は、乙が大阪に滞在する 2026年6月15日 から 2026年6月19日 までの期間内において、甲乙協議のうえ調整する。</strong>本研修と <code>OPERATIONS.md</code> の交付をもって、甲の「業務的自活」(=甲がブラウザ操作のみで日常業務を完結できる状態)が達成されたものとする。</li>
+          <li>技術運用(VPS 管理・OS / ミドルウェアアップデート・バックアップ取得・障害対応)は、契約継続中は乙が担う。甲はコマンドライン操作・サーバファイル管理・git 操作を行うことを要しない。</li>
+          <li>本契約終了時、乙は以下を行う。
+            <ul>
+              <li>第1項に定める成果物の最新版を、改めて甲に引渡す(GitHub リポジトリへの push を含むデータ CSV エクスポート交付を含む)。</li>
+              <li>乙 VPS 上のデータおよびバックアップを、引渡し完了確認後 30 日以内に完全削除し、削除完了を書面で報告する。</li>
+              <li>これにより、甲は他事業者への運用引継ぎが可能となる。</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title"><span class="tag">新設</span>第19条 (VPS 運用とバックアップ)</div>
+      <div class="article-body">
+        <ol>
+          <li>乙は、国内 VPS 事業者と乙名義で契約し、CRM アプリケーションを運用する。</li>
+          <li>バックアップは日次で取得し、乙 VPS 内および別ロケーション(乙ローカルまたは別クラウドストレージ)に複製する。</li>
+          <li>バックアップ保管期間は、直近 <strong>30 日分</strong>のローテーション保管(=新しいバックアップが取られると古いものから順次上書き・削除される方式)とし、これを常識的かつ実務上合理的な範囲として両当事者間で確認する。</li>
+          <li>乙は、月次で別ロケーション分の整合性確認(=バックアップが復元可能な状態であることの簡易確認)を実施する。</li>
+          <li>VPS 事業者の障害・サービス停止時、乙はバックアップにより復旧努力を行うが、復旧時間の保証はしない(第10条・第16条参照)。</li>
+          <li>VPS 事業者の値上げ等により年額費用が大幅に変動した場合は、甲乙協議のうえ月額プランに反映する。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-title"><span class="tag">新設</span>第20条 (効果計測フェーズ終了時の選択)</div>
+      <div class="article-body">
+        <ol>
+          <li>第1条第6項に定める効果計測フェーズ(納品後 3 ヶ月間)の終了予定日の <strong>30 日前</strong>までに、乙は甲に対し、当該フェーズ終了後の運用継続に関する意思確認を、書面または電子メールで行う。</li>
+          <li>甲は、前項の意思確認の到達後 <strong>14 日以内</strong>に、以下のいずれかを選択して書面または電子メールで乙に通知する。
+            <ul>
+              <li><strong>(A) 月額プラン締結:</strong> 第1条第7項に基づく月額プランを締結し、運用を継続する。</li>
+              <li><strong>(B) サービス終了:</strong> 本契約を終了し、第18条(成果物の引渡しと業務的自活)に定める引渡しを受ける。</li>
+            </ul>
+          </li>
+          <li>甲が前項の通知を行わなかった場合、乙は再度の意思確認(リマインダ)を効果計測フェーズ終了予定日の 7 日前までに行い、それでもなお通知がない場合は、効果計測フェーズ終了日をもって本契約は終了し、第18条に定める引渡し手続を発動する(=デフォルトはサービス終了)。</li>
+          <li>(B) 選択または前項のデフォルト終了の場合:
+            <ul>
+              <li>乙は、第18条に従い、最新の成果物一式(ソース・データ CSV・<code>OPERATIONS.md</code>・<code>INFRA.md</code>)を甲に引渡す。</li>
+              <li>乙 VPS 上のデータおよびバックアップは、引渡し完了確認後 30 日以内に完全削除し、削除完了を書面で報告する。</li>
+              <li>サービス停止予定日(VPS 上の CRM 稼働を停止する日)は、引渡し完了確認後、甲乙合意のうえ別途定める。乙は当該停止予定日の 7 日前までに甲に書面通知を行う。</li>
+            </ul>
+          </li>
+          <li>(A) 選択の場合、月額プランの金額・支払方法・契約期間等を別途月額契約書(または覚書)として書面化する。当該書面の締結後に月額プランを開始するものとし、書面締結までの暫定期間における VPS 運用は、初期委託料に含まれた効果計測フェーズの延長として扱う(暫定期間は最長 30 日間とする)。</li>
+          <li>効果計測フェーズ中であっても、甲乙合意のうえ、月額プランの内容を前倒しで確定・締結することは妨げない。</li>
+        </ol>
       </div>
     </div>
 
     <div class="signature-block">
-      <p>本契約の成立を証するため、本書 2通を作成し、甲乙双方が署名 (または記名押印) のうえ、各1通ずつ保管する。</p>
-      <p class="date">令和　　年　　月　　日</p>
+      <p>本契約は、第4条(支払方法・契約の成立)第3項に定めるとおり、甲による契約成立金の入金をもって両当事者間に有効に成立する。後日、原本2通を作成し、甲乙双方が署名(または記名押印)のうえ、各1通を保管する。</p>
+      <p class="date">契約成立日: 令和8年(2026年)5月25日(契約成立期日。実際の成立日は同日までに行われる契約成立金の入金日)<br>
+      原本署名予定日: 令和8年(2026年)6月15日 〜 19日 のいずれか(甲乙協議による)</p>
       <div class="signature-grid">
         <div class="sig-party">
           <h4>甲 (委託者)</h4>
           <div class="field">
             <label>所在地</label>
-            <div class="line tall"></div>
+            <div class="filled">〒531-0074 大阪府大阪市北区本庄東2丁目13-11</div>
           </div>
           <div class="field">
             <label>店舗名・屋号</label>
-            <div class="line"></div>
+            <div class="filled">出前中華 りんらん</div>
           </div>
           <div class="field">
             <label>代表者氏名</label>
-            <div class="line"></div>
+            <div class="filled">原田 強</div>
           </div>
           <div class="field">
-            <label>署名 / 押印</label>
+            <label>署名 / 押印(対面時)</label>
             <div class="line tall"></div>
           </div>
         </div>
@@ -396,18 +643,18 @@
           <h4>乙 (受託者)</h4>
           <div class="field">
             <label>所在地</label>
-            <div class="line tall"></div>
+            <div class="filled">〒047-0045 北海道小樽市清水町23-4</div>
           </div>
           <div class="field">
             <label>屋号</label>
-            <div class="line"></div>
+            <div class="filled">hp-factory</div>
           </div>
           <div class="field">
-            <label>担当者氏名</label>
-            <div class="line"></div>
+            <label>代表者氏名</label>
+            <div class="filled">福田 春美</div>
           </div>
           <div class="field">
-            <label>署名 / 押印</label>
+            <label>署名 / 押印(対面時)</label>
             <div class="line tall"></div>
           </div>
         </div>
@@ -415,27 +662,23 @@
     </div>
   </div>
 
-  <h2>守秘義務条項 (雛形)</h2>
+  <h2>守秘義務条項</h2>
   <div class="contract-doc">
     <h3>秘密保持に関する合意書</h3>
     <div class="preamble">
-      委託者 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿ (以下「甲」という) と
-      受託者 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿ (以下「乙」という) は、
-      業務委託契約に基づき相互に開示する情報の秘密保持に関し、以下のとおり合意する。
+      本守秘義務条項は、上記業務委託契約と一体をなすものとして、甲乙間に締結される。
     </div>
 
     <div class="article">
       <div class="article-title">第1条 (秘密情報の定義)</div>
       <div class="article-body">
-        本合意書において「秘密情報」とは、甲乙間で開示される一切の情報のうち、書面・口頭・電磁的方法を問わず、開示時に秘密である旨が明示された情報、または合理的に秘密と認められる情報をいい、以下を含むがこれらに限らない。
-        <ul>
-          <li>顧客情報 (氏名・所在地・連絡先・注文履歴・要望)</li>
-          <li>取引先情報 (法人顧客・ポータル事業者との取引条件)</li>
-          <li>売上・財務に関する情報</li>
-          <li>店舗運営に関するノウハウ・営業戦略</li>
-          <li>本件業務の遂行過程で開発される技術情報・ソースコード</li>
-          <li>その他、甲乙が秘密として取り扱うことを合意した情報</li>
-        </ul>
+        「秘密情報」とは、本業務に関連して、一方当事者が他方当事者に対し、書面・口頭・電磁的記録その他の方法を問わず開示した情報のうち、開示時に秘密である旨を明示したもの、または客観的に秘密として扱われるべき性質を有するもの(顧客個人情報・売上情報・経営情報・技術情報等)をいう。ただし、以下の情報は秘密情報に該当しない。
+        <ol>
+          <li>開示時に既に公知であった情報</li>
+          <li>開示後に、自らの責めに帰すべき事由によらず公知となった情報</li>
+          <li>開示前から正当に保有していた情報</li>
+          <li>正当な権限を有する第三者から、秘密保持義務を負うことなく適法に取得した情報</li>
+        </ol>
       </div>
     </div>
 
@@ -443,116 +686,51 @@
       <div class="article-title">第2条 (秘密保持義務)</div>
       <div class="article-body">
         <ol>
-          <li>甲乙は、相手方の秘密情報を厳に秘密として保持し、相手方の事前の書面による承諾なく、第三者に開示・漏洩してはならない。</li>
-          <li>甲乙は、秘密情報を本件業務の遂行目的以外に使用してはならない。</li>
-          <li>甲乙は、秘密情報を取り扱う者を必要最小限の範囲に限定し、当該者にも本合意書と同等の秘密保持義務を遵守させる責任を負う。</li>
+          <li>甲および乙は、秘密情報を厳に秘密として管理し、相手方の事前の書面による同意なく、第三者に開示・漏洩しない。</li>
+          <li>秘密情報は、本業務の遂行の目的のためにのみ使用し、他の目的に使用しない。</li>
+          <li>秘密情報を取り扱う自己の役員・従業員・再委託先に対し、本条と同等の秘密保持義務を課す。</li>
         </ol>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第3条 (例外)</div>
+      <div class="article-title">第3条 (秘密情報の返還・廃棄)</div>
       <div class="article-body">
-        以下の情報は秘密情報から除外する。
-        <ol>
-          <li>開示時にすでに公知であった情報</li>
-          <li>開示後、自己の責によらず公知となった情報</li>
-          <li>開示時にすでに正当に保有していた情報</li>
-          <li>第三者から正当な権利のもとで取得した情報</li>
-          <li>法令または裁判所・行政機関の命令により開示が要求された情報 (この場合、可能な限り事前に相手方に通知する)</li>
-        </ol>
+        本契約終了時または相手方からの請求があったとき、当事者は、相手方から開示された秘密情報(複製を含む)を、相手方の指示に従い返還または廃棄し、その完了を書面で報告する。
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第4条 (秘密情報の管理)</div>
+      <div class="article-title">第4条 (国内サーバでの取扱い)</div>
       <div class="article-body">
-        <ol>
-          <li>乙は、甲から開示された顧客個人情報を国内サーバ内でのみ取り扱い、海外サーバへの転送および外部送信機能の実装を行わないものとする。</li>
-          <li>乙は、業務上必要な範囲を超えて秘密情報を複製・保管しないものとし、複製した場合はその所在および用途を明確にする。</li>
-        </ol>
+        <strong>乙は、甲から開示された顧客個人情報を国内サーバ内でのみ取り扱い、海外サーバへの転送および外部送信機能の実装を行わないものとする。</strong>
+        <p style="margin-top:8px; font-size:13px; color:#6a6260;">(本条は、本契約 第8条 第8項・第9項と整合する。乙(haluu)名義の国内 VPS で運用される運用形態は本条に適合する。)</p>
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第5条 (有効期間)</div>
+      <div class="article-title">第5条 (損害賠償)</div>
       <div class="article-body">
-        本合意書は、業務委託契約の有効期間中およびその終了後5年間にわたり効力を有するものとする。ただし、顧客個人情報に関する秘密保持義務は期間制限なく継続するものとする。
+        本守秘義務条項の違反により相手方に損害が生じた場合の損害賠償については、本契約 第12条(損害賠償)の定めを準用する。
       </div>
     </div>
 
     <div class="article">
-      <div class="article-title">第6条 (秘密情報の返還・廃棄)</div>
+      <div class="article-title">第6条 (存続)</div>
       <div class="article-body">
-        業務委託契約の終了時、乙は甲の指示に従い、保有するすべての秘密情報 (CRMデータ・バックアップ・関連書類) を、CSV形式での引渡し後にサーバから完全削除し、その旨を書面で甲に報告するものとする。
-      </div>
-    </div>
-
-    <div class="article">
-      <div class="article-title">第7条 (違反時の措置)</div>
-      <div class="article-body">
-        本合意書に違反して相手方に損害を与えた場合、違反した当事者は当該損害を賠償する責を負う。また、相手方は違反行為の差止めを請求することができる。
-      </div>
-    </div>
-
-    <div class="article">
-      <div class="article-title">第8条 (協議事項・準拠法)</div>
-      <div class="article-body">
-        本合意書に定めのない事項は、業務委託契約の規定を準用するほか、甲乙誠意をもって協議する。本合意書は日本法に準拠する。
+        本守秘義務条項は、本契約終了後も <strong>5 年間</strong>効力を有する。
       </div>
     </div>
 
     <div class="signature-block">
-      <p>本合意書の成立を証するため、本書 2通を作成し、甲乙双方が署名 (または記名押印) のうえ、各1通ずつ保管する。</p>
-      <p class="date">令和　　年　　月　　日</p>
-      <div class="signature-grid">
-        <div class="sig-party">
-          <h4>甲 (委託者)</h4>
-          <div class="field">
-            <label>所在地</label>
-            <div class="line tall"></div>
-          </div>
-          <div class="field">
-            <label>店舗名・屋号</label>
-            <div class="line"></div>
-          </div>
-          <div class="field">
-            <label>代表者氏名</label>
-            <div class="line"></div>
-          </div>
-          <div class="field">
-            <label>署名 / 押印</label>
-            <div class="line tall"></div>
-          </div>
-        </div>
-        <div class="sig-party">
-          <h4>乙 (受託者)</h4>
-          <div class="field">
-            <label>所在地</label>
-            <div class="line tall"></div>
-          </div>
-          <div class="field">
-            <label>屋号</label>
-            <div class="line"></div>
-          </div>
-          <div class="field">
-            <label>担当者氏名</label>
-            <div class="line"></div>
-          </div>
-          <div class="field">
-            <label>署名 / 押印</label>
-            <div class="line tall"></div>
-          </div>
-        </div>
-      </div>
+      <p>本守秘義務条項は、上記業務委託契約と一体をなすものとして、甲乙間に締結される。署名欄は業務委託契約書と共通とする。</p>
     </div>
   </div>
 
-  <div class="draft-banner">
+  <div class="info-banner">
     <b>注記:</b>
-    本雛形は<strong>個人事業主間の小規模業務委託</strong>を想定した一般的なテンプレートです。
-    特殊な業務要件 (高度な機密情報・大規模個人情報・行政との関わり等) がある場合は、専門家の助言を得て条項を追加することを推奨します。
-    本契約締結前に内容を慎重にご確認ください。
+    本 HTML 版は閲覧用です。<strong>正本は PDF 版</strong>(<code>contract-revised.pdf</code>)とし、両版に文言の相違がある場合は PDF 版を優先します。
+    本契約締結前に、必要に応じて行政書士または弁護士の正式レビューを経ることを推奨します。
   </div>
 
   <div class="pagenav">

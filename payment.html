@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お振込金額・期日・口座情報｜出前中華りんらん リニューアル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="assets/js/gate.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans JP", sans-serif;
+    background: #f7f3ec;
+    color: #1a1614;
+    line-height: 1.7;
+  }
+  a { color: #8b1a1a; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  .back {
+    display: inline-block;
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: #4a4340;
+    text-decoration: none;
+  }
+  .back:hover { color: #8b1a1a; }
+
+  h1 {
+    font-family: "Noto Serif JP", serif;
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  h1 small {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: #8b1a1a;
+    margin-bottom: 18px;
+  }
+  .lead {
+    color: #4a4340;
+    margin-bottom: 36px;
+    max-width: 780px;
+    font-size: 15px;
+  }
+
+  .deadline-banner {
+    background: linear-gradient(135deg, #8b1a1a, #6b1010);
+    color: #fff;
+    padding: 28px 32px;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(139, 26, 26, 0.25);
+  }
+  .deadline-banner .label {
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: #f4c430;
+    margin-bottom: 10px;
+  }
+  .deadline-banner .date {
+    font-family: "Noto Serif JP", serif;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+  .deadline-banner .note {
+    font-size: 13px;
+    margin-top: 12px;
+    color: #fdf6e7;
+    opacity: 0.92;
+  }
+
+  h2 {
+    font-family: "Noto Serif JP", serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 52px 0 20px;
+    padding-left: 14px;
+    border-left: 5px solid #8b1a1a;
+  }
+
+  /* プラン比較カード */
+  .plan-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 36px;
+  }
+  @media (min-width: 720px) {
+    .plan-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .plan-card {
+    background: #fff;
+    border: 2px solid #d6cfc1;
+    border-radius: 8px;
+    padding: 32px 28px;
+    position: relative;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .plan-card.recommended {
+    border-color: #8b1a1a;
+    box-shadow: 0 6px 20px rgba(139, 26, 26, 0.12);
+  }
+  .plan-card .badge {
+    display: inline-block;
+    position: absolute;
+    top: -14px;
+    left: 28px;
+    background: #f4c430;
+    color: #1a1614;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 14px;
+    letter-spacing: 0.05em;
+  }
+  .plan-card .plan-title {
+    font-family: "Noto Serif JP", serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a1614;
+    margin-bottom: 6px;
+  }
+  .plan-card .plan-subtitle {
+    color: #6a6260;
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+  .price-box {
+    margin: 24px 0 20px;
+    padding: 24px 0;
+    border-top: 1px dashed #d6cfc1;
+    border-bottom: 1px dashed #d6cfc1;
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .price-row:last-child { margin-bottom: 0; }
+  .price-row .label {
+    font-size: 13px;
+    color: #4a4340;
+  }
+  .price-row .value {
+    font-family: "Noto Serif JP", serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a1614;
+  }
+  .price-row .value.strike {
+    text-decoration: line-through;
+    color: #a8a39e;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .price-row .value.big {
+    font-size: 32px;
+    color: #8b1a1a;
+  }
+  .price-row .value .yen {
+    font-size: 0.7em;
+    margin-left: 2px;
+    color: inherit;
+  }
+  .discount-tag {
+    display: inline-block;
+    background: #8b1a1a;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .schedule-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+  }
+  .schedule-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0ece2;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+  .schedule-list li:last-child { border-bottom: none; }
+  .schedule-list .when {
+    color: #6a6260;
+    font-size: 13px;
+  }
+  .schedule-list .amount {
+    font-weight: 600;
+    color: #1a1614;
+  }
+  .saving {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: #fdf6e7;
+    border-left: 4px solid #f4c430;
+    font-size: 13px;
+    color: #6b5b00;
+    border-radius: 0 4px 4px 0;
+  }
+  .saving b { color: #8b1a1a; font-size: 15px; }
+
+  /* 振込先口座カード */
+  .bank-card {
+    background: #fff;
+    border: 2px solid #1a1614;
+    border-radius: 8px;
+    padding: 36px 40px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  }
+  .bank-card .bank-label {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+  .bank-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  @media (min-width: 600px) {
+    .bank-info { grid-template-columns: auto 1fr; column-gap: 28px; row-gap: 16px; }
+  }
+  .bank-info .key {
+    font-size: 13px;
+    color: #6a6260;
+    padding-top: 4px;
+  }
+  .bank-info .value {
+    font-family: "Noto Serif JP", serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a1614;
+    letter-spacing: 0.05em;
+  }
+  .bank-info .value.account-no {
+    font-size: 28px;
+    color: #8b1a1a;
+    letter-spacing: 0.08em;
+  }
+  .bank-note {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px dashed #d6cfc1;
+    font-size: 13px;
+    color: #4a4340;
+  }
+
+  /* 注意ボックス */
+  .notice {
+    background: #fdf6e7;
+    border-left: 4px solid #8b1a1a;
+    padding: 18px 22px;
+    margin: 28px 0;
+    font-size: 13px;
+    line-height: 1.85;
+    color: #4a4340;
+    border-radius: 0 4px 4px 0;
+  }
+  .notice b { color: #8b1a1a; }
+  .notice ul { padding-left: 20px; margin-top: 6px; }
+  .notice li { margin-bottom: 4px; }
+
+  /* 進行確認ステップ */
+  .steps {
+    background: #1a1614;
+    color: #f7f3ec;
+    padding: 32px 36px;
+    border-radius: 8px;
+    margin: 36px 0;
+  }
+  .steps h3 {
+    color: #f4c430;
+    font-size: 14px;
+    letter-spacing: 0.25em;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .steps ol {
+    padding-left: 24px;
+    font-size: 14px;
+    line-height: 1.95;
+  }
+  .steps ol li { margin-bottom: 10px; }
+  .steps ol li b { color: #f4c430; }
+
+  .pagenav {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid #d6cfc1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .pagenav a {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #fff;
+    border: 1px solid #d6cfc1;
+    color: #1a1614;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .pagenav a:hover { background: #fdf6e7; }
+
+  @media print {
+    .back, .pagenav, .steps { display: none; }
+    body { background: #fff; }
+    .deadline-banner { background: #fff; color: #1a1614; border: 2px solid #1a1614; box-shadow: none; }
+    .deadline-banner .label, .deadline-banner .date, .deadline-banner .note { color: #1a1614; }
+    .plan-card, .bank-card { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="contract.html" class="back">← 業務委託契約書へ戻る</a>
+  <h1>お振込金額・期日・口座情報<small>PAYMENT SCHEDULE — RINRAN PROJECT</small></h1>
+  <p class="lead">
+    本契約 第3条(委託料)・第4条(支払方法・契約の成立) に基づく、初期委託料のお支払い方法をまとめたページです。
+    <strong>2 通りの支払方法</strong>からご選択いただけます。一括払いの場合は 5% 割引が適用されます。
+  </p>
+
+  <div class="deadline-banner">
+    <div class="label">お振込み期日 (契約成立期日)</div>
+    <div class="date">2026 年 5 月 25 日</div>
+    <div class="note">この日までに以下いずれかをお振込みいただいた時点で、本契約は正式に成立します。</div>
+  </div>
+
+  <h2>お支払い方法 (2 通りからお選びください)</h2>
+
+  <div class="plan-grid">
+    <!-- 一括払い -->
+    <div class="plan-card recommended">
+      <span class="badge">5% OFF 割引適用</span>
+      <div class="plan-title">(ア) 一括払い</div>
+      <div class="plan-subtitle">契約成立期日までに全額を1回でお支払い</div>
+
+      <div class="price-box">
+        <div class="price-row">
+          <span class="label">通常価格</span>
+          <span class="value strike">286,000<span class="yen">円</span></span>
+        </div>
+        <div class="price-row">
+          <span class="label">一括払い割引価格<span class="discount-tag">5% OFF</span></span>
+          <span class="value big">271,700<span class="yen">円</span></span>
+        </div>
+        <div class="price-row">
+          <span class="label">割引額</span>
+          <span class="value" style="color:#8b1a1a; font-size:16px;">−14,300<span class="yen">円</span></span>
+        </div>
+      </div>
+
+      <ul class="schedule-list">
+        <li>
+          <span class="when">2026 年 5 月 25 日 (1 回のみ)</span>
+          <span class="amount">271,700 円</span>
+        </li>
+      </ul>
+
+      <div class="saving">
+        💡 <b>14,300 円お得</b>になります。1 回のお振込みで完結するため、手数料も 1 回分のみで済みます。
+      </div>
+    </div>
+
+    <!-- 分割払い -->
+    <div class="plan-card">
+      <div class="plan-title">(イ) 2 分割払い</div>
+      <div class="plan-subtitle">着手金 30% + 残金 70% の 2 回払い</div>
+
+      <div class="price-box">
+        <div class="price-row">
+          <span class="label">合計金額 (割引なし)</span>
+          <span class="value big" style="color:#1a1614;">286,000<span class="yen">円</span></span>
+        </div>
+        <div class="price-row">
+          <span class="label">割引額</span>
+          <span class="value" style="color:#6a6260; font-size:16px;">なし</span>
+        </div>
+      </div>
+
+      <ul class="schedule-list">
+        <li>
+          <span class="when">
+            <strong>① 着手金 (30%)</strong><br>
+            <span style="font-size:12px;">2026 年 5 月 25 日 まで</span>
+          </span>
+          <span class="amount">85,800 円</span>
+        </li>
+        <li>
+          <span class="when">
+            <strong>② 残金 (70%)</strong><br>
+            <span style="font-size:12px;">納品完了月の月末 (2026 年 6 月 30 日 想定)</span>
+          </span>
+          <span class="amount">200,200 円</span>
+        </li>
+      </ul>
+
+      <div class="saving" style="background:#f0ece2; border-left-color:#a8a39e; color:#4a4340;">
+        ※ 一括払いと比較して <b style="color:#1a1614;">14,300 円高くなります</b>。納品が遅延した場合、残金の支払期日は納品完了確認月の翌月末まで自動延期されます。
+      </div>
+    </div>
+  </div>
+
+  <h2>お振込先口座</h2>
+
+  <div class="bank-card">
+    <div class="bank-label">▶ お振込先(乙=受託者 口座)</div>
+    <div class="bank-info">
+      <div class="key">金融機関名</div>
+      <div class="value">三菱UFJ銀行</div>
+
+      <div class="key">支店名</div>
+      <div class="value">札幌中央支店<span style="font-size:14px; color:#6a6260; margin-left:8px;">(支店番号 327)</span></div>
+
+      <div class="key">預金種別</div>
+      <div class="value">普通預金</div>
+
+      <div class="key">口座番号</div>
+      <div class="value account-no">0402508</div>
+
+      <div class="key">口座名義</div>
+      <div class="value">フクダ ハルミ<span style="font-size:14px; color:#6a6260; margin-left:8px;">(福田 春美)</span></div>
+    </div>
+
+    <div class="bank-note">
+      <strong>振込手数料</strong>は本契約 第4条第5項に基づき、<strong>甲(委託者)のご負担</strong>とさせていただきます。<br>
+      お振込み後、念のため <strong>振込み完了の旨をメール</strong>でお知らせいただけると確認がスムーズです。
+    </div>
+  </div>
+
+  <div class="steps">
+    <h3>STEPS — お振込みから契約成立まで</h3>
+    <ol>
+      <li><b>Step 1:</b> 上記 2 通りのお支払い方法から <strong>(ア) 一括 / (イ) 分割</strong> をお選びください。</li>
+      <li><b>Step 2:</b> <strong>2026 年 5 月 25 日</strong> までに、上記三菱UFJ銀行口座へ該当金額をお振込みください。</li>
+      <li><b>Step 3:</b> 振込み完了の旨を乙までメール等でお知らせください(任意ですが確認がスムーズです)。</li>
+      <li><b>Step 4:</b> 乙にて入金確認後、<strong>本契約は正式に成立</strong>し、業務に着手します。</li>
+      <li><b>Step 5:</b> 後日、乙が大阪に滞在する <strong>2026 年 6 月 15 日〜19 日</strong>の期間内に対面し、原本2通に双方が署名・各1通を保管します。</li>
+    </ol>
+  </div>
+
+  <div class="notice">
+    <b>📌 ご注意事項</b>
+    <ul>
+      <li>本ページは <strong>関係者限定の閲覧ページ</strong>です。第三者への URL・パスワードの開示はお控えください。</li>
+      <li>振込先口座情報は <strong>乙(福田 春美)個人名義</strong>の口座です。法人名義ではありませんのでご注意ください。</li>
+      <li>乙はインボイス制度上の <strong>適格請求書発行事業者ではありません</strong>。甲が課税事業者の場合、消費税相当額の仕入税額控除に経過措置による制限が生じる可能性があります(本契約 第3条第7項)。</li>
+      <li>振込みに関するご不明点は、契約書記載の連絡先までお気軽にお問い合わせください。</li>
+    </ul>
+  </div>
+
+  <div class="pagenav">
+    <a href="contract.html">← 業務委託契約書へ戻る</a>
+    <a href="pricing.html">料金プラン</a>
+    <a href="roadmap.html">導入ロードマップ</a>
+    <a href="assets/pdf/contract.pdf" download="rinran-contract.pdf">契約書PDFをダウンロード</a>
+  </div>
+</div>
+</body>
+</html>
