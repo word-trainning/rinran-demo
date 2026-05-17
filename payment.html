@@ -51,30 +51,34 @@
   .deadline-banner {
     background: linear-gradient(135deg, #8b1a1a, #6b1010);
     color: #fff;
-    padding: 28px 32px;
+    padding: 18px 24px;
     border-radius: 6px;
-    margin-bottom: 40px;
-    text-align: center;
-    box-shadow: 0 4px 14px rgba(139, 26, 26, 0.25);
+    margin: 24px 0 32px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    box-shadow: 0 2px 8px rgba(139, 26, 26, 0.18);
   }
   .deadline-banner .label {
-    font-size: 13px;
-    letter-spacing: 0.25em;
+    font-size: 12px;
+    letter-spacing: 0.2em;
     color: #f4c430;
-    margin-bottom: 10px;
+    white-space: nowrap;
   }
   .deadline-banner .date {
     font-family: "Noto Serif JP", serif;
-    font-size: 42px;
+    font-size: 22px;
     font-weight: 700;
     letter-spacing: 0.05em;
     line-height: 1.2;
   }
   .deadline-banner .note {
-    font-size: 13px;
-    margin-top: 12px;
+    font-size: 12px;
     color: #fdf6e7;
     opacity: 0.92;
+    flex: 1;
+    min-width: 220px;
   }
 
   h2 {
@@ -339,12 +343,6 @@
     <strong>2 通りの支払方法</strong>からご選択いただけます。一括払いの場合は 5% 割引が適用されます。
   </p>
 
-  <div class="deadline-banner">
-    <div class="label">お振込み期日 (契約成立期日)</div>
-    <div class="date">2026 年 5 月 25 日</div>
-    <div class="note">この日までに以下いずれかをお振込みいただいた時点で、本契約は正式に成立します。</div>
-  </div>
-
   <h2>お支払い方法 (2 通りからお選びください)</h2>
 
   <div class="plan-grid">
@@ -445,6 +443,12 @@
       <strong>振込手数料</strong>は本契約 第4条第5項に基づき、<strong>甲(委託者)のご負担</strong>とさせていただきます。<br>
       お振込み後、念のため <strong>振込み完了の旨をメール</strong>でお知らせいただけると確認がスムーズです。
     </div>
+  </div>
+
+  <div class="deadline-banner">
+    <div class="label">お振込み期日</div>
+    <div class="date">2026 年 5 月 25 日</div>
+    <div class="note">この日までに上記口座へお振込みいただいた時点で、本契約は正式に成立します。</div>
   </div>
 
   <div class="steps">
